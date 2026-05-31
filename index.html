@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BespredeL (Aleksandr Kireev) | Backend Developer</title>
+    <meta name="description" content="PHP Laravel Backend Developer. Open Source, Automation, Computer Vision.">
+
+    <meta name="theme-color" content="#0b1120">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="background"></div>
+
+<header>
+    <div class="container">
+        <a href="#" class="logo">
+            BespredeL
+        </a>
+
+        <nav>
+            <a href="#about" data-i18n="nav_about">
+                Обо мне
+            </a>
+            <a href="#projects" data-i18n="nav_projects">
+                Проекты
+            </a>
+            <a href="#github" data-i18n="nav_github">
+                GitHub
+            </a>
+            <a href="#contact" data-i18n="nav_contact">
+                Контакты
+            </a>
+        </nav>
+
+        <div class="language-switcher">
+            <button class="lang-btn active" data-lang="ru">RU</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-badge" data-i18n="hero_badge">
+                Backend Developer • Open Source
+            </div>
+
+            <h1 data-i18n="hero_title">
+                PHP / Laravel Developer
+            </h1>
+
+            <p data-i18n="hero_description">
+                Создаю веб-приложения, API, системы автоматизации и open-source решения.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="https://github.com/BespredeL"
+                   target="_blank"
+                   class="btn btn-primary"
+                   data-i18n="hero_github">
+                    GitHub
+                </a>
+
+                <a href="#projects"
+                   class="btn btn-secondary"
+                   data-i18n="hero_projects">
+                    Проекты
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <div class="container">
+        <h2 class="section-title" data-i18n="about_title">
+            Обо мне
+        </h2>
+
+        <div class="about-grid">
+            <div>
+                <p class="about-text" data-i18n="about_text_1">
+                    Backend-разработчик, специализирующийся на PHP и Laravel.
+                    Создаю веб-приложения, API и инструменты автоматизации.
+                </p>
+
+                <p class="about-text" data-i18n="about_text_2">
+                    Также работаю с Python, JavaScript, MS Dynamics NAV, Arduino и системами Computer Vision.
+                </p>
+            </div>
+
+            <div class="skills">
+                <span>PHP</span>
+                <span>Laravel</span>
+                <span>MySQL</span>
+                <span>JavaScript</span>
+                <span>Python</span>
+                <span>Git</span>
+                <span>REST API</span>
+                <span>Arduino</span>
+                <span>Computer Vision</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title" data-i18n="projects_title">
+                Проекты
+            </h2>
+        </div>
+
+        <div id="repos" class="repo-grid">
+            <div class="loading-card">
+                Loading repositories...
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="github">
+    <div class="container">
+        <h2 class="section-title" data-i18n="github_title">
+            GitHub
+        </h2>
+
+        <div id="profile">
+            <div class="loading-card">
+                Loading profile...
+            </div>
+        </div>
+
+        <div class="stats-images">
+            <img src="https://github-readme-stats.vercel.app/api?username=BespredeL&show_icons=true&theme=transparent" alt="GitHub Stats">
+            <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=BespredeL&layout=compact&theme=transparent" alt="Top Languages">
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <div class="contact-box">
+            <h2 class="section-title" data-i18n="contact_title">
+                Контакты
+            </h2>
+            <p data-i18n="contact_text">
+                Открыт для сотрудничества, open-source проектов и интересных задач.
+            </p>
+            <div class="hero-buttons">
+                <a href="https://github.com/BespredeL"
+                   target="_blank"
+                   class="btn btn-primary">
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>© 2026 BespredeL (Aleksandr Kireev)</p>
+    </div>
+</footer>
+
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
