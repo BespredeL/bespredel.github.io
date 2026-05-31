@@ -67,7 +67,10 @@ const translations = {
 };
 
 /**
- * Update text on page
+ * Updates all translatable page content and UI state
+ * according to the selected language.
+ *
+ * @param {string} lang - Language code defined in the translations object
  */
 function updateTexts(lang) {
     document.documentElement.lang = lang;
@@ -97,7 +100,9 @@ function updateTexts(lang) {
     );
 }
 
-
+/**
+ * Returns the currently selected language.
+ */
 function getCurrentLanguage() {
     const savedLanguage = localStorage.getItem("language");
     if (savedLanguage && translations[savedLanguage]) {
