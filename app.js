@@ -286,6 +286,17 @@ async function loadFeaturedRepositories() {
 }
 
 /**
+ * Updates copyright year in footer.
+ */
+function updateCopyright() {
+    const currentYear = new Date().getFullYear();
+    const element = document.getElementById("copyright");
+    if (element) {
+        element.textContent = `© 2009 - ${currentYear} BespredeL (Aleksandr Kireev)`;
+    }
+}
+
+/**
  * Initialize the page.
  */
 async function initialize() {
@@ -304,5 +315,8 @@ window.addEventListener("languageChanged", () => {
 
 document.addEventListener(
     "DOMContentLoaded",
-    initialize
+    () => {
+        updateCopyright();
+        initialize();
+    }
 );
