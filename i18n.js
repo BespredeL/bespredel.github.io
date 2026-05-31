@@ -23,7 +23,13 @@ const translations = {
         open_project: "Открыть →",
         loading_profile: "Загрузка профиля...",
         loading_repositories: "Загрузка репозиториев...",
-        no_description: "Описание отсутствует"
+        profile_load_error: "Не удалось загрузить профиль GitHub",
+        repositories_load_error: "Не удалось загрузить репозитории",
+        no_description: "Описание отсутствует",
+        stats_repositories: "Репозитории",
+        stats_stars: "Звёзды",
+        stats_forks: "Форки",
+        stats_main_language: "Основной язык",
     },
 
     en: {
@@ -50,7 +56,13 @@ const translations = {
         open_project: "Open →",
         loading_profile: "Loading profile...",
         loading_repositories: "Loading repositories...",
-        no_description: "No description available"
+        profile_load_error: "Failed to load GitHub profile",
+        repositories_load_error: "Failed to load repositories",
+        no_description: "No description available",
+        stats_repositories: "Repositories",
+        stats_stars: "Stars",
+        stats_forks: "Forks",
+        stats_main_language: "Main Language",
     }
 };
 
