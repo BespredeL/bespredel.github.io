@@ -1,5 +1,18 @@
 const GITHUB_USERNAME = "BespredeL";
 
+const FEATURED_REPOSITORIES = [
+    "MacroDroid",
+    "CVCounter",
+    "geo-restrict",
+    "encryption-form",
+    "woo-category-ordering"
+];
+
+const EXCLUDED_REPOSITORIES = [
+    "BespredeL",
+    "bespredel.github.io"
+];
+
 /**
  * Load user profile from GitHub API.
  */
@@ -212,49 +225,64 @@ function renderRepositories(repositories) {
 }
 
 /**
- * Load pinned projects from GitHub API.
+ * Load featured projects from GitHub API.
  */
-async function loadPinnedProjects() {
-    const preferredProjects = [
+async function loadFeaturedRepositories() {
+    const featuredRepositories = [
         "MacroDroid",
         "CVCounter",
         "geo-restrict",
         "encryption-form",
-        "woo-category-ordering",
+        "woo-category-ordering"
     ];
 
     try {
-        const response = await fetch(
-            `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`
-        );
-
+        const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`);
         if (!response.ok) {
-            return;
+            throw new Error("GitHub API error");
         }
 
         const repos = await response.json();
 
-        const preferred = repos.filter(repo =>
-            preferredProjects.includes(repo.name)
-        );
+        const featured = repos
+        .filter(repo =>
+            FEATURED_REPOSITORIES.includes(repo.name)
+        )
+        .sort((a, b) => {
+            return (
+                FEATURED_REPOSITORIES.indexOf(a.name) -
+                FEATURED_REPOSITORIES.indexOf(b.name)
+            );
+        });
 
-        if (preferred.length > 0) {
-            preferred.sort((a, b) => {
-                const indexA = preferredProjects.indexOf(a.name);
-                const indexB = preferredProjects.indexOf(b.name);
-                return indexA - indexB;
-            });
+        const otherRepositories = repos
+        .filter(repo =>
+            !repo.fork &&
+            !FEATURED_REPOSITORIES.includes(repo.name) &&
+            !EXCLUDED_REPOSITORIES.includes(repo.name)
+        )
+        .sort((a, b) => {
+            const scoreA =
+                a.stargazers_count * 100 +
+                a.forks_count * 20;
 
-            renderRepositories(preferred);
+            const scoreB =
+                b.stargazers_count * 100 +
+                b.forks_count * 20;
 
-            return true;
-        }
+            return scoreB - scoreA;
+        })
+        .slice(0, 6);
+
+        renderRepositories([
+            ...featured,
+            ...otherRepositories
+        ]);
 
     } catch (error) {
         console.error(error);
+        loadRepositories();
     }
-
-    return false;
 }
 
 /**
@@ -262,11 +290,7 @@ async function loadPinnedProjects() {
  */
 async function initialize() {
     await loadProfile();
-
-    const pinnedLoaded = await loadPinnedProjects();
-    if (!pinnedLoaded) {
-        await loadRepositories();
-    }
+    await loadFeaturedRepositories();
 }
 
 /**
@@ -274,12 +298,7 @@ async function initialize() {
  */
 window.addEventListener("languageChanged", () => {
         loadProfile();
-
-        loadPinnedProjects().then(result => {
-            if (!result) {
-                loadRepositories();
-            }
-        });
+        loadFeaturedRepositories();
     }
 );
 
