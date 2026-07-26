@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Подсчёт объектов с камер в реальном времени — CVCounter</title>
+    <meta name="description"
+          content="CVCounter — open-source система компьютерного зрения для детекции, трекинга и подсчёта объектов по RTSP: люди, транспорт, ритейл, производство и склад. YOLO, OpenCV, ONNX. Веб-интерфейс из коробки.">
+    <meta name="theme-color" content="#0c0e12">
+    <link rel="canonical" href="https://bespredel.github.io/cvcounter/">
+    <link rel="alternate" hreflang="ru" href="https://bespredel.github.io/cvcounter/">
+    <link rel="alternate" hreflang="en" href="https://bespredel.github.io/cvcounter/en/">
+    <link rel="alternate" hreflang="x-default" href="https://bespredel.github.io/cvcounter/">
+    <link rel="icon" href="./icons/favicon.ico" sizes="any">
+    <link rel="icon" href="./icons/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CVCounter">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:title" content="CVCounter — подсчёт объектов с камер">
+    <meta property="og:description"
+          content="CVCounter — open-source система компьютерного зрения для детекции, трекинга и подсчёта объектов по RTSP: люди, транспорт, ритейл, производство и склад. YOLO, OpenCV, ONNX. Веб-интерфейс из коробки.">
+    <meta property="og:url" content="https://bespredel.github.io/cvcounter/">
+    <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CVCounter — подсчёт объектов с камер">
+    <meta name="twitter:description"
+          content="CVCounter — open-source система компьютерного зрения для детекции, трекинга и подсчёта объектов по RTSP: люди, транспорт, ритейл, производство и склад. YOLO, OpenCV, ONNX. Веб-интерфейс из коробки.">
+    <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "CVCounter",
+            "applicationCategory": "MultimediaApplication",
+            "operatingSystem": "Windows, Linux, macOS",
+            "softwareVersion": "5.4.1",
+            "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+            "url": "https://bespredel.github.io/cvcounter/",
+            "downloadUrl": "https://github.com/BespredeL/CVCounter",
+            "description": "CVCounter — open-source система компьютерного зрения для детекции, трекинга и подсчёта объектов по RTSP: люди, транспорт, ритейл, производство и склад. YOLO, OpenCV, ONNX. Веб-интерфейс из коробки.",
+            "author": {
+                "@type": "Person",
+                "name": "Aleksandr Kireev",
+                "url": "https://bespredel.name",
+                "email": "hello@bespredel.name"
+            },
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            }
+        }
+    </script>
+</head>
+<body>
+<header class="nav">
+    <div class="nav__inner">
+        <a class="brand" href="/cvcounter/">
+            <img src="./icons/favicon.svg" width="32" height="32" alt="">
+            CVCounter
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" data-nav-toggle
+                aria-label="Меню">☰
+        </button>
+        <ul class="nav__links" id="nav-menu">
+            <li><a href="/cvcounter/#features">Возможности</a></li>
+            <li><a href="/cvcounter/podschet-lyudey/">Сценарии</a></li>
+            <li><a href="/cvcounter/ustanovka/">Установка</a></li>
+            <li><a href="/cvcounter/faq/">FAQ</a></li>
+        </ul>
+        <div class="nav__actions">
+            <div class="lang" role="group" aria-label="Language">
+                <a href="/cvcounter/" class="lang__link is-active" hreflang="ru">RU</a>
+                <a href="/cvcounter/en/" class="lang__link" hreflang="en">EN</a>
+            </div>
+            <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">GitHub</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero__media" aria-hidden="true">
+            <img src="./images/Hero.webp" alt="" width="1600" height="900" fetchpriority="high">
+        </div>
+        <div class="wrap">
+            <div class="hero__content hero-enter">
+                <h1 class="hero__title">
+                    <span class="hero__name">CVCounter</span>
+                    <span class="hero__tag">Смотри. Считай. В реальном времени.</span>
+                </h1>
+                <p class="hero__lead">Подсчёт объектов с камер: детекция, трекинг и зоны — на линии, складе или у входа.
+                    Клиентам достаточно браузера.</p>
+                <div class="hero__cta">
+                    <a class="btn btn--primary btn--lg" href="https://github.com/BespredeL/CVCounter"
+                       rel="noopener">Открыть на GitHub</a>
+                    <a class="btn btn--ghost btn--lg" href="/cvcounter/ustanovka/">Установка</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <h2>Что умеет</h2>
+                <p>Подсчёт с камер без тяжёлого клиента — линия, склад, вход, только браузер.</p>
+            </div>
+            <div class="feature-list reveal">
+                <article class="feature">
+                    <div class="feature__key">detect</div>
+                    <div>
+                        <h3>Детекция в реальном времени</h3>
+                        <p>RTSP, веб-камера или файл. Обработка на сервере.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="feature__key">track</div>
+                    <div>
+                        <h3>Трекинг объектов</h3>
+                        <p>ID между кадрами, меньше повторных срабатываний.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="feature__key">zones</div>
+                    <div>
+                        <h3>Зоны подсчёта</h3>
+                        <p>Один или несколько полигонов на кадр.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="feature__key">classes</div>
+                    <div>
+                        <h3>Разбивка по классам</h3>
+                        <p>Партия и итог отдельно по каждому классу.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="feature__key">views</div>
+                    <div>
+                        <h3>Три режима просмотра</h3>
+                        <p>Видео, текст или несколько счётчиков — для киосков.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="feature__key">stack</div>
+                    <div>
+                        <h3>YOLO, OpenCV, ONNX</h3>
+                        <p>Единый реестр детекторов, выбор в конфиге.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="audience">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <h2>Для кого</h2>
+                <p>Типовые сценарии — отдельные страницы под поисковые задачи.</p>
+            </div>
+            <div class="audience-grid reveal">
+                <a class="audience-card" href="/cvcounter/podschet-lyudey/">
+                    <div>
+                        <h3>Подсчёт людей</h3>
+                        <p>Магазины, ТЦ, проходные</p>
+                    </div>
+                </a>
+                <a class="audience-card" href="/cvcounter/podschet-transporta/">
+                    <div>
+                        <h3>Подсчёт транспорта</h3>
+                        <p>Дороги, КПП, парковки</p>
+                    </div>
+                </a>
+                <a class="audience-card" href="/cvcounter/ritail-analitika/">
+                    <div>
+                        <h3>Ритейл-аналитика</h3>
+                        <p>Поток и зоны интереса</p>
+                    </div>
+                </a>
+                <a class="audience-card" href="/cvcounter/promyshlennost/">
+                    <div>
+                        <h3>Производство и склад</h3>
+                        <p>Конвейер, отгрузка, цех</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="how">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <h2>Как это работает</h2>
+            </div>
+            <div class="steps reveal">
+                <div class="step">
+                    <div>
+                        <h3>Видеопоток</h3>
+                        <p>Захват с камеры, RTSP или файла.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div>
+                        <h3>Детекция</h3>
+                        <p>Модель находит объекты и классы.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div>
+                        <h3>Трекинг</h3>
+                        <p>Устойчивый ID между кадрами.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div>
+                        <h3>Подсчёт</h3>
+                        <p>Вход в зону увеличивает счётчики.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div>
+                        <h3>Отчёты</h3>
+                        <p>Сохранение и просмотр в веб-UI.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="compare">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <h2>Свой скрипт или CVCounter</h2>
+                <p>Что уже есть в продукте, а не только в ноутбуке с моделью.</p>
+            </div>
+            <div class="table-wrap reveal">
+                <table class="compare">
+                    <thead>
+                    <tr>
+                        <th>Возможность</th>
+                        <th>Скрипт YOLO</th>
+                        <th>CVCounter</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope='row'>Веб-UI и киоск</th>
+                        <td>Нужно писать</td>
+                        <td>Есть</td>
+                    </tr>
+                    <tr>
+                        <th scope='row'>Зоны подсчёта (полигоны)</th>
+                        <td>Вручную</td>
+                        <td>Редактор в UI</td>
+                    </tr>
+                    <tr>
+                        <th scope='row'>Несколько счётчиков</th>
+                        <td>С нуля</td>
+                        <td>Мульти-вид</td>
+                    </tr>
+                    <tr>
+                        <th scope='row'>Отчёты и партии</th>
+                        <td>С нуля</td>
+                        <td>Встроены</td>
+                    </tr>
+                    <tr>
+                        <th scope='row'>YOLO / OpenCV / ONNX</th>
+                        <td>Один стек</td>
+                        <td>Реестр бэкендов</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <h2>Интерфейс</h2>
+                <p>Flask-панель: счётчики, зоны, отчёты.</p>
+            </div>
+            <div class="gallery-board reveal">
+                <figure class="shot shot--feature">
+                    <div class="shot__frame">
+                        <img src="./images/ru/CounterVideo.webp"
+                             alt="Видеовид CVCounter со зонами подсчёта и счётчиками по классам" width="1400"
+                             height="800">
+                    </div>
+                    <figcaption>Видео и зоны подсчёта</figcaption>
+                </figure>
+                <div class="gallery-tiles">
+                    <figure class="shot shot--tile">
+                        <div class="shot__frame">
+                            <img src="./images/ru/Index.webp"
+                                 alt="Главная CVCounter — список счётчиков и управление потоками" width="1400"
+                                 height="800" loading="lazy">
+                        </div>
+                        <figcaption>Список счётчиков</figcaption>
+                    </figure>
+                    <figure class="shot shot--tile">
+                        <div class="shot__frame">
+                            <img src="./images/ru/CounterArea.webp" alt="Редактор зон подсчёта CVCounter" width="1400"
+                                 height="800" loading="lazy">
+                        </div>
+                        <figcaption>Редактор зон</figcaption>
+                    </figure>
+                    <figure class="shot shot--tile">
+                        <div class="shot__frame">
+                            <img src="./images/ru/CounterMultiText.webp"
+                                 alt="Текстовый вид нескольких счётчиков CVCounter" width="1400" height="800"
+                                 loading="lazy">
+                        </div>
+                        <figcaption>Несколько счётчиков</figcaption>
+                    </figure>
+                    <figure class="shot shot--tile">
+                        <div class="shot__frame">
+                            <img src="./images/ru/ReportsIndex.webp"
+                                 alt="Отчёты и история подсчёта в CVCounter" width="1400"
+                                 height="800" loading="lazy">
+                        </div>
+                        <figcaption>Отчёты</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mini-faq">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <h2>Коротко по делу</h2>
+            </div>
+            <div class="faq-list reveal">
+                <details class="faq-item">
+                    <summary>Можно ли использовать на производстве?</summary>
+                    <p>Да — конвейер, склад, цех. Подробнее на странице производства и склада.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Какие источники видео?</summary>
+                    <p>RTSP, веб-камера и видеофайлы.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Нужен GPU?</summary>
+                    <p>Желателен для real-time; CPU тоже работает, зависит от модели и разрешения.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Это open source?</summary>
+                    <p>Да, лицензия AGPL-3.0. Исходники на GitHub.</p>
+                </details>
+            </div>
+            <p class="section-more reveal"><a href="/cvcounter/faq/">FAQ →</a></p>
+        </div>
+    </section>
+
+    <div class="cta-band">
+        <div class="wrap reveal">
+            <h2>Запустите CVCounter</h2>
+            <p>Версия 5.4.1. Исходники и Docker — на GitHub.</p>
+            <div class="cta-band__actions">
+                <a class="btn btn--primary btn--lg" href="https://github.com/BespredeL/CVCounter"
+                   rel="noopener">Открыть на GitHub</a>
+                <a class="btn btn--ghost btn--lg" href="https://github.com/BespredeL/CVCounter"
+                   rel="noopener">Поставить Star</a>
+                <a class="btn btn--ghost btn--lg" href="/cvcounter/ustanovka/">Установка</a>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer class="footer">
+    <div class="wrap">
+        <div class="footer__inner">
+            <div class="footer__meta">
+                <strong>CVCounter</strong>
+                <p>Разработка: <a href="https://bespredel.name" rel="noopener">Aleksandr Kireev</a></p>
+                <p><a href="mailto:hello@bespredel.name">hello@bespredel.name</a></p>
+            </div>
+            <ul class="footer__links">
+                <li><a href="https://github.com/BespredeL/CVCounter" rel="noopener">GitHub</a></li>
+                <li><a href="/cvcounter/ustanovka/">Установка</a></li>
+                <li><a href="/cvcounter/faq/">FAQ</a></li>
+                <li><a href="https://github.com/BespredeL/CVCounter/blob/master/LICENSE" rel="noopener">AGPL-3.0</a>
+                </li>
+            </ul>
+        </div>
+        <p class="license">© CVCounter. Распространяется под лицензией AGPL-3.0.</p>
+    </div>
+</footer>
+
+<script src="./js/main.js" defer></script>
+</body>
+</html>

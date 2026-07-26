@@ -112,13 +112,13 @@ function renderProfile(user) {
                 </p>
                 <div class="profile-stats">
                     <div class="profile-stat">
-                        📦 ${t.repositories}: ${user.public_repos}
+                        ${user.public_repos} <span>${t.repositories}</span>
                     </div>
                     <div class="profile-stat">
-                        👥 ${t.followers}: ${user.followers}
+                        ${user.followers} <span>${t.followers}</span>
                     </div>
                     <div class="profile-stat">
-                        ➡️ ${t.following}: ${user.following}
+                        ${user.following} <span>${t.following}</span>
                     </div>
                 </div>
             </div>
@@ -161,25 +161,21 @@ function renderGitHubStats(user, repositories) {
 
     container.innerHTML = `
         <div class="stat-card">
-            <span>📦</span>
             <h3>${user.public_repos}</h3>
             <p>${t.stats_repositories}</p>
         </div>
 
         <div class="stat-card">
-            <span>⭐</span>
             <h3>${totalStars}</h3>
             <p>${t.stats_stars}</p>
         </div>
 
         <div class="stat-card">
-            <span>🍴</span>
             <h3>${totalForks}</h3>
             <p>${t.stats_forks}</p>
         </div>
 
         <div class="stat-card">
-            <span>💻</span>
             <h3>${topLanguage}</h3>
             <p>${t.stats_main_language}</p>
         </div>
@@ -202,6 +198,12 @@ function renderRepositories(repositories) {
 
     repositories.forEach(repo => {
         const card = document.createElement("div");
+        const isCvCounter = repo.name === "CVCounter";
+        const projectUrl = isCvCounter ? "/cvcounter/" : repo.html_url;
+        const linkTarget = isCvCounter ? "" : ' target="_blank" rel="noopener noreferrer"';
+        const openLabel = isCvCounter
+            ? (lang === "ru" ? "Сайт →" : "Site →")
+            : t.open_project;
 
         card.className = "repo-card";
         card.innerHTML = `
@@ -209,16 +211,17 @@ function renderRepositories(repositories) {
             <p>
                 ${repo.description || t.no_description}
             </p>
+            <div class="repo-meta">
+                <span>${repo.stargazers_count} ★</span>
+                <span>${repo.forks_count} forks</span>
+            </div>
             <div class="repo-footer">
                 <span class="repo-language">
                     ${repo.language || "-"}
                 </span>
-                <a class="repo-link" href="${repo.html_url}" target="_blank" rel="noopener noreferrer">
-                    ${t.open_project}
+                <a class="repo-link" href="${projectUrl}"${linkTarget}>
+                    ${openLabel}
                 </a>
-            </div>
-            <div style="margin-top:15px;color:#94a3b8;font-size:14px;">
-                ⭐ ${repo.stargazers_count}&nbsp;&nbsp;🍴 ${repo.forks_count}
             </div>
         `;
 
@@ -290,7 +293,7 @@ function updateCopyright() {
  * @returns {void}
  */
 function initSectionAnimations() {
-    const sections = document.querySelectorAll("section");
+    const sections = document.querySelectorAll("section:not(.hero)");
     sections.forEach(section => {
         section.classList.add("section-hidden");
     });
@@ -307,7 +310,7 @@ function initSectionAnimations() {
                 });
             },
             {
-                threshold: 0.15
+                threshold: 0.12
             }
         );
 
@@ -339,6 +342,48 @@ function renderPage() {
 }
 
 /**
+ * Soft spotlight that follows the pointer,
+ * and a thin scroll progress bar.
+ *
+ * @returns {void}
+ */
+function initVisualDetails() {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const progress = document.querySelector(".scroll-progress");
+    const root = document.documentElement;
+
+    const updateProgress = () => {
+        if (!progress) {
+            return;
+        }
+
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const ratio = max > 0 ? window.scrollY / max : 0;
+        progress.style.width = `${Math.min(100, Math.max(0, ratio * 100))}%`;
+    };
+
+    window.addEventListener("scroll", updateProgress, {passive: true});
+    updateProgress();
+
+    if (reduced || window.matchMedia("(pointer: coarse)").matches) {
+        return;
+    }
+
+    let raf = 0;
+    window.addEventListener("pointermove", (event) => {
+        if (raf) {
+            return;
+        }
+
+        raf = requestAnimationFrame(() => {
+            root.style.setProperty("--spot-x", `${(event.clientX / window.innerWidth) * 100}%`);
+            root.style.setProperty("--spot-y", `${(event.clientY / window.innerHeight) * 100}%`);
+            raf = 0;
+        });
+    }, {passive: true});
+}
+
+/**
  * Initializes the page.
  *
  * @returns {Promise<void>}
@@ -348,6 +393,7 @@ async function initialize() {
         await loadGitHubData();
         renderPage();
         initSectionAnimations();
+        initVisualDetails();
     } catch (error) {
         console.error(
             "Initialization error:",
@@ -371,6 +417,9 @@ async function initialize() {
                     ${t.repositories_load_error}
                 </div>
             `;
+
+        initSectionAnimations();
+        initVisualDetails();
     }
 }
 

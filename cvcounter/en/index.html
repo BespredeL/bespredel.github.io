@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Real-time object counting from cameras — CVCounter</title>
+    <meta name="description"
+          content="CVCounter is an open-source computer vision system for detecting, tracking, and counting objects from RTSP — people, vehicles, retail, manufacturing, and warehouses. YOLO, OpenCV, ONNX. Web UI included.">
+    <meta name="theme-color" content="#0c0e12">
+    <link rel="canonical" href="https://bespredel.github.io/cvcounter/en/">
+    <link rel="alternate" hreflang="ru" href="https://bespredel.github.io/cvcounter/">
+    <link rel="alternate" hreflang="en" href="https://bespredel.github.io/cvcounter/en/">
+    <link rel="alternate" hreflang="x-default" href="https://bespredel.github.io/cvcounter/">
+    <link rel="icon" href="../icons/favicon.ico" sizes="any">
+    <link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CVCounter">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="CVCounter — real-time object counting">
+    <meta property="og:description"
+          content="CVCounter is an open-source computer vision system for detecting, tracking, and counting objects from RTSP — people, vehicles, retail, manufacturing, and warehouses. YOLO, OpenCV, ONNX. Web UI included.">
+    <meta property="og:url" content="https://bespredel.github.io/cvcounter/en/">
+    <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/en/Index.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CVCounter — real-time object counting">
+    <meta name="twitter:description"
+          content="CVCounter is an open-source computer vision system for detecting, tracking, and counting objects from RTSP — people, vehicles, retail, manufacturing, and warehouses. YOLO, OpenCV, ONNX. Web UI included.">
+    <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/en/Index.webp">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "CVCounter",
+            "applicationCategory": "MultimediaApplication",
+            "operatingSystem": "Windows, Linux, macOS",
+            "softwareVersion": "5.4.1",
+            "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+            "url": "https://bespredel.github.io/cvcounter/",
+            "downloadUrl": "https://github.com/BespredeL/CVCounter",
+            "description": "CVCounter is an open-source computer vision system for detecting, tracking, and counting objects from RTSP — people, vehicles, retail, manufacturing, and warehouses. YOLO, OpenCV, ONNX. Web UI included.",
+            "author": {
+                "@type": "Person",
+                "name": "Aleksandr Kireev",
+                "url": "https://bespredel.name",
+                "email": "hello@bespredel.name"
+            },
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            }
+        }
+    </script>
+</head>
+<body>
+<header class="nav">
+    <div class="nav__inner">
+        <a class="brand" href="/cvcounter/en/">
+            <img src="../icons/favicon.svg" width="32" height="32" alt="">
+            CVCounter
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" data-nav-toggle
+                aria-label="Menu">☰
+        </button>
+        <ul class="nav__links" id="nav-menu">
+            <li><a href="/cvcounter/en/#features">Features</a></li>
+            <li><a href="/cvcounter/en/people-counting/">Use cases</a></li>
+            <li><a href="/cvcounter/en/install/">Install</a></li>
+            <li><a href="/cvcounter/en/faq/">FAQ</a></li>
+        </ul>
+        <div class="nav__actions">
+            <div class="lang" role="group" aria-label="Language">
+                <a href="/cvcounter/" class="lang__link" hreflang="ru">RU</a>
+                <a href="/cvcounter/en/" class="lang__link is-active" hreflang="en">EN</a>
+            </div>
+            <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">GitHub</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero__media" aria-hidden="true">
+            <img src="../images/Hero.webp" alt="" width="1600" height="900" fetchpriority="high">
+        </div>
+        <div class="wrap">
+            <div class="hero__content hero-enter">
+                <h1 class="hero__title">
+                    <span class="hero__name">CVCounter</span>
+                    <span class="hero__tag">See. Count. In real time.</span>
+                </h1>
+                <p class="hero__lead">Object counting from cameras: detection, tracking, and zones — on the line, in the
+                    warehouse, or at the entrance. Clients only need a browser.</p>
+                <div class="hero__cta">
+                    <a class="btn btn--primary btn--lg" href="https://github.com/BespredeL/CVCounter"
+                       rel="noopener">View on GitHub</a>
+                    <a class="btn btn--ghost btn--lg" href="/cvcounter/en/install/">Install guide</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <h2>Capabilities</h2>
+                <p>Camera counting without a heavy desktop client — line, warehouse, entrance, browser only.</p>
+            </div>
+            <div class="feature-list reveal">
+                <article class="feature">
+                    <div class="feature__key">detect</div>
+                    <div>
+                        <h3>Real-time detection</h3>
+                        <p>RTSP, webcam, or file. Server-side processing.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="feature__key">track</div>
+                    <div>
+                        <h3>Object tracking</h3>
+                        <p>IDs across frames, fewer double counts.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="feature__key">zones</div>
+                    <div>
+                        <h3>Counting zones</h3>
+                        <p>One or more polygons per frame.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="feature__key">classes</div>
+                    <div>
+                        <h3>Per-class breakdown</h3>
+                        <p>Batch and totals per detection class.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="feature__key">views</div>
+                    <div>
+                        <h3>Three view modes</h3>
+                        <p>Video, text, or multi-counter — for kiosks.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="feature__key">stack</div>
+                    <div>
+                        <h3>YOLO, OpenCV, ONNX</h3>
+                        <p>One detector registry, pick in config.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="audience">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <h2>Who it is for</h2>
+                <p>Common scenarios — dedicated pages for search intent.</p>
+            </div>
+            <div class="audience-grid reveal">
+                <a class="audience-card" href="/cvcounter/en/people-counting/">
+                    <div>
+                        <h3>People counting</h3>
+                        <p>Shops, malls, entrances</p>
+                    </div>
+                </a>
+                <a class="audience-card" href="/cvcounter/en/vehicle-counting/">
+                    <div>
+                        <h3>Vehicle counting</h3>
+                        <p>Roads, checkpoints, parking</p>
+                    </div>
+                </a>
+                <a class="audience-card" href="/cvcounter/en/retail-analytics/">
+                    <div>
+                        <h3>Retail analytics</h3>
+                        <p>Footfall and zones of interest</p>
+                    </div>
+                </a>
+                <a class="audience-card" href="/cvcounter/en/industrial-counting/">
+                    <div>
+                        <h3>Manufacturing &amp; warehouse</h3>
+                        <p>Conveyor, dispatch, shop floor</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="how">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <h2>How it works</h2>
+            </div>
+            <div class="steps reveal">
+                <div class="step">
+                    <div>
+                        <h3>Video stream</h3>
+                        <p>Capture from camera, RTSP, or file.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div>
+                        <h3>Detection</h3>
+                        <p>The model finds objects and classes.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div>
+                        <h3>Tracking</h3>
+                        <p>Stable IDs across frames.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div>
+                        <h3>Counting</h3>
+                        <p>Entering a zone increments counters.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div>
+                        <h3>Reports</h3>
+                        <p>Save and view in the web UI.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="compare">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <h2>DIY script vs CVCounter</h2>
+                <p>What you get as a product, not only a notebook with a model.</p>
+            </div>
+            <div class="table-wrap reveal">
+                <table class="compare">
+                    <thead>
+                    <tr>
+                        <th>Capability</th>
+                        <th>YOLO script</th>
+                        <th>CVCounter</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope='row'>Web UI &amp; kiosk</th>
+                        <td>Build it</td>
+                        <td>Included</td>
+                    </tr>
+                    <tr>
+                        <th scope='row'>Counting zones</th>
+                        <td>Manual code</td>
+                        <td>UI editor</td>
+                    </tr>
+                    <tr>
+                        <th scope='row'>Multiple counters</th>
+                        <td>From scratch</td>
+                        <td>Multi view</td>
+                    </tr>
+                    <tr>
+                        <th scope='row'>Reports &amp; batches</th>
+                        <td>From scratch</td>
+                        <td>Built-in</td>
+                    </tr>
+                    <tr>
+                        <th scope='row'>YOLO / OpenCV / ONNX</th>
+                        <td>One stack</td>
+                        <td>Backend registry</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <h2>Interface</h2>
+                <p>Flask panel: counters, zones, reports.</p>
+            </div>
+            <div class="gallery-board reveal">
+                <figure class="shot shot--feature">
+                    <div class="shot__frame">
+                        <img src="../images/en/CounterVideo.webp"
+                             alt="CVCounter video view with counting zones and per-class counters" width="1400"
+                             height="800">
+                    </div>
+                    <figcaption>Video and counting zones</figcaption>
+                </figure>
+                <div class="gallery-tiles">
+                    <figure class="shot shot--tile">
+                        <div class="shot__frame">
+                            <img src="../images/en/Index.webp" alt="CVCounter home — counter list and stream controls"
+                                 width="1400" height="800" loading="lazy">
+                        </div>
+                        <figcaption>Counter list</figcaption>
+                    </figure>
+                    <figure class="shot shot--tile">
+                        <div class="shot__frame">
+                            <img src="../images/en/CounterArea.webp" alt="CVCounter counting zone editor" width="1400"
+                                 height="800" loading="lazy">
+                        </div>
+                        <figcaption>Zone editor</figcaption>
+                    </figure>
+                    <figure class="shot shot--tile">
+                        <div class="shot__frame">
+                            <img src="../images/en/CounterMultiText.webp" alt="CVCounter multi-counter text view"
+                                 width="1400" height="800" loading="lazy">
+                        </div>
+                        <figcaption>Multiple counters</figcaption>
+                    </figure>
+                    <figure class="shot shot--tile">
+                        <div class="shot__frame">
+                            <img src="../images/en/ReportsIndex.webp" alt="Counting reports and history in CVCounter"
+                                 width="1400" height="800" loading="lazy">
+                        </div>
+                        <figcaption>Reports</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mini-faq">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <h2>Quick answers</h2>
+            </div>
+            <div class="faq-list reveal">
+                <details class="faq-item">
+                    <summary>Can I use it in manufacturing?</summary>
+                    <p>Yes — conveyor, warehouse, shop floor. See the industrial counting page.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Which video sources?</summary>
+                    <p>RTSP, webcam, and video files.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Do I need a GPU?</summary>
+                    <p>Preferred for real-time; CPU works depending on model and resolution.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Is it open source?</summary>
+                    <p>Yes, AGPL-3.0. Source on GitHub.</p>
+                </details>
+            </div>
+            <p class="section-more reveal"><a href="/cvcounter/en/faq/">FAQ →</a></p>
+        </div>
+    </section>
+
+    <div class="cta-band">
+        <div class="wrap reveal">
+            <h2>Run CVCounter</h2>
+            <p>Version 5.4.1. Source and Docker on GitHub.</p>
+            <div class="cta-band__actions">
+                <a class="btn btn--primary btn--lg" href="https://github.com/BespredeL/CVCounter"
+                   rel="noopener">View on GitHub</a>
+                <a class="btn btn--ghost btn--lg" href="https://github.com/BespredeL/CVCounter"
+                   rel="noopener">Star on GitHub</a>
+                <a class="btn btn--ghost btn--lg" href="/cvcounter/en/install/">Install guide</a>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer class="footer">
+    <div class="wrap">
+        <div class="footer__inner">
+            <div class="footer__meta">
+                <strong>CVCounter</strong>
+                <p>Built by <a href="https://bespredel.name" rel="noopener">Aleksandr Kireev</a></p>
+                <p><a href="mailto:hello@bespredel.name">hello@bespredel.name</a></p>
+            </div>
+            <ul class="footer__links">
+                <li><a href="https://github.com/BespredeL/CVCounter" rel="noopener">GitHub</a></li>
+                <li><a href="/cvcounter/en/install/">Install</a></li>
+                <li><a href="/cvcounter/en/faq/">FAQ</a></li>
+                <li><a href="https://github.com/BespredeL/CVCounter/blob/master/LICENSE" rel="noopener">AGPL-3.0</a>
+                </li>
+            </ul>
+        </div>
+        <p class="license">© CVCounter. Distributed under the AGPL-3.0 license.</p>
+    </div>
+</footer>
+
+<script src="../js/main.js" defer></script>
+</body>
+</html>

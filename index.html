@@ -7,53 +7,47 @@
     <title>BespredeL (Aleksandr Kireev) | Backend Developer</title>
     <meta name="description" content="PHP Laravel Backend Developer. Open Source, Automation, Computer Vision.">
 
-    <meta name="theme-color" content="#0b1120">
+    <meta name="theme-color" content="#0a0a0b">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="background"></div>
+<div class="background" aria-hidden="true"></div>
+<div class="scroll-progress" aria-hidden="true"></div>
 
 <header>
     <div class="container">
-        <a href="#" class="logo">
-            BespredeL
-        </a>
+        <a href="#" class="logo">Besprede<span>L</span></a>
 
         <nav>
-            <a href="#about" data-i18n="nav_about">
-                Обо мне
-            </a>
-            <a href="#projects" data-i18n="nav_projects">
-                Проекты
-            </a>
-            <a href="#github" data-i18n="nav_github">
-                GitHub
-            </a>
-            <a href="#contact" data-i18n="nav_contact">
-                Контакты
-            </a>
+            <a href="#about" data-i18n="nav_about">Обо мне</a>
+            <a href="#projects" data-i18n="nav_projects">Проекты</a>
+            <a href="#github" data-i18n="nav_github">GitHub</a>
+            <a href="#contact" data-i18n="nav_contact">Контакты</a>
         </nav>
 
         <div class="language-switcher">
-            <button class="lang-btn active" data-lang="ru">RU</button>
-            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn active" data-lang="ru" type="button">RU</button>
+            <button class="lang-btn" data-lang="en" type="button">EN</button>
         </div>
     </div>
 </header>
 
 <section class="hero">
+    <div class="hero-frame" aria-hidden="true">
+        <span class="hero-frame__corner hero-frame__corner--tl"></span>
+        <span class="hero-frame__corner hero-frame__corner--tr"></span>
+        <span class="hero-frame__corner hero-frame__corner--bl"></span>
+        <span class="hero-frame__corner hero-frame__corner--br"></span>
+    </div>
+    <p class="hero-stamp" aria-hidden="true">2009 — ∞</p>
     <div class="container">
         <div class="hero-content">
-            <div class="hero-badge" data-i18n="hero_badge">
-                Backend Developer • Open Source
-            </div>
+            <p class="hero-brand">Besprede<span>L</span></p>
 
-            <h1 data-i18n="hero_title">
-                PHP / Laravel Developer
-            </h1>
+            <h1 data-i18n="hero_title">PHP / Laravel Developer</h1>
 
             <p data-i18n="hero_description">
                 Создаю веб-приложения, API, системы автоматизации и open-source решения.
@@ -62,6 +56,7 @@
             <div class="hero-buttons">
                 <a href="https://github.com/BespredeL"
                    target="_blank"
+                   rel="noopener noreferrer"
                    class="btn btn-primary"
                    data-i18n="hero_github">
                     GitHub
@@ -75,13 +70,14 @@
             </div>
         </div>
     </div>
+    <a class="scroll-cue" href="#about" aria-label="Scroll">
+        <span></span>
+    </a>
 </section>
 
 <section id="about">
     <div class="container">
-        <h2 class="section-title" data-i18n="about_title">
-            Обо мне
-        </h2>
+        <h2 class="section-title" data-i18n="about_title">Обо мне</h2>
 
         <div class="about-grid">
             <div>
@@ -113,12 +109,22 @@
 <section id="projects">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title" data-i18n="projects_title">
-                Проекты
-            </h2>
+            <h2 class="section-title" data-i18n="projects_title">Проекты</h2>
         </div>
 
-        <div id="repos" class="repo-grid">
+        <a class="featured" href="/cvcounter/">
+            <div class="featured__glow" aria-hidden="true"></div>
+            <div>
+                <span class="featured__label" data-i18n="featured_label">Избранный проект</span>
+                <h3 class="featured__title">CVCounter</h3>
+                <p class="featured__text" data-i18n="featured_text">
+                    Open-source система компьютерного зрения: детекция, трекинг и подсчёт объектов с камер в реальном времени.
+                </p>
+            </div>
+            <span class="featured__cta" data-i18n="featured_cta">Открыть сайт →</span>
+        </a>
+
+        <div id="repos" class="repo-grid" style="margin-top: 40px;">
             <div class="loading-card" data-i18n="loading_repositories">
                 Загрузка репозиториев...
             </div>
@@ -128,9 +134,7 @@
 
 <section id="github">
     <div class="container">
-        <h2 class="section-title" data-i18n="github_title">
-            GitHub
-        </h2>
+        <h2 class="section-title" data-i18n="github_title">GitHub</h2>
 
         <div id="profile">
             <div class="loading-card" data-i18n="loading_profile">
@@ -145,17 +149,21 @@
 <section id="contact">
     <div class="container">
         <div class="contact-box">
-            <h2 class="section-title" data-i18n="contact_title">
-                Контакты
-            </h2>
+            <h2 class="section-title" data-i18n="contact_title">Контакты</h2>
             <p data-i18n="contact_text">
                 Открыт для сотрудничества, open-source проектов и интересных задач.
             </p>
             <div class="hero-buttons">
                 <a href="https://github.com/BespredeL"
                    target="_blank"
+                   rel="noopener noreferrer"
                    class="btn btn-primary">
                     GitHub
+                </a>
+                <a href="mailto:hello@bespredel.name"
+                   class="btn btn-secondary"
+                   data-i18n="contact_email">
+                    Написать
                 </a>
             </div>
         </div>
@@ -165,6 +173,7 @@
 <footer>
     <div class="container">
         <p id="copyright"></p>
+        <p class="footer-mark" aria-hidden="true">Besprede<span>L</span></p>
     </div>
 </footer>
 

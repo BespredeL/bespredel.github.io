@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Подсчёт продукции на производстве и складе — CVCounter</title>
+  <meta name="description" content="CVCounter для промышленности: подсчёт изделий на конвейере, контроль партий на складе, зоны на линии. Компьютерное зрение YOLO/OpenCV/ONNX, локальный сервер, веб-киоск и отчёты без облачного SaaS.">
+  <meta name="theme-color" content="#0c0e12">
+  <link rel="canonical" href="https://bespredel.github.io/cvcounter/promyshlennost/">
+  <link rel="alternate" hreflang="ru" href="https://bespredel.github.io/cvcounter/promyshlennost/">
+  <link rel="alternate" hreflang="en" href="https://bespredel.github.io/cvcounter/en/industrial-counting/">
+  <link rel="alternate" hreflang="x-default" href="https://bespredel.github.io/cvcounter/promyshlennost/">
+  <link rel="icon" href="../icons/favicon.ico" sizes="any">
+  <link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CVCounter">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Подсчёт на производстве и складе — CVCounter">
+  <meta property="og:description" content="CVCounter для промышленности: подсчёт изделий на конвейере, контроль партий на складе, зоны на линии. Компьютерное зрение YOLO/OpenCV/ONNX, локальный сервер, веб-киоск и отчёты без облачного SaaS.">
+  <meta property="og:url" content="https://bespredel.github.io/cvcounter/promyshlennost/">
+  <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Подсчёт на производстве и складе — CVCounter">
+  <meta name="twitter:description" content="CVCounter для промышленности: подсчёт изделий на конвейере, контроль партий на складе, зоны на линии. Компьютерное зрение YOLO/OpenCV/ONNX, локальный сервер, веб-киоск и отчёты без облачного SaaS.">
+  <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
+  <link rel="stylesheet" href="../css/styles.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Главная",
+      "item": "https://bespredel.github.io/cvcounter/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Подсчёт на производстве и складе",
+      "item": "https://bespredel.github.io/cvcounter/promyshlennost/"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="/cvcounter/">
+        <img src="../icons/favicon.svg" width="32" height="32" alt="">
+        CVCounter
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" data-nav-toggle aria-label="Меню">☰</button>
+      <ul class="nav__links" id="nav-menu">
+        <li><a href="/cvcounter/#features">Возможности</a></li>
+        <li><a href="/cvcounter/podschet-lyudey/">Сценарии</a></li>
+        <li><a href="/cvcounter/ustanovka/">Установка</a></li>
+        <li><a href="/cvcounter/faq/">FAQ</a></li>
+      </ul>
+      <div class="nav__actions">
+        <div class="lang" role="group" aria-label="Language">
+          <a href="/cvcounter/promyshlennost/" class="lang__link is-active" hreflang="ru">RU</a>
+          <a href="/cvcounter/en/industrial-counting/" class="lang__link" hreflang="en">EN</a>
+        </div>
+        <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="https://bespredel.github.io/cvcounter/">Главная</a><span aria-hidden="true">/</span><span>Подсчёт на производстве и складе</span></nav>
+    
+    <section class="page-hero">
+      <div class="wrap reveal">
+        <h1>Подсчёт на производстве и складе</h1>
+        <p class="page-hero__lead">Изделия на конвейере, короба на отгрузке, проходы на складе — зоны подсчёта, партии и отчёты в одной веб-панели.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">Открыть на GitHub</a>
+          <a class="btn btn--ghost" href="/cvcounter/ustanovka/">Установка</a>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="wrap">
+        <div class="prose reveal">
+          <h2>Задача на производстве и складе</h2>
+          <p>На линии и складе нужны точные цифры по выпуску, отгрузке и перемещениям. Ручной учёт ошибается, а закрытые промышленные CV-системы часто дороги, требуют интеграторов и уводят видео в облако. Нужен локальный подсчёт с камеры RTSP, понятный оператору на смене.</p>
+          <h2>Как CVCounter помогает в промышленности</h2>
+          <p>Подключаете камеры над конвейером, воротами или зоной комплектации, задаёте полигоны подсчёта и классы модели (изделие, короб, паллета, человек). Трекинг снижает повторный счёт. Партии («New batch») и отчёты закрывают смену. Текстовый и мульти-вид удобны для монитора у линии без лишнего видео. Работает на своём сервере — кадры и URL камер наружу не уходят.</p>
+          <h2>Где применяют</h2><ul class="prose-list"><li>Производственный конвейер — подсчёт единиц продукции на участке</li><li>Склад и логистика — контроль коробов, паллет и зон отгрузки</li><li>Упаковка и фасовка — партии за смену с разбивкой по классам</li><li>Проходные и цеха — учёт персонала в зоне без отдельного СКУД-клиента</li><li>КПП предприятия — транспорт и погрузка на въезде/выезде</li></ul><h2>Типовые сценарии</h2><h3>Конвейер и линия</h3><p>Камера смотрит на поток изделий. Зона на ленте считает проход объекта; итог и текущая партия видны оператору в браузере или на киоске у станка.</p><h3>Складская отгрузка</h3><p>Несколько зон: комплектация, ворота, рамп. Мульти-счётчики на одном экране показывают вход и выход коробов без отдельных приложений на каждом мониторе.</p><h3>Контроль смены</h3><p>В начале смены — новая партия, в конце — сохранение отчёта. Метаданные (линия, смена, оператор) задаются полями формы. История доступна в разделе отчётов.</p><h2>Почему это удобно на заводе</h2><p>Open source (AGPL-3.0), установка через Docker или Python, бэкенды YOLO / OpenCV / ONNX под вашу модель. Несколько камер с одной панели, локальный контур данных, киоск-режим для цеха. Не заменяет MES/WMS, а даёт видеосчётчик, который можно встроить в существующий процесс учёта.</p>
+        </div>
+        <figure class="shot reveal" style="margin-top:2rem">
+          <img src="../images/ru/CounterVideo.webp" alt="Видеовид CVCounter с зонами подсчёта — пример для производственной линии" width="1400" height="800" loading="lazy">
+          <figcaption>Зоны подсчёта и итог по классам — тот же принцип на конвейере или складе</figcaption>
+        </figure>
+        <div class="cta-inline reveal">
+          <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">Открыть на GitHub</a>
+          <a class="btn btn--ghost" href="/cvcounter/ustanovka/">Установка</a>
+        </div>
+        <div class="related reveal">
+          <h2>Другие сценарии</h2>
+          <ul><li><a href="/cvcounter/podschet-lyudey/">Подсчёт людей по видео</a></li><li><a href="/cvcounter/podschet-transporta/">Подсчёт транспорта с камеры</a></li><li><a href="/cvcounter/ritail-analitika/">Ритейл-аналитика с камеры</a></li></ul>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__inner">
+        <div class="footer__meta">
+          <strong>CVCounter</strong>
+          <p>Разработка: <a href="https://bespredel.name" rel="noopener">Aleksandr Kireev</a></p>
+          <p><a href="mailto:hello@bespredel.name">hello@bespredel.name</a></p>
+        </div>
+        <ul class="footer__links">
+          <li><a href="https://github.com/BespredeL/CVCounter" rel="noopener">GitHub</a></li>
+          <li><a href="/cvcounter/ustanovka/">Установка</a></li>
+          <li><a href="/cvcounter/faq/">FAQ</a></li>
+          <li><a href="https://github.com/BespredeL/CVCounter/blob/master/LICENSE" rel="noopener">AGPL-3.0</a></li>
+        </ul>
+      </div>
+      <p class="license">© CVCounter. Распространяется под лицензией AGPL-3.0.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+</body>
+</html>

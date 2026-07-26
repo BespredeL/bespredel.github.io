@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ритейл-аналитика и подсчёт посетителей — CVCounter</title>
+  <meta name="description" content="Подсчёт посетителей магазина и зоны интереса с камеры. Веб-киоск, партии, ручные корректировки и отчёты. Open-source альтернатива закрытым retail analytics-решениям.">
+  <meta name="theme-color" content="#0c0e12">
+  <link rel="canonical" href="https://bespredel.github.io/cvcounter/ritail-analitika/">
+  <link rel="alternate" hreflang="ru" href="https://bespredel.github.io/cvcounter/ritail-analitika/">
+  <link rel="alternate" hreflang="en" href="https://bespredel.github.io/cvcounter/en/retail-analytics/">
+  <link rel="alternate" hreflang="x-default" href="https://bespredel.github.io/cvcounter/ritail-analitika/">
+  <link rel="icon" href="../icons/favicon.ico" sizes="any">
+  <link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CVCounter">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Ритейл-аналитика с камеры — CVCounter">
+  <meta property="og:description" content="Подсчёт посетителей магазина и зоны интереса с камеры. Веб-киоск, партии, ручные корректировки и отчёты. Open-source альтернатива закрытым retail analytics-решениям.">
+  <meta property="og:url" content="https://bespredel.github.io/cvcounter/ritail-analitika/">
+  <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ритейл-аналитика с камеры — CVCounter">
+  <meta name="twitter:description" content="Подсчёт посетителей магазина и зоны интереса с камеры. Веб-киоск, партии, ручные корректировки и отчёты. Open-source альтернатива закрытым retail analytics-решениям.">
+  <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
+  <link rel="stylesheet" href="../css/styles.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Главная",
+      "item": "https://bespredel.github.io/cvcounter/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Ритейл-аналитика с камеры",
+      "item": "https://bespredel.github.io/cvcounter/ritail-analitika/"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="/cvcounter/">
+        <img src="../icons/favicon.svg" width="32" height="32" alt="">
+        CVCounter
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" data-nav-toggle aria-label="Меню">☰</button>
+      <ul class="nav__links" id="nav-menu">
+        <li><a href="/cvcounter/#features">Возможности</a></li>
+        <li><a href="/cvcounter/podschet-lyudey/">Сценарии</a></li>
+        <li><a href="/cvcounter/ustanovka/">Установка</a></li>
+        <li><a href="/cvcounter/faq/">FAQ</a></li>
+      </ul>
+      <div class="nav__actions">
+        <div class="lang" role="group" aria-label="Language">
+          <a href="/cvcounter/ritail-analitika/" class="lang__link is-active" hreflang="ru">RU</a>
+          <a href="/cvcounter/en/retail-analytics/" class="lang__link" hreflang="en">EN</a>
+        </div>
+        <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="https://bespredel.github.io/cvcounter/">Главная</a><span aria-hidden="true">/</span><span>Ритейл-аналитика с камеры</span></nav>
+    
+    <section class="page-hero">
+      <div class="wrap reveal">
+        <h1>Ритейл-аналитика с камеры</h1>
+        <p class="page-hero__lead">Поток у входа, зона у полки или кассы — считайте в браузере и сохраняйте смены в отчёты.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">Открыть на GitHub</a>
+          <a class="btn btn--ghost" href="/cvcounter/ustanovka/">Установка</a>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="wrap">
+        <div class="prose reveal">
+          <h2>Задача</h2>
+          <p>Ритейлу нужны цифры по посещаемости и зонам, но не всегда нужен тяжёлый SaaS с подпиской и выгрузкой кадров в облако.</p>
+          <h2>Как решает CVCounter</h2>
+          <p>Локальный или свой сервер, веб-интерфейс для киоска, партии («New batch»), поля метаданных, отчёты. Кадры и URL камер в телеметрию не уходят (телеметрия опциональна и обезличена).</p>
+          
+        </div>
+        <figure class="shot reveal" style="margin-top:2rem">
+          <img src="../images/ru/Index.webp" alt="Главная панель CVCounter со списком счётчиков камер" width="1400" height="800" loading="lazy">
+          <figcaption>Управление несколькими счётчиками с одной панели</figcaption>
+        </figure>
+        <div class="cta-inline reveal">
+          <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">Открыть на GitHub</a>
+          <a class="btn btn--ghost" href="/cvcounter/ustanovka/">Установка</a>
+        </div>
+        <div class="related reveal">
+          <h2>Другие сценарии</h2>
+          <ul><li><a href="/cvcounter/podschet-lyudey/">Подсчёт людей по видео</a></li><li><a href="/cvcounter/podschet-transporta/">Подсчёт транспорта с камеры</a></li><li><a href="/cvcounter/promyshlennost/">Подсчёт на производстве и складе</a></li></ul>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__inner">
+        <div class="footer__meta">
+          <strong>CVCounter</strong>
+          <p>Разработка: <a href="https://bespredel.name" rel="noopener">Aleksandr Kireev</a></p>
+          <p><a href="mailto:hello@bespredel.name">hello@bespredel.name</a></p>
+        </div>
+        <ul class="footer__links">
+          <li><a href="https://github.com/BespredeL/CVCounter" rel="noopener">GitHub</a></li>
+          <li><a href="/cvcounter/ustanovka/">Установка</a></li>
+          <li><a href="/cvcounter/faq/">FAQ</a></li>
+          <li><a href="https://github.com/BespredeL/CVCounter/blob/master/LICENSE" rel="noopener">AGPL-3.0</a></li>
+        </ul>
+      </div>
+      <p class="license">© CVCounter. Распространяется под лицензией AGPL-3.0.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+</body>
+</html>

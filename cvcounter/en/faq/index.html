@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAQ — CVCounter: zones, YOLO, ONNX, kiosk</title>
+  <meta name="description" content="CVCounter FAQ: counting zones, YOLO / OpenCV / ONNX backends, kiosk mode, reports, telemetry, and AGPL-3.0 license.">
+  <meta name="theme-color" content="#0c0e12">
+  <link rel="canonical" href="https://bespredel.github.io/cvcounter/en/faq/">
+  <link rel="alternate" hreflang="ru" href="https://bespredel.github.io/cvcounter/faq/">
+  <link rel="alternate" hreflang="en" href="https://bespredel.github.io/cvcounter/en/faq/">
+  <link rel="alternate" hreflang="x-default" href="https://bespredel.github.io/cvcounter/faq/">
+  <link rel="icon" href="../../icons/favicon.ico" sizes="any">
+  <link rel="icon" href="../../icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CVCounter">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="CVCounter FAQ">
+  <meta property="og:description" content="CVCounter FAQ: counting zones, YOLO / OpenCV / ONNX backends, kiosk mode, reports, telemetry, and AGPL-3.0 license.">
+  <meta property="og:url" content="https://bespredel.github.io/cvcounter/en/faq/">
+  <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/en/Index.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CVCounter FAQ">
+  <meta name="twitter:description" content="CVCounter FAQ: counting zones, YOLO / OpenCV / ONNX backends, kiosk mode, reports, telemetry, and AGPL-3.0 license.">
+  <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/en/Index.webp">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is CVCounter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An open-source computer vision system for detecting, tracking, and counting objects in video streams, with a web UI."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do counting zones work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You draw polygons on the frame preview. Multiple zones per stream are supported."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "YOLO vs OpenCV DNN vs ONNX?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Detection backends. Set model_type in config: yolo, opencv / opencv_dnn, or onnx. Model formats include .pt, .onnx, Darknet, and more."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I show numbers without video?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes: text view and multi-text view for several counters — useful for kiosk displays."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the site need internet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not for counting if models and streams are local. Internet is only needed to clone/update and for optional telemetry."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use it in manufacturing or a warehouse?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes: count items on a conveyor, boxes at dispatch, or zones on the shop floor. On-prem server, batches, reports, and a kiosk by the line — no mandatory cloud."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about telemetry?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Off by default. When enabled, anonymized error/usage events are sent; frames, camera URLs, and full config are never sent."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which license?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AGPL-3.0. Network use must follow AGPL terms (including source availability for derivatives)."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bespredel.github.io/cvcounter/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Frequently asked questions",
+      "item": "https://bespredel.github.io/cvcounter/en/faq/"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="/cvcounter/en/">
+        <img src="../../icons/favicon.svg" width="32" height="32" alt="">
+        CVCounter
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" data-nav-toggle aria-label="Menu">☰</button>
+      <ul class="nav__links" id="nav-menu">
+        <li><a href="/cvcounter/en/#features">Features</a></li>
+        <li><a href="/cvcounter/en/people-counting/">Use cases</a></li>
+        <li><a href="/cvcounter/en/install/">Install</a></li>
+        <li><a href="/cvcounter/en/faq/">FAQ</a></li>
+      </ul>
+      <div class="nav__actions">
+        <div class="lang" role="group" aria-label="Language">
+          <a href="/cvcounter/faq/" class="lang__link" hreflang="ru">RU</a>
+          <a href="/cvcounter/en/faq/" class="lang__link is-active" hreflang="en">EN</a>
+        </div>
+        <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="https://bespredel.github.io/cvcounter/en/">Home</a><span aria-hidden="true">/</span><span>Frequently asked questions</span></nav>
+    
+    <section class="page-hero">
+      <div class="wrap reveal">
+        <h1>Frequently asked questions</h1>
+        <p class="page-hero__lead">Short answers on zones, models, install, and licensing.</p>
+      </div>
+    </section>
+    <section>
+      <div class="wrap">
+        <div class="faq-list reveal"><details class="faq-item"><summary>What is CVCounter?</summary><p>An open-source computer vision system for detecting, tracking, and counting objects in video streams, with a web UI.</p></details><details class="faq-item"><summary>How do counting zones work?</summary><p>You draw polygons on the frame preview. Multiple zones per stream are supported.</p></details><details class="faq-item"><summary>YOLO vs OpenCV DNN vs ONNX?</summary><p>Detection backends. Set model_type in config: yolo, opencv / opencv_dnn, or onnx. Model formats include .pt, .onnx, Darknet, and more.</p></details><details class="faq-item"><summary>Can I show numbers without video?</summary><p>Yes: text view and multi-text view for several counters — useful for kiosk displays.</p></details><details class="faq-item"><summary>Does the site need internet?</summary><p>Not for counting if models and streams are local. Internet is only needed to clone/update and for optional telemetry.</p></details><details class="faq-item"><summary>Can I use it in manufacturing or a warehouse?</summary><p>Yes: count items on a conveyor, boxes at dispatch, or zones on the shop floor. On-prem server, batches, reports, and a kiosk by the line — no mandatory cloud.</p></details><details class="faq-item"><summary>What about telemetry?</summary><p>Off by default. When enabled, anonymized error/usage events are sent; frames, camera URLs, and full config are never sent.</p></details><details class="faq-item"><summary>Which license?</summary><p>AGPL-3.0. Network use must follow AGPL terms (including source availability for derivatives).</p></details></div>
+        <div class="cta-inline reveal">
+          <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">View on GitHub</a>
+          <a class="btn btn--ghost" href="/cvcounter/en/install/">Install guide</a>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__inner">
+        <div class="footer__meta">
+          <strong>CVCounter</strong>
+          <p>Built by <a href="https://bespredel.name" rel="noopener">Aleksandr Kireev</a></p>
+          <p><a href="mailto:hello@bespredel.name">hello@bespredel.name</a></p>
+        </div>
+        <ul class="footer__links">
+          <li><a href="https://github.com/BespredeL/CVCounter" rel="noopener">GitHub</a></li>
+          <li><a href="/cvcounter/en/install/">Install</a></li>
+          <li><a href="/cvcounter/en/faq/">FAQ</a></li>
+          <li><a href="https://github.com/BespredeL/CVCounter/blob/master/LICENSE" rel="noopener">AGPL-3.0</a></li>
+        </ul>
+      </div>
+      <p class="license">© CVCounter. Distributed under the AGPL-3.0 license.</p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js" defer></script>
+</body>
+</html>

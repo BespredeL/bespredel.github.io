@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAQ — CVCounter: зоны, YOLO, ONNX, киоск</title>
+  <meta name="description" content="Частые вопросы о CVCounter: зоны подсчёта, бэкенды YOLO / OpenCV / ONNX, киоск-режим, отчёты, телеметрия и лицензия AGPL-3.0.">
+  <meta name="theme-color" content="#0c0e12">
+  <link rel="canonical" href="https://bespredel.github.io/cvcounter/faq/">
+  <link rel="alternate" hreflang="ru" href="https://bespredel.github.io/cvcounter/faq/">
+  <link rel="alternate" hreflang="en" href="https://bespredel.github.io/cvcounter/en/faq/">
+  <link rel="alternate" hreflang="x-default" href="https://bespredel.github.io/cvcounter/faq/">
+  <link rel="icon" href="../icons/favicon.ico" sizes="any">
+  <link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CVCounter">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="FAQ CVCounter">
+  <meta property="og:description" content="Частые вопросы о CVCounter: зоны подсчёта, бэкенды YOLO / OpenCV / ONNX, киоск-режим, отчёты, телеметрия и лицензия AGPL-3.0.">
+  <meta property="og:url" content="https://bespredel.github.io/cvcounter/faq/">
+  <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FAQ CVCounter">
+  <meta name="twitter:description" content="Частые вопросы о CVCounter: зоны подсчёта, бэкенды YOLO / OpenCV / ONNX, киоск-режим, отчёты, телеметрия и лицензия AGPL-3.0.">
+  <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
+  <link rel="stylesheet" href="../css/styles.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Что такое CVCounter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Open-source система компьютерного зрения для детекции, трекинга и подсчёта объектов по видеопотоку с веб-интерфейсом."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Как задаются зоны подсчёта?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "В редакторе на превью кадра рисуются полигоны. Можно несколько зон на один поток."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Чем отличаются YOLO, OpenCV DNN и ONNX?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Это бэкенды детекции. В конфиге выбирается model_type: yolo, opencv / opencv_dnn или onnx. Форматы моделей — .pt, .onnx, Darknet и др."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Можно ли показывать только цифры без видео?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Да: текстовый вид и мульти-текстовый вид для нескольких счётчиков — удобно для киоска."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Нужен ли интернет на объекте?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Для работы счётчика — нет, если модели и поток локальные. Интернет нужен только для клонирования/обновления и опциональной телеметрии."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Можно ли использовать на производстве и складе?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Да: подсчёт изделий на конвейере, коробов на отгрузке, зон в цехе. Локальный сервер, партии, отчёты и киоск у линии — без обязательного облака."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Что с телеметрией?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "По умолчанию выключена. При включении уходят обезличенные события ошибок/использования; кадры, URL камер и полный config не отправляются."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Какая лицензия?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AGPL-3.0. При сетевом использовании нужно соблюдать условия AGPL (в т.ч. доступ к исходному коду производных)."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Главная",
+      "item": "https://bespredel.github.io/cvcounter/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Частые вопросы",
+      "item": "https://bespredel.github.io/cvcounter/faq/"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="/cvcounter/">
+        <img src="../icons/favicon.svg" width="32" height="32" alt="">
+        CVCounter
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" data-nav-toggle aria-label="Меню">☰</button>
+      <ul class="nav__links" id="nav-menu">
+        <li><a href="/cvcounter/#features">Возможности</a></li>
+        <li><a href="/cvcounter/podschet-lyudey/">Сценарии</a></li>
+        <li><a href="/cvcounter/ustanovka/">Установка</a></li>
+        <li><a href="/cvcounter/faq/">FAQ</a></li>
+      </ul>
+      <div class="nav__actions">
+        <div class="lang" role="group" aria-label="Language">
+          <a href="/cvcounter/faq/" class="lang__link is-active" hreflang="ru">RU</a>
+          <a href="/cvcounter/en/faq/" class="lang__link" hreflang="en">EN</a>
+        </div>
+        <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="https://bespredel.github.io/cvcounter/">Главная</a><span aria-hidden="true">/</span><span>Частые вопросы</span></nav>
+    
+    <section class="page-hero">
+      <div class="wrap reveal">
+        <h1>Частые вопросы</h1>
+        <p class="page-hero__lead">Короткие ответы по зонам, моделям, установке и лицензии.</p>
+      </div>
+    </section>
+    <section>
+      <div class="wrap">
+        <div class="faq-list reveal"><details class="faq-item"><summary>Что такое CVCounter?</summary><p>Open-source система компьютерного зрения для детекции, трекинга и подсчёта объектов по видеопотоку с веб-интерфейсом.</p></details><details class="faq-item"><summary>Как задаются зоны подсчёта?</summary><p>В редакторе на превью кадра рисуются полигоны. Можно несколько зон на один поток.</p></details><details class="faq-item"><summary>Чем отличаются YOLO, OpenCV DNN и ONNX?</summary><p>Это бэкенды детекции. В конфиге выбирается model_type: yolo, opencv / opencv_dnn или onnx. Форматы моделей — .pt, .onnx, Darknet и др.</p></details><details class="faq-item"><summary>Можно ли показывать только цифры без видео?</summary><p>Да: текстовый вид и мульти-текстовый вид для нескольких счётчиков — удобно для киоска.</p></details><details class="faq-item"><summary>Нужен ли интернет на объекте?</summary><p>Для работы счётчика — нет, если модели и поток локальные. Интернет нужен только для клонирования/обновления и опциональной телеметрии.</p></details><details class="faq-item"><summary>Можно ли использовать на производстве и складе?</summary><p>Да: подсчёт изделий на конвейере, коробов на отгрузке, зон в цехе. Локальный сервер, партии, отчёты и киоск у линии — без обязательного облака.</p></details><details class="faq-item"><summary>Что с телеметрией?</summary><p>По умолчанию выключена. При включении уходят обезличенные события ошибок/использования; кадры, URL камер и полный config не отправляются.</p></details><details class="faq-item"><summary>Какая лицензия?</summary><p>AGPL-3.0. При сетевом использовании нужно соблюдать условия AGPL (в т.ч. доступ к исходному коду производных).</p></details></div>
+        <div class="cta-inline reveal">
+          <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">Открыть на GitHub</a>
+          <a class="btn btn--ghost" href="/cvcounter/ustanovka/">Установка</a>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__inner">
+        <div class="footer__meta">
+          <strong>CVCounter</strong>
+          <p>Разработка: <a href="https://bespredel.name" rel="noopener">Aleksandr Kireev</a></p>
+          <p><a href="mailto:hello@bespredel.name">hello@bespredel.name</a></p>
+        </div>
+        <ul class="footer__links">
+          <li><a href="https://github.com/BespredeL/CVCounter" rel="noopener">GitHub</a></li>
+          <li><a href="/cvcounter/ustanovka/">Установка</a></li>
+          <li><a href="/cvcounter/faq/">FAQ</a></li>
+          <li><a href="https://github.com/BespredeL/CVCounter/blob/master/LICENSE" rel="noopener">AGPL-3.0</a></li>
+        </ul>
+      </div>
+      <p class="license">© CVCounter. Распространяется под лицензией AGPL-3.0.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+</body>
+</html>
