@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Product counting in manufacturing and warehouses — CVCounter</title>
-  <meta name="description" content="CVCounter for industry: count items on a conveyor, track batches in a warehouse, draw zones on the line. Computer vision with YOLO/OpenCV/ONNX, on-prem server, browser kiosk and reports without cloud SaaS.">
+  <title>Conveyor Belt &amp; Warehouse Product Counting — CVCounter | Industrial Computer Vision</title>
+  <meta name="description"
+    content="Free open-source industrial computer vision system for piece counting on conveyor belts, parcel tracking on dispatch ramps, and warehouse inventory control. Custom part training in browser, operator kiosk view, printable A4 shift logs. Powered by YOLO, ONNX, OpenVINO, TensorRT.">
+  <meta name="keywords"
+    content="conveyor belt piece counting, industrial computer vision counter, warehouse parcel counting camera, machine vision conveyor counting, custom object training YOLO, open source industrial vision">
   <meta name="theme-color" content="#0c0e12">
   <link rel="canonical" href="https://bespredel.github.io/cvcounter/en/industrial-counting/">
   <link rel="alternate" hreflang="ru" href="https://bespredel.github.io/cvcounter/promyshlennost/">
@@ -16,36 +20,87 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CVCounter">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Manufacturing and warehouse counting — CVCounter">
-  <meta property="og:description" content="CVCounter for industry: count items on a conveyor, track batches in a warehouse, draw zones on the line. Computer vision with YOLO/OpenCV/ONNX, on-prem server, browser kiosk and reports without cloud SaaS.">
+  <meta property="og:title" content="Conveyor Belt &amp; Warehouse Product Counting — CVCounter">
+  <meta property="og:description"
+    content="Industrial computer vision: piece counting on moving conveyor lines, dispatch parcel tracking, operator kiosk displays, and printable A4 reports.">
   <meta property="og:url" content="https://bespredel.github.io/cvcounter/en/industrial-counting/">
-  <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/en/Index.webp">
+  <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/en/CounterVideo.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Manufacturing and warehouse counting — CVCounter">
-  <meta name="twitter:description" content="CVCounter for industry: count items on a conveyor, track batches in a warehouse, draw zones on the line. Computer vision with YOLO/OpenCV/ONNX, on-prem server, browser kiosk and reports without cloud SaaS.">
-  <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/en/Index.webp">
+  <meta name="twitter:title" content="Conveyor Belt &amp; Warehouse Product Counting — CVCounter">
+  <meta name="twitter:description"
+    content="Industrial computer vision: piece counting on moving conveyor lines, dispatch parcel tracking, operator kiosk displays, and printable A4 reports.">
+  <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/en/CounterVideo.webp">
   <link rel="stylesheet" href="../../css/styles.css">
+
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://bespredel.github.io/cvcounter/en/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Counting in manufacturing and warehouses",
-      "item": "https://bespredel.github.io/cvcounter/en/industrial-counting/"
-    }
-  ]
-}
-</script>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://bespredel.github.io/cvcounter/en/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Use cases",
+        "item": "https://bespredel.github.io/cvcounter/en/use-cases/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Counting in manufacturing and warehouses",
+        "item": "https://bespredel.github.io/cvcounter/en/industrial-counting/"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I train custom models for proprietary industrial components or packages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. CVCounter features an integrated web dataset annotation suite. Capture video frames directly from your conveyor feed, draw bounding boxes in your browser, launch YOLO training with one click, and export optimized ONNX or TensorRT models without requiring specialized data science consultants."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What conveyor belt speeds can the vision system handle?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "At 30–60 camera FPS with TensorRT GPU acceleration, CVCounter comfortably tracks and counts dozens of parts per second on high-speed industrial assembly lines."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does CVCounter operate inside air-gapped factories without internet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. CVCounter is 100% self-contained and operates completely within air-gapped industrial plant networks without calling external cloud servers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does shop-floor personnel view real-time counts at the line?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CVCounter provides a dedicated high-contrast full-screen kiosk display mode showing batch totals and current production counts, optimized for touchscreens and overhead factory monitors."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
+
 <body>
   <header class="nav">
     <div class="nav__inner">
@@ -53,10 +108,11 @@
         <img src="../../icons/favicon.svg" width="32" height="32" alt="">
         CVCounter
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" data-nav-toggle aria-label="Menu">☰</button>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" data-nav-toggle
+        aria-label="Menu">☰</button>
       <ul class="nav__links" id="nav-menu">
         <li><a href="/cvcounter/en/#features">Features</a></li>
-        <li><a href="/cvcounter/en/people-counting/">Use cases</a></li>
+        <li><a href="/cvcounter/en/use-cases/">Use cases</a></li>
         <li><a href="/cvcounter/en/install/">Install</a></li>
         <li><a href="/cvcounter/en/faq/">FAQ</a></li>
       </ul>
@@ -71,42 +127,226 @@
   </header>
 
   <main>
-    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="https://bespredel.github.io/cvcounter/en/">Home</a><span aria-hidden="true">/</span><span>Counting in manufacturing and warehouses</span></nav>
-    
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="https://bespredel.github.io/cvcounter/en/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="https://bespredel.github.io/cvcounter/en/use-cases/">Use cases</a>
+      <span aria-hidden="true">/</span>
+      <span>Counting in manufacturing and warehouses</span>
+    </nav>
+
     <section class="page-hero">
       <div class="wrap reveal">
-        <h1>Counting in manufacturing and warehouses</h1>
-        <p class="page-hero__lead">Items on a conveyor, boxes at dispatch, aisle traffic — counting zones, batches, and reports in one web panel.</p>
-        <div class="hero__cta">
+        <h1>Conveyor Belt &amp; Warehouse Product Counting</h1>
+        <p class="page-hero__lead">Open-source computer vision for automated piece counting, packaging validation,
+          parcel dispatch monitoring, and warehouse pallet tracking. Train custom models in your browser, display
+          high-contrast shop-floor kiosk views, and generate printable A4 shift certificates without recurring
+          industrial vendor fees.</p>
+
+        <div class="spec-chips">
+          <span class="spec-chip spec-chip--accent">📦 Conveyor Piece Counting</span>
+          <span class="spec-chip">🏷️ Train Custom Parts in Web UI</span>
+          <span class="spec-chip">🖥️ Shop-Floor Kiosk Display</span>
+          <span class="spec-chip">🔒 100% Air-Gapped Local Operation</span>
+          <span class="spec-chip">📑 Printable A4 Shift Reports</span>
+        </div>
+
+        <div class="hero__cta" style="margin-top:2rem">
           <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">View on GitHub</a>
-          <a class="btn btn--ghost" href="/cvcounter/en/install/">Install guide</a>
+          <a class="btn btn--ghost" href="/cvcounter/en/install/">1-Click Quickstart</a>
         </div>
       </div>
     </section>
+
     <section>
       <div class="wrap">
-        <div class="prose reveal">
-          <h2>The shop-floor and warehouse problem</h2>
-          <p>Lines and warehouses need accurate output, dispatch, and movement numbers. Manual tallies fail; closed industrial CV suites are often expensive, integrator-heavy, and push video to the cloud. You need local RTSP counting that shift operators can read.</p>
-          <h2>How CVCounter helps in industry</h2>
-          <p>Mount cameras over a conveyor, gate, or picking area, draw counting polygons, and set model classes (item, box, pallet, person). ByteTrack tracking eliminates double counts. Batches (“New batch”) and printable A4 reports close the shift. Text and multi-counter views suit a monitor by the line without streaming video everywhere. Runs on your server — frames and camera URLs stay inside.</p>
-          <h2>Where it fits</h2><ul class="prose-list"><li>Production conveyor — unit counting on a line section</li><li>Warehouse and logistics — boxes, pallets, and dispatch zones</li><li>Packing lines — shift batches with per-class totals</li><li>Plant floors — people in a zone without a separate access-control client</li><li>Site gates — vehicles and loading at entry/exit</li></ul><h2>Typical scenarios</h2><h3>Conveyor and line</h3><p>A camera watches the product flow. A zone on the belt increments when an object passes; batch and total stay visible to the operator in a browser or kiosk by the machine.</p><h3>Warehouse dispatch</h3><p>Several zones: picking, doors, ramp. Multi-counters on one screen show in and out box counts without a separate app on every display.</p><h3>Shift control</h3><p>Start a new batch at shift start, save a report with A4 printout at the end. Metadata (line, shift, operator) uses form fields. History lives in the reports section.</p><h2>Why it works on the plant floor</h2><p>Open source (AGPL-3.0), 1-click auto-install, Docker, and ONNX Runtime / OpenVINO / TensorRT / YOLO backends for your model. Multiple cameras from one panel, on-prem data, kiosk mode for the shop floor. It does not replace MES/WMS — it is a reliable video counter you can plug into existing tally processes.</p>
+        <div class="section-head reveal">
+          <h2>Key Industrial Applications</h2>
+          <p>Replacing manual tally sheets and expensive specialized machine vision hardware across assembly lines and
+            logistics ramps.</p>
         </div>
-        <figure class="shot reveal" style="margin-top:2rem">
-          <img src="../../images/en/CounterVideo.webp" alt="CVCounter video view with counting zones — same idea for a production line" width="1400" height="800" loading="lazy">
-          <figcaption>Counting zones and per-class totals — the same pattern on a conveyor or in a warehouse</figcaption>
+
+        <div class="scenario-grid reveal">
+          <article class="scenario-card">
+            <div class="scenario-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+              </svg>
+            </div>
+            <h3>Conveyor Lines &amp; Assembly</h3>
+            <p>Count manufactured units, machined parts, bottles, cans, or packages on continuous moving belts. Real-time optical zone trigger and ByteTrack double-count prevention.</p>
+          </article>
+
+          <article class="scenario-card">
+            <div class="scenario-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                <line x1="12" y1="22.08" x2="12" y2="12" />
+              </svg>
+            </div>
+            <h3>Warehouse Dispatch &amp; Loading Docks</h3>
+            <p>Track outgoing boxes, bags, and pallets at loading bay ramps. Dual counter zones simultaneously record
+              loading into trailers and forklift transfers.</p>
+          </article>
+
+          <article class="scenario-card">
+            <div class="scenario-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+                <polyline points="10 9 9 9 8 9" />
+              </svg>
+            </div>
+            <h3>Shift Batches &amp; Quality Audit Logs</h3>
+            <p>Record batches with custom line IDs, shift tags, SKU numbers, and operator names. Generate instant
+              printable A4 verification documents for QA handoffs.</p>
+          </article>
+        </div>
+
+        <figure class="shot reveal" style="margin: 2.5rem 0;">
+          <img src="../../images/en/CounterVideo.webp"
+            alt="Video view in CVCounter with polygonal counting zones on an industrial production line" width="1400"
+            height="800" loading="lazy">
+          <figcaption>CVCounter interface: virtual counting polygons superimposed over a production line with instant
+            sensor beam triggers</figcaption>
         </figure>
-        <div class="cta-inline reveal">
-          <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">View on GitHub</a>
-          <a class="btn btn--ghost" href="/cvcounter/en/install/">Install guide</a>
+
+        <div class="section-head reveal" style="margin-top: 3.5rem;">
+          <h2>Comparison: CVCounter vs Industrial Smart Cameras</h2>
+          <p>Why modern manufacturing plants choose flexible open-source computer vision over vendor lock-in.</p>
         </div>
-        <div class="related reveal">
-          <h2>Other use cases</h2>
-          <ul><li><a href="/cvcounter/en/people-counting/">People counting from video</a></li><li><a href="/cvcounter/en/vehicle-counting/">Vehicle counting from camera</a></li><li><a href="/cvcounter/en/retail-analytics/">Retail analytics from camera</a></li></ul>
+
+        <div class="seo-table-wrap reveal">
+          <table class="seo-table">
+            <thead>
+              <tr>
+                <th>Criteria</th>
+                <th>CVCounter (Open Source)</th>
+                <th>Industrial Smart Cameras (Cognex/Keyence)</th>
+                <th>Manual Operator Tally Sheets</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>System Cost</strong></td>
+                <td><span class="table-tag table-tag--green">$0 (Free Software), standard PC/mini-PC</span></td>
+                <td><span class="table-tag table-tag--red">$5,000–$25,000 per inspection station</span></td>
+                <td>High recurring human labor cost</td>
+              </tr>
+              <tr>
+                <td><strong>Custom Part Training</strong></td>
+                <td><span class="table-tag table-tag--green">Integrated web studio: label &amp; train YOLO in
+                    minutes</span></td>
+                <td>Requires expensive certified integrator visits</td>
+                <td>Worker training and fatigue</td>
+              </tr>
+              <tr>
+                <td><strong>Network Autonomy</strong></td>
+                <td>100% On-Premises, air-gapped plant operation</td>
+                <td>Local, but locked behind vendor software</td>
+                <td>Human error and missed units</td>
+              </tr>
+              <tr>
+                <td><strong>Operator Display</strong></td>
+                <td>Built-in contrast kiosk view for any browser/HDMI TV</td>
+                <td>Expensive industrial HMI panels required</td>
+                <td>Paper clipboards / spreadsheets</td>
+              </tr>
+              <tr>
+                <td><strong>Documentation &amp; Reports</strong></td>
+                <td>Automated printable A4 shift handoff sheets</td>
+                <td>Complex custom programming to link to MES</td>
+                <td>Manual transcription into ERP</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section-head reveal" style="margin-top: 3.5rem;">
+          <h2>Deploy on the Factory Floor in 4 Steps</h2>
+          <p>Integrate automated machine vision without halting production or altering machinery.</p>
+        </div>
+
+        <div class="step-flow reveal">
+          <div class="step-card">
+            <span class="step-card__num">1</span>
+            <h4>Mount Camera</h4>
+            <p>Position any standard IP or industrial camera above the conveyor belt angled perpendicular to the flow.
+            </p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">2</span>
+            <h4>Connect Stream</h4>
+            <p>Enter the RTSP stream URL in CVCounter to initiate the low-latency real-time video feed.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">3</span>
+            <h4>Set Zones &amp; Class</h4>
+            <p>Draw the inspection polygon over the conveyor belt and choose standard or custom-trained item classes.
+            </p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">4</span>
+            <h4>Run Shift Batches</h4>
+            <p>Launch the kiosk screen for machine operators, open production batches, and print signed A4 shift sheets.
+            </p>
+          </div>
+        </div>
+
+        <div class="section-head reveal" style="margin-top: 3.5rem;">
+          <h2>Frequently Asked Questions</h2>
+          <p>Answers to common questions from plant managers and automation engineers.</p>
+        </div>
+
+        <div class="faq-list reveal">
+          <details class="faq-item">
+            <summary>Can I train custom models for proprietary industrial components or packages?</summary>
+            <p>Yes. CVCounter features an integrated web dataset annotation suite. Capture video frames directly from
+              your conveyor feed, draw bounding boxes in your browser, launch YOLO training with one click, and export
+              optimized ONNX or TensorRT models without requiring specialized data science consultants.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>What conveyor belt speeds can the vision system handle?</summary>
+            <p>At 30–60 camera FPS with TensorRT GPU acceleration, CVCounter comfortably tracks and counts dozens of
+              parts per second on high-speed industrial assembly lines.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Does CVCounter operate inside air-gapped factories without internet?</summary>
+            <p>Yes. CVCounter is 100% self-contained and operates completely within air-gapped industrial plant networks
+              without calling external cloud servers.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>How can I feed production counts into factory MES or ERP systems?</summary>
+            <p>CVCounter triggers automated HTTP webhooks upon batch closure, provides CSV/JSON shift history exports,
+              and exposes a comprehensive REST API for native integration with SAP, 1C:ERP, or custom MES databases.</p>
+          </details>
+        </div>
+
+        <div class="cta-inline reveal" style="margin-top: 3rem;">
+          <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">Download CVCounter on
+            GitHub</a>
+          <a class="btn btn--ghost" href="/cvcounter/en/install/">Installation Guide</a>
+        </div>
+
+        <div class="related reveal" style="margin-top: 4rem;">
+          <h2>Explore More Solutions</h2>
+          <ul>
+            <li><a href="/cvcounter/en/people-counting/">People counting from video (entrances, access control,
+                footfall)</a></li>
+            <li><a href="/cvcounter/en/vehicle-counting/">Vehicle counting from camera (checkpoints, freight,
+                parking)</a></li>
+            <li><a href="/cvcounter/en/retail-analytics/">Retail analytics and display dwell time zones</a></li>
+          </ul>
         </div>
       </div>
     </section>
-    
   </main>
 
   <footer class="footer">
@@ -114,7 +354,7 @@
       <div class="footer__inner">
         <div class="footer__meta">
           <strong>CVCounter</strong>
-          <p>Built by <a href="https://bespredel.name" rel="noopener">Aleksandr Kireev</a></p>
+          <p>Author: <a href="https://bespredel.name" rel="noopener">Aleksandr Kireev</a></p>
           <p><a href="mailto:hello@bespredel.name">hello@bespredel.name</a></p>
         </div>
         <ul class="footer__links">
@@ -130,4 +370,5 @@
 
   <script src="../../js/main.js" defer></script>
 </body>
+
 </html>

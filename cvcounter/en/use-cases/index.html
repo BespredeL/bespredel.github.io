@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CVCounter Use Cases &amp; Scenarios — Computer Vision Object Counting</title>
+  <meta name="description" content="Explore turnkey computer vision scenarios powered by open-source CVCounter: people counting for retail, multi-lane traffic analysis, conveyor piece counting, and warehouse parcel tracking. Works with YOLO, ONNX, OpenVINO, TensorRT.">
+  <meta name="keywords" content="video analytics use cases, computer vision counting scenarios, people and vehicle counting, conveyor piece counting, open source vision AI">
+  <meta name="theme-color" content="#0c0e12">
+  <link rel="canonical" href="https://bespredel.github.io/cvcounter/en/use-cases/">
+  <link rel="alternate" hreflang="ru" href="https://bespredel.github.io/cvcounter/scenarii/">
+  <link rel="alternate" hreflang="en" href="https://bespredel.github.io/cvcounter/en/use-cases/">
+  <link rel="alternate" hreflang="x-default" href="https://bespredel.github.io/cvcounter/scenarii/">
+  <link rel="icon" href="../../icons/favicon.ico" sizes="any">
+  <link rel="icon" href="../../icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CVCounter">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="CVCounter Use Cases &amp; Scenarios — Computer Vision Object Counting">
+  <meta property="og:description" content="Explore turnkey computer vision scenarios: people counting, traffic analysis, conveyor piece tracking, and in-store footfall analytics.">
+  <meta property="og:url" content="https://bespredel.github.io/cvcounter/en/use-cases/">
+  <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/en/Index.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CVCounter Use Cases &amp; Scenarios — Computer Vision Object Counting">
+  <meta name="twitter:description" content="Explore turnkey computer vision scenarios: people counting, traffic analysis, conveyor piece tracking, and in-store footfall analytics.">
+  <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/en/Index.webp">
+  <link rel="stylesheet" href="../../css/styles.css">
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://bespredel.github.io/cvcounter/en/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Use Cases",
+        "item": "https://bespredel.github.io/cvcounter/en/use-cases/"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I run multiple use cases on a single CVCounter instance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. CVCounter lets you connect multiple camera feeds simultaneously. Each camera can have its own customized detection zones, target object classes (e.g., car/truck for gate cameras, person for door cameras), and independent counters."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does CVCounter ensure counting accuracy across zones?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The platform incorporates ByteTrack multi-object tracking. Each object receives a persistent trajectory ID across video frames, incrementing counters only upon zone crossing and preventing duplicate counts for stationary or oscillating objects."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is an internet connection required to run scenarios?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. All CVCounter scenarios execute 100% on-premises (Air-Gapped) on your local hardware. Video feeds never leave your local network, ensuring absolute privacy and GDPR compliance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I train models for proprietary, custom objects?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. CVCounter features an integrated web dataset annotation tool: capture frames from live feeds, annotate bounding boxes in your browser, launch YOLO training with a single click, and deploy best.pt weights directly."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="/cvcounter/en/">
+        <img src="../../icons/favicon.svg" width="32" height="32" alt="">
+        CVCounter
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" data-nav-toggle aria-label="Menu">☰</button>
+      <ul class="nav__links" id="nav-menu">
+        <li><a href="/cvcounter/en/#features">Features</a></li>
+        <li><a href="/cvcounter/en/use-cases/" class="is-active">Use cases</a></li>
+        <li><a href="/cvcounter/en/install/">Install</a></li>
+        <li><a href="/cvcounter/en/faq/">FAQ</a></li>
+      </ul>
+      <div class="nav__actions">
+        <div class="lang" role="group" aria-label="Language">
+          <a href="/cvcounter/scenarii/" class="lang__link" hreflang="ru">RU</a>
+          <a href="/cvcounter/en/use-cases/" class="lang__link is-active" hreflang="en">EN</a>
+        </div>
+        <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="https://bespredel.github.io/cvcounter/en/">Home</a>
+      <span aria-hidden="true">/</span>
+      <span>Use Cases</span>
+    </nav>
+    
+    <section class="page-hero">
+      <div class="wrap reveal">
+        <h1>CVCounter Use Cases &amp; Scenarios</h1>
+        <p class="page-hero__lead">A comprehensive catalog of turnkey computer vision counting solutions from IP cameras and RTSP streams. Engineered for retail footfall, traffic monitoring, warehouse logistics, and industrial assembly lines.</p>
+        
+        <div class="spec-chips">
+          <span class="spec-chip spec-chip--accent">👥 People Counting</span>
+          <span class="spec-chip">🚗 Traffic &amp; Roads</span>
+          <span class="spec-chip">🛍️ Retail Analytics</span>
+          <span class="spec-chip">🏭 Manufacturing &amp; Warehouse</span>
+          <span class="spec-chip">🔒 100% On-Premises</span>
+        </div>
+
+        <div class="hero__cta" style="margin-top:2rem">
+          <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">View on GitHub</a>
+          <a class="btn btn--ghost" href="/cvcounter/en/install/">1-Click Quickstart</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>Select an Industry Use Case</h2>
+          <p>Explore detailed guides, deployment architectures, hardware advice, and step-by-step setup instructions for each scenario.</p>
+        </div>
+
+        <div class="scenario-grid reveal" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+          <article class="scenario-card glow-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <span class="audience-card__badge">Retail &amp; Malls</span>
+              <h3 style="font-size:1.4rem; margin: 0.5rem 0 0.75rem;">
+                <a href="/cvcounter/en/people-counting/" style="color:inherit; text-decoration:none;">People counting from video</a>
+              </h3>
+              <p style="margin-bottom:1rem; color:var(--ink-muted); line-height:1.6;">
+                Optical tally of shoppers and visitors walking into and out of stores, mall pavilions, office lobbies, and hallways through discrete polygonal zones.
+              </p>
+              <ul class="audience-card__list" style="margin-bottom:1.5rem;">
+                <li>Bidirectional counting (discrete in/out line zones)</li>
+                <li>ByteTrack tracking prevents double counts during occlusions</li>
+                <li>100% local processing on your PC (GDPR compliant)</li>
+                <li>Full-screen browser kiosk view for overhead TV monitors</li>
+              </ul>
+            </div>
+            <div>
+              <a class="btn btn--primary" href="/cvcounter/en/people-counting/" style="width:100%; justify-content:center;">Explore People Counting →</a>
+            </div>
+          </article>
+
+          <article class="scenario-card glow-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <span class="audience-card__badge">Traffic &amp; Roads</span>
+              <h3 style="font-size:1.4rem; margin: 0.5rem 0 0.75rem;">
+                <a href="/cvcounter/en/vehicle-counting/" style="color:inherit; text-decoration:none;">Vehicle counting from camera</a>
+              </h3>
+              <p style="margin-bottom:1rem; color:var(--ink-muted); line-height:1.6;">
+                Measure vehicle traffic volume across highway lanes, facility gate barriers, warehouse loading docks, and parking lot entryways.
+              </p>
+              <ul class="audience-card__list" style="margin-bottom:1.5rem;">
+                <li>Classification breakdown: car, truck, bus, motorcycle</li>
+                <li>Discrete detection polygons across multiple roadway lanes</li>
+                <li>Tally vehicle volume across gate boundary lines per shift</li>
+                <li>Resilient to darkness, headlight glare, rain, and snow</li>
+              </ul>
+            </div>
+            <div>
+              <a class="btn btn--primary" href="/cvcounter/en/vehicle-counting/" style="width:100%; justify-content:center;">Explore Vehicle Counting →</a>
+            </div>
+          </article>
+
+          <article class="scenario-card glow-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <span class="audience-card__badge">Commerce &amp; Displays</span>
+              <h3 style="font-size:1.4rem; margin: 0.5rem 0 0.75rem;">
+                <a href="/cvcounter/en/retail-analytics/" style="color:inherit; text-decoration:none;">Retail analytics from camera</a>
+              </h3>
+              <p style="margin-bottom:1rem; color:var(--ink-muted); line-height:1.6;">
+                Evaluate storefront capture rates: count sidewalk passersby vs entered shoppers, organize shift batches, and correlate footfall with cashier receipts.
+              </p>
+              <ul class="audience-card__list" style="margin-bottom:1.5rem;">
+                <li>Two zones: outside corridor traffic vs doorway entries</li>
+                <li>Shift-based batch accounting (Batches) for POS comparisons</li>
+                <li>Printable A4 audit reports and automated CSV/JSON exports</li>
+                <li>Complete anonymity without facial scanning or biometrics</li>
+              </ul>
+            </div>
+            <div>
+              <a class="btn btn--primary" href="/cvcounter/en/retail-analytics/" style="width:100%; justify-content:center;">Explore Retail Analytics →</a>
+            </div>
+          </article>
+
+          <article class="scenario-card glow-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <span class="audience-card__badge">Factories &amp; Logistics</span>
+              <h3 style="font-size:1.4rem; margin: 0.5rem 0 0.75rem;">
+                <a href="/cvcounter/en/industrial-counting/" style="color:inherit; text-decoration:none;">Manufacturing &amp; warehouse</a>
+              </h3>
+              <p style="margin-bottom:1rem; color:var(--ink-muted); line-height:1.6;">
+                Automate piece counting of manufactured goods on moving conveyor belts, and track parcel boxes and pallets passing loading bay ramps.
+              </p>
+              <ul class="audience-card__list" style="margin-bottom:1.5rem;">
+                <li>Continuous optical counting of items on moving conveyor lines</li>
+                <li>Tally package transfers across loading bay gate zones</li>
+                <li>Built-in dataset annotation tool to train models on custom parts</li>
+                <li>High-contrast shop-floor kiosk view for machine operators</li>
+              </ul>
+            </div>
+            <div>
+              <a class="btn btn--primary" href="/cvcounter/en/industrial-counting/" style="width:100%; justify-content:center;">Explore Manufacturing &amp; Warehouse →</a>
+            </div>
+          </article>
+        </div>
+
+        <figure class="shot reveal" style="margin: 3.5rem 0 2.5rem;">
+          <img src="../../images/en/Index.webp" alt="Main CVCounter dashboard managing multiple camera counters" width="1400" height="800" loading="lazy">
+          <figcaption>Unified CVCounter web panel: orchestrate multiple cameras and counters in real time</figcaption>
+        </figure>
+
+        <div class="section-head reveal" style="margin-top: 3.5rem;">
+          <h2>How Any Scenario is Configured</h2>
+          <p>A simple, universal vision pipeline that connects seamlessly to any video feed.</p>
+        </div>
+
+        <div class="step-flow reveal">
+          <div class="step-card">
+            <span class="step-card__num">1</span>
+            <h4>Connect Stream</h4>
+            <p>Add your camera's RTSP URL, connect a local USB webcam, or test with a prerecorded video file.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">2</span>
+            <h4>Select AI Model</h4>
+            <p>Choose pretrained YOLO/ONNX models or deploy your custom weights trained in the web studio.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">3</span>
+            <h4>Define Zones</h4>
+            <p>Draw polygonal detection zones directly over the video frame in your browser and select target classes.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">4</span>
+            <h4>Monitor &amp; Report</h4>
+            <p>Open shift batches («New Batch»), stream numbers to kiosk displays, and print A4 handoff reports.</p>
+          </div>
+        </div>
+
+        <div class="section-head reveal" style="margin-top: 3.5rem;">
+          <h2>Frequently Asked Questions</h2>
+          <p>Answers to common questions regarding scenario integration and hardware setups.</p>
+        </div>
+
+        <div class="faq-list reveal">
+          <details class="faq-item">
+            <summary>Can I run multiple use cases on a single CVCounter instance?</summary>
+            <p>Yes. CVCounter lets you connect multiple camera feeds simultaneously. Each camera can have its own customized detection zones, target object classes (e.g., car/truck for gate cameras, person for door cameras), and independent counters.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>How does CVCounter ensure counting accuracy across zones?</summary>
+            <p>The platform incorporates <strong>ByteTrack</strong> multi-object tracking. Each object receives a persistent trajectory ID across video frames, incrementing counters only upon zone crossing and preventing duplicate counts for stationary or oscillating objects.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Is an internet connection required to run scenarios?</summary>
+            <p>No. All CVCounter scenarios execute 100% on-premises (Air-Gapped) on your local hardware. Video feeds never leave your local network, ensuring absolute privacy and GDPR compliance.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can I train models for proprietary, custom objects?</summary>
+            <p>Yes. CVCounter features an integrated web dataset annotation tool: capture frames from live feeds, annotate bounding boxes in your browser, launch YOLO training with a single click, and deploy <code>best.pt</code> weights directly.</p>
+          </details>
+        </div>
+
+        <div class="cta-inline reveal" style="margin-top: 3rem;">
+          <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">Download CVCounter on GitHub</a>
+          <a class="btn btn--ghost" href="/cvcounter/en/install/">Installation Guide</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__inner">
+        <div class="footer__meta">
+          <strong>CVCounter</strong>
+          <p>Author: <a href="https://bespredel.name" rel="noopener">Aleksandr Kireev</a></p>
+          <p><a href="mailto:hello@bespredel.name">hello@bespredel.name</a></p>
+        </div>
+        <ul class="footer__links">
+          <li><a href="https://github.com/BespredeL/CVCounter" rel="noopener">GitHub</a></li>
+          <li><a href="/cvcounter/en/install/">Install</a></li>
+          <li><a href="/cvcounter/en/faq/">FAQ</a></li>
+          <li><a href="https://github.com/BespredeL/CVCounter/blob/master/LICENSE" rel="noopener">AGPL-3.0</a></li>
+        </ul>
+      </div>
+      <p class="license">© CVCounter. Distributed under the AGPL-3.0 license.</p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js" defer></script>
+</body>
+</html>

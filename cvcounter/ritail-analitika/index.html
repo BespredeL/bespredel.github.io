@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ритейл-аналитика и подсчёт посетителей — CVCounter</title>
-  <meta name="description" content="Подсчёт посетителей магазина и зоны интереса с камеры. Веб-киоск, партии, ручные корректировки и отчёты. Open-source альтернатива закрытым retail analytics-решениям.">
+  <title>Ритейл-аналитика и подсчёт посетителей магазина — CVCounter | Учёт покупателей по зонам</title>
+  <meta name="description" content="Бесплатная open-source система подсчёта посетителей в розничных магазинах по камерам и RTSP. Подсчёт проходящего трафика и вошедших покупателей, учёт по сменам (Batch), сопоставление с кассовыми чеками. Без абонентской платы и без облака (152-ФЗ).">
+  <meta name="keywords" content="ритейл аналитика видеокамеры, подсчет посетителей магазина, счетчик покупателей rtsp, проходимость магазина видео, конверсия магазина трафик чеки, open source retail analytics">
   <meta name="theme-color" content="#0c0e12">
   <link rel="canonical" href="https://bespredel.github.io/cvcounter/ritail-analitika/">
   <link rel="alternate" hreflang="ru" href="https://bespredel.github.io/cvcounter/ritail-analitika/">
@@ -16,35 +17,83 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CVCounter">
   <meta property="og:locale" content="ru_RU">
-  <meta property="og:title" content="Ритейл-аналитика с камеры — CVCounter">
-  <meta property="og:description" content="Подсчёт посетителей магазина и зоны интереса с камеры. Веб-киоск, партии, ручные корректировки и отчёты. Open-source альтернатива закрытым retail analytics-решениям.">
+  <meta property="og:title" content="Ритейл-аналитика и подсчёт посетителей магазина — CVCounter">
+  <meta property="og:description" content="Оптический учёт покупательского потока: зоны входа и проходящего трафика, сменные партии (Batches), сопоставление с чеками и печать отчётов без облака.">
   <meta property="og:url" content="https://bespredel.github.io/cvcounter/ritail-analitika/">
   <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Ритейл-аналитика с камеры — CVCounter">
-  <meta name="twitter:description" content="Подсчёт посетителей магазина и зоны интереса с камеры. Веб-киоск, партии, ручные корректировки и отчёты. Open-source альтернатива закрытым retail analytics-решениям.">
+  <meta name="twitter:title" content="Ритейл-аналитика и подсчёт посетителей магазина — CVCounter">
+  <meta name="twitter:description" content="Оптический учёт покупательского потока: зоны входа и проходящего трафика, сменные партии (Batches), сопоставление с чеками и печать отчётов без облака.">
   <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
   <link rel="stylesheet" href="../css/styles.css">
+  
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Главная",
-      "item": "https://bespredel.github.io/cvcounter/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Ритейл-аналитика с камеры",
-      "item": "https://bespredel.github.io/cvcounter/ritail-analitika/"
-    }
-  ]
-}
-</script>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://bespredel.github.io/cvcounter/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Сценарии",
+        "item": "https://bespredel.github.io/cvcounter/scenarii/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Ритейл-аналитика с камеры",
+        "item": "https://bespredel.github.io/cvcounter/ritail-analitika/"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Как CVCounter помогает рассчитать конверсию магазина?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CVCounter фиксирует точное число покупателей, вошедших через входную зону за смену или выбранный час. Сопоставляя количество вошедших с числом пробитых чеков из кассовой программы, вы получаете реальную конверсию (Чеки / Посетители * 100%)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Можно ли сравнивать поток прохожих мимо витрины и вошедших?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да. На обзорной камере можно нарисовать две независимые зоны: первую — на внешний тротуар или коридор ТЦ мимо витрины, а вторую — на входной створ дверей магазина."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Сохраняются ли лица покупателей или биометрия?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Нет. CVCounter детектирует класс person (силуэт человека) исключительно для фиксации факта прохода через зону. Биометрия и лица не распознаются, что на 100% соответствует 152-ФЗ и GDPR."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Как данные о трафике выгружаются в учётные системы?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Система предоставляет выгрузку в CSV и JSON, поддерживает автоматические вебхуки по завершении смены (партии) и REST API для интеграции с 1С, ERP или BI-системами."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <header class="nav">
@@ -56,7 +105,7 @@
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" data-nav-toggle aria-label="Меню">☰</button>
       <ul class="nav__links" id="nav-menu">
         <li><a href="/cvcounter/#features">Возможности</a></li>
-        <li><a href="/cvcounter/podschet-lyudey/">Сценарии</a></li>
+        <li><a href="/cvcounter/scenarii/">Сценарии</a></li>
         <li><a href="/cvcounter/ustanovka/">Установка</a></li>
         <li><a href="/cvcounter/faq/">FAQ</a></li>
       </ul>
@@ -71,42 +120,192 @@
   </header>
 
   <main>
-    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="https://bespredel.github.io/cvcounter/">Главная</a><span aria-hidden="true">/</span><span>Ритейл-аналитика с камеры</span></nav>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="https://bespredel.github.io/cvcounter/">Главная</a>
+      <span aria-hidden="true">/</span>
+      <a href="https://bespredel.github.io/cvcounter/scenarii/">Сценарии</a>
+      <span aria-hidden="true">/</span>
+      <span>Ритейл-аналитика с камеры</span>
+    </nav>
     
     <section class="page-hero">
       <div class="wrap reveal">
-        <h1>Ритейл-аналитика с камеры</h1>
-        <p class="page-hero__lead">Поток у входа, зона у полки или кассы — считайте в браузере и сохраняйте смены в отчёты.</p>
-        <div class="hero__cta">
+        <h1>Ритейл-аналитика и подсчёт покупателей по зонам с камер</h1>
+        <p class="page-hero__lead">Оптический подсчёт входящих и проходящих посетителей магазинов, торговых точек и павильонов. Сопоставление трафика с кассовыми чеками, сменные партии (Batches) и печатные отчёты A4 без абонентской платы и отправки видео в сторонние облака.</p>
+        
+        <div class="spec-chips">
+          <span class="spec-chip spec-chip--accent">🎯 Зоны входа и проходящего потока</span>
+          <span class="spec-chip">📊 Сменные партии (Batches)</span>
+          <span class="spec-chip">🧾 Сопоставление с чеками кассы</span>
+          <span class="spec-chip">🔒 100% Локально (152-ФЗ / GDPR)</span>
+          <span class="spec-chip">📑 A4 Печать &amp; Экспорт CSV/JSON</span>
+        </div>
+
+        <div class="hero__cta" style="margin-top:2rem">
           <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">Открыть на GitHub</a>
-          <a class="btn btn--ghost" href="/cvcounter/ustanovka/">Установка</a>
+          <a class="btn btn--ghost" href="/cvcounter/ustanovka/">Быстрый старт (1 клик)</a>
         </div>
       </div>
     </section>
+
     <section>
       <div class="wrap">
-        <div class="prose reveal">
-          <h2>Задача</h2>
-          <p>Ритейлу нужны цифры по посещаемости и зонам, но не всегда нужен тяжёлый SaaS с подпиской и выгрузкой кадров в облако.</p>
-          <h2>Как решает CVCounter</h2>
-          <p>Локальный или свой сервер, веб-интерфейс для киоска, партии («New batch»), поля метаданных, отчёты. Кадры и URL камер в телеметрию не уходят (телеметрия опциональна и обезличена).</p>
-          
+        <div class="section-head reveal">
+          <h2>Сценарии применения в торговле</h2>
+          <p>Точный оптический учёт количества людей, проходящих через контрольные зоны торгового объекта.</p>
         </div>
-        <figure class="shot reveal" style="margin-top:2rem">
-          <img src="../images/ru/Index.webp" alt="Главная панель CVCounter со списком счётчиков камер" width="1400" height="800" loading="lazy">
-          <figcaption>Управление несколькими счётчиками с одной панели</figcaption>
+
+        <div class="scenario-grid reveal">
+          <article class="scenario-card">
+            <div class="scenario-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <h3>Поток мимо витрины и вход</h3>
+            <p>Настройка двух зон: на пешеходный коридор мимо витрины и на входной створ дверей. Позволяет сравнивать общий трафик с количеством вошедших.</p>
+          </article>
+
+          <article class="scenario-card">
+            <div class="scenario-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3>Проходимость отделов и проходов</h3>
+            <p>Фиксация количества людей, прошедших в конкретный торговый зал, секцию или галерею, для оценки популярности направлений.</p>
+          </article>
+
+          <article class="scenario-card">
+            <div class="scenario-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            </div>
+            <h3>Сменный учёт и конверсия</h3>
+            <p>Ведение сменных партий (Batch): фиксация итогового количества вошедших покупателей за смену для сравнения с числом пробитых чеков.</p>
+          </article>
+        </div>
+
+        <figure class="shot reveal" style="margin: 2.5rem 0;">
+          <img src="../images/ru/Index.webp" alt="Главная панель управления CVCounter со списком счётчиков камер" width="1400" height="800" loading="lazy">
+          <figcaption>Панель управления CVCounter: одновременный контроль счётчиков входа и залов с обзорных камер магазина</figcaption>
         </figure>
-        <div class="cta-inline reveal">
-          <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">Открыть на GitHub</a>
-          <a class="btn btn--ghost" href="/cvcounter/ustanovka/">Установка</a>
+
+        <div class="section-head reveal" style="margin-top: 3.5rem;">
+          <h2>Сравнение: CVCounter против облачных сервисов</h2>
+          <p>Почему ритейлеры выбирают независимый локальный подсчёт без регулярных платежей за облако.</p>
         </div>
-        <div class="related reveal">
-          <h2>Другие сценарии</h2>
-          <ul><li><a href="/cvcounter/podschet-lyudey/">Подсчёт людей по видео</a></li><li><a href="/cvcounter/podschet-transporta/">Подсчёт транспорта с камеры</a></li><li><a href="/cvcounter/promyshlennost/">Подсчёт на производстве и складе</a></li></ul>
+
+        <div class="seo-table-wrap reveal">
+          <table class="seo-table">
+            <thead>
+              <tr>
+                <th>Параметр</th>
+                <th>CVCounter (Локальный AI)</th>
+                <th>Облачные ритейл-сервисы</th>
+                <th>Ручные механические кликеры</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Абонентская плата</strong></td>
+                <td><span class="table-tag table-tag--green">0 ₽ (Бесплатно навсегда)</span></td>
+                <td><span class="table-tag table-tag--red">От 3 000 ₽/мес за каждую камеру</span></td>
+                <td>Оплата труда сотрудников</td>
+              </tr>
+              <tr>
+                <td><strong>Приватность (152-ФЗ / GDPR)</strong></td>
+                <td><span class="table-tag table-tag--green">100% On-Premise, видео не уходит вовне</span></td>
+                <td>Видеопоток передаётся стороннему провайдеру</td>
+                <td>Субъективный человеческий фактор</td>
+              </tr>
+              <tr>
+                <td><strong>Автономность без интернета</strong></td>
+                <td>Работает в локальной сети магазина при любых сбоях связи</td>
+                <td><span class="table-tag table-tag--red">Останавливается при разрыве интернета</span></td>
+                <td>Автономно</td>
+              </tr>
+              <tr>
+                <td><strong>Партии и смены (Batches)</strong></td>
+                <td>Сменные партии, ручные корректировки, метаданные</td>
+                <td>Фиксированные суточные графики</td>
+                <td>Бумажные журналы</td>
+              </tr>
+              <tr>
+                <td><strong>Интеграция с кассами / 1С</strong></td>
+                <td>REST API, Webhooks, прямой экспорт CSV/JSON</td>
+                <td>Платный модуль API или закрытый кабинет</td>
+                <td>Ручной перенос данных в Excel</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section-head reveal" style="margin-top: 3.5rem;">
+          <h2>Запуск в магазине за 4 шага</h2>
+          <p>Простая интеграция с существующей системой видеонаблюдения торговой точки.</p>
+        </div>
+
+        <div class="step-flow reveal">
+          <div class="step-card">
+            <span class="step-card__num">1</span>
+            <h4>Установка на ПК</h4>
+            <p>Разверните CVCounter на ПК кассы или локальном сервере магазина за 1 клик с помощью скрипта.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">2</span>
+            <h4>Подключение камер</h4>
+            <p>Подключите уже установленные обзорные IP-камеры магазина по стандартному протоколу RTSP.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">3</span>
+            <h4>Настройка зон</h4>
+            <p>Очертите зоны прохода (створ входа, коридор, проход между рядами) и выберите класс <code>person</code>.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">4</span>
+            <h4>Сменные итоги</h4>
+            <p>Ведите сменные партии, сопоставляйте трафик с количеством кассовых чеков и сохраняйте отчёты A4.</p>
+          </div>
+        </div>
+
+        <div class="section-head reveal" style="margin-top: 3.5rem;">
+          <h2>Часто задаваемые вопросы</h2>
+          <p>Ответы на популярные вопросы о подсчёте покупателей в розничных магазинах.</p>
+        </div>
+
+        <div class="faq-list reveal">
+          <details class="faq-item">
+            <summary>Как CVCounter помогает рассчитать конверсию магазина?</summary>
+            <p>CVCounter фиксирует точное число покупателей, вошедших через входную зону за смену или выбранный час. Сопоставляя количество вошедших с числом пробитых чеков из кассовой программы (1С, МойСклад, Frontol), вы получаете реальную конверсию: <code>CR = (Чеки / Посетители) × 100%</code>.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Можно ли сравнивать поток прохожих мимо витрины и вошедших?</summary>
+            <p>Да. На обзорной камере можно нарисовать две независимые зоны: первую — на внешний коридор или тротуар мимо магазина, а вторую — на входной дверной створ. Система покажет раздельное число объектов по каждой зоне.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Сохраняются ли лица покупателей или биометрия?</summary>
+            <p>Нет. CVCounter детектирует класс <code>person</code> (силуэт человека) исключительно для фиксации факта прохода через зону. Биометрия и лица не распознаются, благодаря чему полностью соблюдаются требования законодательства о персональных данных (152-ФЗ и GDPR).</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Как передавать данные о трафике в учётные программы?</summary>
+            <p>Система предоставляет автоматический экспорт в CSV/JSON, поддерживает вебхуки по закрытию смены (партии), а также прямой REST API для выгрузки данных в 1С, BI-системы или кассовые программы.</p>
+          </details>
+        </div>
+
+        <div class="cta-inline reveal" style="margin-top: 3rem;">
+          <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">Скачать CVCounter на GitHub</a>
+          <a class="btn btn--ghost" href="/cvcounter/ustanovka/">Инструкция по установке</a>
+        </div>
+
+        <div class="related reveal" style="margin-top: 4rem;">
+          <h2>Другие сценарии применения</h2>
+          <ul>
+            <li><a href="/cvcounter/podschet-lyudey/">Подсчёт людей и посетителей по видео (входы, ТЦ, проходные)</a></li>
+            <li><a href="/cvcounter/podschet-transporta/">Подсчёт транспорта с камеры (парковки, трафик, КПП)</a></li>
+            <li><a href="/cvcounter/promyshlennost/">Подсчёт продукции на производстве и складе</a></li>
+          </ul>
         </div>
       </div>
     </section>
-    
   </main>
 
   <footer class="footer">

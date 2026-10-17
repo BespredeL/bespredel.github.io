@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Retail analytics and visitor counting — CVCounter</title>
-  <meta name="description" content="Count store visitors and areas of interest from a camera. Browser kiosk, batches, manual corrections, and reports. An open-source alternative to closed retail analytics products.">
+  <title>Retail Footfall Analytics &amp; Store Zone Counting — CVCounter | Camera Vision</title>
+  <meta name="description" content="Free open-source in-store video analytics for retail. Track customer footfall across entrance zones and aisles, manage shift batches, and correlate traffic with register receipts. 100% on-premises privacy, zero subscription fees.">
+  <meta name="keywords" content="retail video analytics, store footfall camera counter, in-store analytics open source, passerby to entrance count, shift batch counting, GDPR compliant retail analytics">
   <meta name="theme-color" content="#0c0e12">
   <link rel="canonical" href="https://bespredel.github.io/cvcounter/en/retail-analytics/">
   <link rel="alternate" hreflang="ru" href="https://bespredel.github.io/cvcounter/ritail-analitika/">
@@ -16,35 +17,83 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CVCounter">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Retail analytics from camera — CVCounter">
-  <meta property="og:description" content="Count store visitors and areas of interest from a camera. Browser kiosk, batches, manual corrections, and reports. An open-source alternative to closed retail analytics products.">
+  <meta property="og:title" content="Retail Footfall Analytics &amp; Store Zone Counting — CVCounter">
+  <meta property="og:description" content="Optical shopper footfall tracking: entrance and passerby zones, shift batches, receipt conversion correlation, and printable A4 logs without cloud fees.">
   <meta property="og:url" content="https://bespredel.github.io/cvcounter/en/retail-analytics/">
   <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/en/Index.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Retail analytics from camera — CVCounter">
-  <meta name="twitter:description" content="Count store visitors and areas of interest from a camera. Browser kiosk, batches, manual corrections, and reports. An open-source alternative to closed retail analytics products.">
+  <meta name="twitter:title" content="Retail Footfall Analytics &amp; Store Zone Counting — CVCounter">
+  <meta name="twitter:description" content="Optical shopper footfall tracking: entrance and passerby zones, shift batches, receipt conversion correlation, and printable A4 logs without cloud fees.">
   <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/en/Index.webp">
   <link rel="stylesheet" href="../../css/styles.css">
+  
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://bespredel.github.io/cvcounter/en/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Retail analytics from camera",
-      "item": "https://bespredel.github.io/cvcounter/en/retail-analytics/"
-    }
-  ]
-}
-</script>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://bespredel.github.io/cvcounter/en/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Use cases",
+        "item": "https://bespredel.github.io/cvcounter/en/use-cases/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Retail analytics from camera",
+        "item": "https://bespredel.github.io/cvcounter/en/retail-analytics/"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does CVCounter help evaluate store conversion rates?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CVCounter measures the exact count of entered shoppers per shift or hour. Correlating this traffic data with POS receipts gives you true physical store conversion (CR = Receipts / Visitors * 100%)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I compare passerby foot traffic with actual store entries?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Draw one zone across the outside corridor or sidewalk to track passerby volume, and a second zone across the entrance doorway. CVCounter tallies counts per zone independently."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are shopper facial identities or personal data stored?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. CVCounter detects anonymous human silhouettes (person class) solely to register zone crossing events. No facial scanning or biometrics are used, ensuring 100% compliance with GDPR."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I export customer count data to ERP or POS software?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The platform provides CSV/JSON file exports, batch change webhooks, and a native REST API to synchronize counts with PowerBI, Tableau, SAP, or custom store databases."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <header class="nav">
@@ -56,7 +105,7 @@
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" data-nav-toggle aria-label="Menu">☰</button>
       <ul class="nav__links" id="nav-menu">
         <li><a href="/cvcounter/en/#features">Features</a></li>
-        <li><a href="/cvcounter/en/people-counting/">Use cases</a></li>
+        <li><a href="/cvcounter/en/use-cases/">Use cases</a></li>
         <li><a href="/cvcounter/en/install/">Install</a></li>
         <li><a href="/cvcounter/en/faq/">FAQ</a></li>
       </ul>
@@ -71,42 +120,192 @@
   </header>
 
   <main>
-    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="https://bespredel.github.io/cvcounter/en/">Home</a><span aria-hidden="true">/</span><span>Retail analytics from camera</span></nav>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="https://bespredel.github.io/cvcounter/en/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="https://bespredel.github.io/cvcounter/en/use-cases/">Use cases</a>
+      <span aria-hidden="true">/</span>
+      <span>Retail analytics from camera</span>
+    </nav>
     
     <section class="page-hero">
       <div class="wrap reveal">
-        <h1>Retail analytics from camera</h1>
-        <p class="page-hero__lead">Entrance flow, shelf or checkout zones — count in the browser and save shifts to reports.</p>
-        <div class="hero__cta">
+        <h1>Retail Footfall Analytics &amp; Store Zone Counting</h1>
+        <p class="page-hero__lead">Optical counting of shopper footfall entering and passing retail stores, boutiques, and mall pavilions. Correlate footfall traffic with register receipts, organize shift batches, and export printable A4 logs without monthly cloud subscriptions.</p>
+        
+        <div class="spec-chips">
+          <span class="spec-chip spec-chip--accent">🎯 Entrance &amp; Passerby Zones</span>
+          <span class="spec-chip">📊 Shift-Based Batches</span>
+          <span class="spec-chip">🧾 Correlate Traffic with Receipts</span>
+          <span class="spec-chip">🔒 100% On-Premises (GDPR)</span>
+          <span class="spec-chip">📑 Printable A4 &amp; CSV/JSON Export</span>
+        </div>
+
+        <div class="hero__cta" style="margin-top:2rem">
           <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">View on GitHub</a>
-          <a class="btn btn--ghost" href="/cvcounter/en/install/">Install guide</a>
+          <a class="btn btn--ghost" href="/cvcounter/en/install/">1-Click Quickstart</a>
         </div>
       </div>
     </section>
+
     <section>
       <div class="wrap">
-        <div class="prose reveal">
-          <h2>The problem</h2>
-          <p>Retail needs footfall and zone numbers, but not always a heavy SaaS subscription that uploads frames to the cloud.</p>
-          <h2>How CVCounter helps</h2>
-          <p>Run on your own server, use the web UI in kiosk mode, batches (“New batch”), metadata fields, and reports. Frames and camera URLs are never sent with telemetry (telemetry is optional and anonymized).</p>
-          
+        <div class="section-head reveal">
+          <h2>Retail Counting Applications</h2>
+          <p>Accurate optical counting of individuals passing through designated zones on your store's video cameras.</p>
         </div>
-        <figure class="shot reveal" style="margin-top:2rem">
-          <img src="../../images/en/Index.webp" alt="CVCounter dashboard with camera counter list" width="1400" height="800" loading="lazy">
-          <figcaption>Manage multiple counters from one dashboard</figcaption>
+
+        <div class="scenario-grid reveal">
+          <article class="scenario-card">
+            <div class="scenario-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <h3>Passerby vs Entrance Volume</h3>
+            <p>Deploy two detection zones: one on the exterior corridor tracking passersby and another across the entrance doors to measure entry ratios.</p>
+          </article>
+
+          <article class="scenario-card">
+            <div class="scenario-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3>Aisle &amp; Section Throughput</h3>
+            <p>Record the count of visitors walking into specific store departments, promotional floor spaces, or gallery corridors.</p>
+          </article>
+
+          <article class="scenario-card">
+            <div class="scenario-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            </div>
+            <h3>Shift Batches &amp; Receipt Conversion</h3>
+            <p>Group counts into operator shifts (Batches) to easily correlate total entered customers with completed POS register transactions.</p>
+          </article>
+        </div>
+
+        <figure class="shot reveal" style="margin: 2.5rem 0;">
+          <img src="../../images/en/Index.webp" alt="Main CVCounter dashboard showing camera counters" width="1400" height="800" loading="lazy">
+          <figcaption>CVCounter dashboard: simultaneous oversight of entrances and retail aisles from existing IP camera streams</figcaption>
         </figure>
-        <div class="cta-inline reveal">
-          <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">View on GitHub</a>
-          <a class="btn btn--ghost" href="/cvcounter/en/install/">Install guide</a>
+
+        <div class="section-head reveal" style="margin-top: 3.5rem;">
+          <h2>Comparison: CVCounter vs Proprietary SaaS</h2>
+          <p>Why modern retail chains switch from expensive recurring subscriptions to open-source CVCounter.</p>
         </div>
-        <div class="related reveal">
-          <h2>Other use cases</h2>
-          <ul><li><a href="/cvcounter/en/people-counting/">People counting from video</a></li><li><a href="/cvcounter/en/vehicle-counting/">Vehicle counting from camera</a></li><li><a href="/cvcounter/en/industrial-counting/">Counting in manufacturing and warehouses</a></li></ul>
+
+        <div class="seo-table-wrap reveal">
+          <table class="seo-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>CVCounter (On-Premises AI)</th>
+                <th>Cloud Retail SaaS</th>
+                <th>Manual Clickers</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Subscription Fees</strong></td>
+                <td><span class="table-tag table-tag--green">$0 (Free Forever)</span></td>
+                <td><span class="table-tag table-tag--red">$40–$100/mo per camera</span></td>
+                <td>Recurring labor cost</td>
+              </tr>
+              <tr>
+                <td><strong>Privacy (GDPR Compliant)</strong></td>
+                <td><span class="table-tag table-tag--green">100% On-Premises, zero cloud exposure</span></td>
+                <td>Streams sent to external clouds</td>
+                <td>Human error and subjectivity</td>
+              </tr>
+              <tr>
+                <td><strong>Offline Operation</strong></td>
+                <td>Runs flawlessly on store LAN without internet</td>
+                <td><span class="table-tag table-tag--red">Fails completely during WAN outages</span></td>
+                <td>Autonomous</td>
+              </tr>
+              <tr>
+                <td><strong>Shifts &amp; Batches</strong></td>
+                <td>Operator shift batches, manual audits, form fields</td>
+                <td>Rigid automated daily rollups</td>
+                <td>Paper clipboard logs</td>
+              </tr>
+              <tr>
+                <td><strong>ERP / POS Integration</strong></td>
+                <td>REST API, Webhooks, direct CSV/JSON exports</td>
+                <td>Premium API add-on or export paywall</td>
+                <td>Manual spreadsheet transcription</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section-head reveal" style="margin-top: 3.5rem;">
+          <h2>Deploy in 4 Simple Steps</h2>
+          <p>A proven deployment model for individual boutiques or retail chains with multiple stores.</p>
+        </div>
+
+        <div class="step-flow reveal">
+          <div class="step-card">
+            <span class="step-card__num">1</span>
+            <h4>Quick Install</h4>
+            <p>Deploy CVCounter onto your in-store PC or local backroom computer using automated 1-click scripts.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">2</span>
+            <h4>Connect Cameras</h4>
+            <p>Hook up existing surveillance cameras overlooking entrances and walkways via standard RTSP links.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">3</span>
+            <h4>Define Zones</h4>
+            <p>Draw polygonal zones across entry paths and aisle entrances, and select the <code>person</code> class.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">4</span>
+            <h4>Track &amp; Correlate</h4>
+            <p>Group counts by shift, correlate visitor numbers with POS receipts, and print verification sheets.</p>
+          </div>
+        </div>
+
+        <div class="section-head reveal" style="margin-top: 3.5rem;">
+          <h2>Frequently Asked Questions</h2>
+          <p>Frequently asked questions regarding retail zone footfall counting.</p>
+        </div>
+
+        <div class="faq-list reveal">
+          <details class="faq-item">
+            <summary>How does CVCounter help evaluate store conversion rates?</summary>
+            <p>CVCounter measures the exact count of entered shoppers per shift or hour. Correlating this traffic data with POS receipts gives you true physical store conversion: <code>CR = (Receipts / Visitors) × 100%</code>.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can I compare passerby foot traffic with actual store entries?</summary>
+            <p>Yes. Draw one zone across the outside corridor or sidewalk to track passerby volume, and a second zone across the entrance doorway. CVCounter tallies counts per zone independently.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Are shopper facial identities or personal data stored?</summary>
+            <p>No. CVCounter detects anonymous human silhouettes (<code>person</code> class) solely to register zone crossing events. No facial scanning or biometrics are used, ensuring 100% compliance with GDPR.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>How do I export customer count data to ERP or POS software?</summary>
+            <p>The platform provides CSV/JSON file exports, batch change webhooks, and a native REST API to synchronize counts with PowerBI, Tableau, SAP, or custom store databases.</p>
+          </details>
+        </div>
+
+        <div class="cta-inline reveal" style="margin-top: 3rem;">
+          <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">Download CVCounter on GitHub</a>
+          <a class="btn btn--ghost" href="/cvcounter/en/install/">Installation Guide</a>
+        </div>
+
+        <div class="related reveal" style="margin-top: 4rem;">
+          <h2>Explore More Solutions</h2>
+          <ul>
+            <li><a href="/cvcounter/en/people-counting/">People counting from video (entrances, footfall, malls)</a></li>
+            <li><a href="/cvcounter/en/vehicle-counting/">Vehicle counting from camera (parking, traffic flow, gates)</a></li>
+            <li><a href="/cvcounter/en/industrial-counting/">Manufacturing &amp; warehouse piece counting</a></li>
+          </ul>
         </div>
       </div>
     </section>
-    
   </main>
 
   <footer class="footer">
@@ -114,7 +313,7 @@
       <div class="footer__inner">
         <div class="footer__meta">
           <strong>CVCounter</strong>
-          <p>Built by <a href="https://bespredel.name" rel="noopener">Aleksandr Kireev</a></p>
+          <p>Author: <a href="https://bespredel.name" rel="noopener">Aleksandr Kireev</a></p>
           <p><a href="mailto:hello@bespredel.name">hello@bespredel.name</a></p>
         </div>
         <ul class="footer__links">

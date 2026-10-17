@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Подсчёт транспорта с камеры — CVCounter</title>
-  <meta name="description" content="Подсчёт автомобилей и другого транспорта по видеопотоку: зоны на дороге, разбивка по классам, трекинг ByteTrack. Open-source компьютерное зрение: YOLO, ONNX, OpenVINO, TensorRT.">
+  <title>Подсчёт транспорта с камер и RTSP онлайн — CVCounter | Учёт дорожного трафика</title>
+  <meta name="description" content="Бесплатная open-source система подсчёта автомобилей, грузовиков и автобусов по видеокамерам и RTSP. Детекция проезда через зоны по полосам движения, разбивка по классам ТС, трекинг ByteTrack, учёт въезда и выезда. Поддержка YOLO, ONNX, TensorRT.">
+  <meta name="keywords" content="подсчет транспорта с камеры, видеоаналитика подсчет автомобилей, подсчет трафика на дороге, классификация транспорта yolo, счетчик машин rtsp, учет проезда транспорта">
   <meta name="theme-color" content="#0c0e12">
   <link rel="canonical" href="https://bespredel.github.io/cvcounter/podschet-transporta/">
   <link rel="alternate" hreflang="ru" href="https://bespredel.github.io/cvcounter/podschet-transporta/">
@@ -16,35 +17,83 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CVCounter">
   <meta property="og:locale" content="ru_RU">
-  <meta property="og:title" content="Подсчёт транспорта с камер — CVCounter">
-  <meta property="og:description" content="Подсчёт автомобилей и другого транспорта по видеопотоку: зоны на дороге, разбивка по классам, трекинг ByteTrack. Open-source компьютерное зрение: YOLO, ONNX, OpenVINO, TensorRT.">
+  <meta property="og:title" content="Подсчёт транспорта с камер и RTSP — CVCounter">
+  <meta property="og:description" content="Open-source видеоаналитика для подсчёта автотранспорта с камер: разбивка по классам (car, truck, bus), независимые зоны по полосам движения, трекинг ByteTrack без облака.">
   <meta property="og:url" content="https://bespredel.github.io/cvcounter/podschet-transporta/">
-  <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
+  <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/ru/CounterVideo.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Подсчёт транспорта с камер — CVCounter">
-  <meta name="twitter:description" content="Подсчёт автомобилей и другого транспорта по видеопотоку: зоны на дороге, разбивка по классам, трекинг ByteTrack. Open-source компьютерное зрение: YOLO, ONNX, OpenVINO, TensorRT.">
-  <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
+  <meta name="twitter:title" content="Подсчёт транспорта с камер и RTSP — CVCounter">
+  <meta name="twitter:description" content="Open-source видеоаналитика для подсчёта автотранспорта с камер: разбивка по классам (car, truck, bus), независимые зоны по полосам движения, трекинг ByteTrack без облака.">
+  <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/ru/CounterVideo.webp">
   <link rel="stylesheet" href="../css/styles.css">
+  
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Главная",
-      "item": "https://bespredel.github.io/cvcounter/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Подсчёт транспорта с камеры",
-      "item": "https://bespredel.github.io/cvcounter/podschet-transporta/"
-    }
-  ]
-}
-</script>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://bespredel.github.io/cvcounter/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Сценарии",
+        "item": "https://bespredel.github.io/cvcounter/scenarii/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Подсчёт транспорта с камеры",
+        "item": "https://bespredel.github.io/cvcounter/podschet-transporta/"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Какие типы транспортных средств умеет различать CVCounter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Стандартная модель поддерживает детекцию и подсчёт легковых автомобилей (car), грузовиков (truck), автобусов (bus) и мотоциклов (motorcycle). При необходимости в веб-модуле датасетов можно обучить модель под специфические типы техники."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Как работает подсчёт машин в системе?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Система оптически детектирует транспорт в кадре, отслеживает его перемещение трекером ByteTrack и инкрементирует счётчик при пересечении или входе объекта в нарисованную вами зону подсчёта."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Можно ли считать машины раздельно по каждой полосе движения?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да. В интерактивном редакторе CVCounter можно нарисовать независимые полигональные зоны под каждую полосу движения или створ ворот и получать раздельную статистику по каждой полосе."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Нужен ли интернет для работы счётчика на дороге или объекте?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Нет. CVCounter работает полностью локально на вашем сервере или промышленном ПК, обрабатывает видеопотоки внутри локальной сети и не требует облачных подключений."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <header class="nav">
@@ -56,7 +105,7 @@
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" data-nav-toggle aria-label="Меню">☰</button>
       <ul class="nav__links" id="nav-menu">
         <li><a href="/cvcounter/#features">Возможности</a></li>
-        <li><a href="/cvcounter/podschet-lyudey/">Сценарии</a></li>
+        <li><a href="/cvcounter/scenarii/">Сценарии</a></li>
         <li><a href="/cvcounter/ustanovka/">Установка</a></li>
         <li><a href="/cvcounter/faq/">FAQ</a></li>
       </ul>
@@ -71,42 +120,192 @@
   </header>
 
   <main>
-    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="https://bespredel.github.io/cvcounter/">Главная</a><span aria-hidden="true">/</span><span>Подсчёт транспорта с камеры</span></nav>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="https://bespredel.github.io/cvcounter/">Главная</a>
+      <span aria-hidden="true">/</span>
+      <a href="https://bespredel.github.io/cvcounter/scenarii/">Сценарии</a>
+      <span aria-hidden="true">/</span>
+      <span>Подсчёт транспорта с камеры</span>
+    </nav>
     
     <section class="page-hero">
       <div class="wrap reveal">
-        <h1>Подсчёт транспорта с камеры</h1>
-        <p class="page-hero__lead">Зоны на проезжей части, классы car / truck / bus и отчёты по партиям — в одной веб-панели.</p>
-        <div class="hero__cta">
+        <h1>Подсчёт транспорта и дорожного трафика с камер в реальном времени</h1>
+        <p class="page-hero__lead">Open-source компьютерное зрение для оптического подсчёта автомобилей, грузовиков и автобусов, проходящих через зоны на дорогах, перекрёстках, въездах и выездах. Трекинг объектов с помощью ByteTrack, разделение по полосам и классам ТС без облачных подписок.</p>
+        
+        <div class="spec-chips">
+          <span class="spec-chip spec-chip--accent">🚗 Car / Truck / Bus / Moto</span>
+          <span class="spec-chip">⚡ Зоны по полосам (Multi-Lane)</span>
+          <span class="spec-chip">📹 Любые RTSP / IP-камеры</span>
+          <span class="spec-chip">🔒 100% Локальный контур данных</span>
+          <span class="spec-chip">🚀 NVIDIA TensorRT / OpenVINO</span>
+        </div>
+
+        <div class="hero__cta" style="margin-top:2rem">
           <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">Открыть на GitHub</a>
-          <a class="btn btn--ghost" href="/cvcounter/ustanovka/">Установка</a>
+          <a class="btn btn--ghost" href="/cvcounter/ustanovka/">Быстрый старт (1 клик)</a>
         </div>
       </div>
     </section>
+
     <section>
       <div class="wrap">
-        <div class="prose reveal">
-          <h2>Задача</h2>
-          <p>Нужна аналитика потока на перекрёстке, КПП или парковке. Скрипт «на коленке» быстро обрастает UI, зонами и отчётами.</p>
-          <h2>Как решает CVCounter</h2>
-          <p>Несколько зон на одном кадре, разбивка количества по классам детекции, превью с наложением зон. Подходят RTSP-камеры и файлы. Бэкенды — YOLO, ONNX Runtime, OpenVINO, TensorRT или OpenCV DNN.</p>
-          
+        <div class="section-head reveal">
+          <h2>Сценарии применения подсчёта транспорта</h2>
+          <p>Гибкие полигональные зоны позволяют фиксировать проезд транспорта в любых точках обзора камеры.</p>
         </div>
-        <figure class="shot reveal" style="margin-top:2rem">
-          <img src="../images/ru/CounterVideo.webp" alt="Видеовид CVCounter с зонами подсчёта на дороге и счётчиком автомобилей" width="1400" height="800" loading="lazy">
-          <figcaption>Зоны подсчёта на кадре и итог по классу car</figcaption>
+
+        <div class="scenario-grid reveal">
+          <article class="scenario-card">
+            <div class="scenario-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C2.1 10.7 2 10.8 2 11v5c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
+            </div>
+            <h3>Интенсивность движения по полосам</h3>
+            <p>Фиксация количества проехавших транспортных средств раздельно по каждой полосе шоссе или улицы. Оценка суточной загруженности направлений.</p>
+          </article>
+
+          <article class="scenario-card">
+            <div class="scenario-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <h3>Учёт проезда через въезды и КПП</h3>
+            <p>Оптический подсчёт количества легковых авто и грузовиков, проехавших через створ ворот предприятия или логистического центра за смену (партию).</p>
+          </article>
+
+          <article class="scenario-card">
+            <div class="scenario-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
+            </div>
+            <h3>Въезд и выезд на парковку</h3>
+            <p>Двунаправленный учёт общего трафика: сколько автомобилей заехало на территорию стоянки через зону въезда и сколько выехало через зону выезда.</p>
+          </article>
+        </div>
+
+        <figure class="shot reveal" style="margin: 2.5rem 0;">
+          <img src="../images/ru/CounterVideo.webp" alt="Видеовид CVCounter с полигональными зонами подсчёта на дороге и классификацией ТС" width="1400" height="800" loading="lazy">
+          <figcaption>Интерфейс CVCounter: полигональные зоны на полосах движения с автоматической разбивкой по классам (car, truck, bus)</figcaption>
         </figure>
-        <div class="cta-inline reveal">
-          <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">Открыть на GitHub</a>
-          <a class="btn btn--ghost" href="/cvcounter/ustanovka/">Установка</a>
+
+        <div class="section-head reveal" style="margin-top: 3.5rem;">
+          <h2>Сравнение: CVCounter против традиционных решений</h2>
+          <p>Преимущества оптического нейросетевого учёта перед встраиваемыми дорожными датчиками.</p>
         </div>
-        <div class="related reveal">
-          <h2>Другие сценарии</h2>
-          <ul><li><a href="/cvcounter/podschet-lyudey/">Подсчёт людей по видео</a></li><li><a href="/cvcounter/ritail-analitika/">Ритейл-аналитика с камеры</a></li><li><a href="/cvcounter/promyshlennost/">Подсчёт на производстве и складе</a></li></ul>
+
+        <div class="seo-table-wrap reveal">
+          <table class="seo-table">
+            <thead>
+              <tr>
+                <th>Характеристика</th>
+                <th>CVCounter (Vision AI)</th>
+                <th>Индукционные петли в асфальте</th>
+                <th>Облачные сервисы видеоаналитики</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Монтаж и внедрение</strong></td>
+                <td><span class="table-tag table-tag--green">Без вскрытия дорожного полотна</span></td>
+                <td><span class="table-tag table-tag--red">Штробление асфальта, перекрытие полос</span></td>
+                <td>Установка камер вендора</td>
+              </tr>
+              <tr>
+                <td><strong>Классификация типов ТС</strong></td>
+                <td><span class="table-tag table-tag--green">Авто (легковые, грузовики, автобусы, мото)</span></td>
+                <td>Только примерная длина/оси</td>
+                <td>Ограниченно тарифным планом</td>
+              </tr>
+              <tr>
+                <td><strong>Приватность и безопасность</strong></td>
+                <td><span class="table-tag table-tag--green">100% On-Premise, локальный контур</span></td>
+                <td>Локально</td>
+                <td><span class="table-tag table-tag--red">Видеопоток передаётся в сторонний ЦОД</span></td>
+              </tr>
+              <tr>
+                <td><strong>Адаптация под изменения</strong></td>
+                <td>Перемещение зон за 1 минуту в веб-UI</td>
+                <td>Требует повторных дорожных работ</td>
+                <td>Запрос через техподдержку</td>
+              </tr>
+              <tr>
+                <td><strong>Стоимость и лицензия</strong></td>
+                <td><span class="table-tag table-tag--green">Open Source (AGPL-3.0), бесплатно</span></td>
+                <td>От 200 000 ₽ за полосу</td>
+                <td>Ежемесячные лицензии за каждый поток</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section-head reveal" style="margin-top: 3.5rem;">
+          <h2>Пошаговый процесс запуска</h2>
+          <p>От подключения обзорной камеры до получения первой статистики движения.</p>
+        </div>
+
+        <div class="step-flow reveal">
+          <div class="step-card">
+            <span class="step-card__num">1</span>
+            <h4>Монтаж камеры</h4>
+            <p>Установите IP-камеру на опору освещения, козырёк или фасад здания под углом 30°–60° к направлению движения.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">2</span>
+            <h4>Подключение RTSP</h4>
+            <p>Добавьте RTSP-ссылку потока в веб-интерфейсе CVCounter. Поддерживаются кодеки H.264 и H.265.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">3</span>
+            <h4>Зоны подсчёта</h4>
+            <p>Очертите полигоны полос движения или створа въезда, выберите нужные классы (<code>car</code>, <code>truck</code>, <code>bus</code>) и порог уверенности.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">4</span>
+            <h4>Сбор статистики</h4>
+            <p>Отслеживайте число проехавших машин в реальном времени, ведите партии и сохраняйте сводки в CSV/JSON или печатный A4.</p>
+          </div>
+        </div>
+
+        <div class="section-head reveal" style="margin-top: 3.5rem;">
+          <h2>Часто задаваемые вопросы</h2>
+          <p>Технические подробности оптического учёта транспорта.</p>
+        </div>
+
+        <div class="faq-list reveal">
+          <details class="faq-item">
+            <summary>Какие типы транспортных средств умеет различать CVCounter?</summary>
+            <p>Стандартная предобученная модель COCO поддерживает классы <code>car</code> (легковые автомобили), <code>truck</code> (грузовики), <code>bus</code> (автобусы) и <code>motorcycle</code> (мотоциклы). Во встроенном модуле разметки можно дообучить модель под специализированную технику при необходимости.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Как работает подсчёт машин в системе?</summary>
+            <p>Система оптически детектирует транспортные средства в кадре с помощью нейросетей YOLO/ONNX, присваивает каждому автомобилю стабильный ID алгоритмом <strong>ByteTrack</strong> и фиксирует проход при пересечении заданной полигональной зоны подсчёта. Это исключает повторный учёт стоящих в зоне или медленно едущих машин.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Работает ли подсчёт ночью, в дождь или при плохой погоде?</summary>
+            <p>Да. Нейросети YOLO и трекер ByteTrack обучены на разнообразных погодных условиях и устойчивы к дождю, снегу и бликам фар. В условиях плохой освещенности рекомендуется использовать камеры с хорошей светочувствительностью (Low-Light) или уличное освещение.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Можно ли считать машины раздельно по каждой полосе движения?</summary>
+            <p>Да. В графическом веб-редакторе CVCounter вы можете нарисовать произвольное количество независимых полигональных зон — например, для каждой полосы движения или для въезда и выезда. Каждый счётчик накапливает собственную статистику.</p>
+          </details>
+        </div>
+
+        <div class="cta-inline reveal" style="margin-top: 3rem;">
+          <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">Скачать CVCounter на GitHub</a>
+          <a class="btn btn--ghost" href="/cvcounter/ustanovka/">Инструкция по установке</a>
+        </div>
+
+        <div class="related reveal" style="margin-top: 4rem;">
+          <h2>Другие сценарии применения</h2>
+          <ul>
+            <li><a href="/cvcounter/podschet-lyudey/">Подсчёт людей и посетителей по видео (ритейл, ТЦ, проходные)</a></li>
+            <li><a href="/cvcounter/ritail-analitika/">Ритейл-аналитика и зоны внимания покупателей</a></li>
+            <li><a href="/cvcounter/promyshlennost/">Подсчёт продукции на производстве и складе</a></li>
+          </ul>
         </div>
       </div>
     </section>
-    
   </main>
 
   <footer class="footer">

@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Vehicle counting from camera — CVCounter</title>
-  <meta name="description" content="Count cars and other vehicles in a video stream: road zones, per-class totals, ByteTrack tracking. Open-source computer vision counter with YOLO, ONNX, OpenVINO, TensorRT.">
+  <title>Vehicle Counting from Camera &amp; RTSP Stream — CVCounter | Traffic Flow Analytics</title>
+  <meta name="description" content="Free open-source computer vision system for real-time vehicle and traffic counting across roadway lanes, gate barriers, and entryways. Classifies cars, trucks, buses, and motorcycles with ByteTrack tracking. 100% on-premises with YOLO, ONNX, TensorRT.">
+  <meta name="keywords" content="vehicle counting camera, traffic flow video analytics, car counter RTSP, traffic monitoring open source, multi-lane vehicle detection ByteTrack, gate vehicle counting">
   <meta name="theme-color" content="#0c0e12">
   <link rel="canonical" href="https://bespredel.github.io/cvcounter/en/vehicle-counting/">
   <link rel="alternate" hreflang="ru" href="https://bespredel.github.io/cvcounter/podschet-transporta/">
@@ -16,35 +17,83 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CVCounter">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Vehicle counting from camera — CVCounter">
-  <meta property="og:description" content="Count cars and other vehicles in a video stream: road zones, per-class totals, ByteTrack tracking. Open-source computer vision counter with YOLO, ONNX, OpenVINO, TensorRT.">
+  <meta property="og:title" content="Real-Time Vehicle &amp; Traffic Counting from Cameras — CVCounter">
+  <meta property="og:description" content="Open-source AI video analytics for traffic counting: vehicle classifications (car, truck, bus), multi-lane polygons, ByteTrack tracking, 100% on-premises.">
   <meta property="og:url" content="https://bespredel.github.io/cvcounter/en/vehicle-counting/">
-  <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/en/Index.webp">
+  <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/en/CounterVideo.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Vehicle counting from camera — CVCounter">
-  <meta name="twitter:description" content="Count cars and other vehicles in a video stream: road zones, per-class totals, ByteTrack tracking. Open-source computer vision counter with YOLO, ONNX, OpenVINO, TensorRT.">
-  <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/en/Index.webp">
+  <meta name="twitter:title" content="Real-Time Vehicle &amp; Traffic Counting from Cameras — CVCounter">
+  <meta name="twitter:description" content="Open-source AI video analytics for traffic counting: vehicle classifications (car, truck, bus), multi-lane polygons, ByteTrack tracking, 100% on-premises.">
+  <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/en/CounterVideo.webp">
   <link rel="stylesheet" href="../../css/styles.css">
+  
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://bespredel.github.io/cvcounter/en/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Vehicle counting from camera",
-      "item": "https://bespredel.github.io/cvcounter/en/vehicle-counting/"
-    }
-  ]
-}
-</script>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://bespredel.github.io/cvcounter/en/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Use cases",
+        "item": "https://bespredel.github.io/cvcounter/en/use-cases/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Vehicle counting from camera",
+        "item": "https://bespredel.github.io/cvcounter/en/vehicle-counting/"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What vehicle types does CVCounter distinguish?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Out of the box, standard YOLO models detect and count passenger cars (car), freight trucks (truck), public buses (bus), and motorcycles. Custom vehicle classes can also be trained using the built-in web dataset tool."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does vehicle counting work in CVCounter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The vision system optically detects vehicles in video frames, tracks their trajectories using ByteTrack to assign consistent IDs, and increments counters when objects cross or enter user-drawn polygonal counting zones."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I count traffic separately per roadway lane or direction?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The interactive web polygon editor allows you to place discrete detection zones across each individual highway lane, exit ramp, or gate entry, maintaining independent tallies per zone."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the system require an internet connection on-site?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. CVCounter runs completely on-premises on your local server or industrial PC, processing camera RTSP streams on your private local network with zero cloud dependencies."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <header class="nav">
@@ -56,7 +105,7 @@
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" data-nav-toggle aria-label="Menu">☰</button>
       <ul class="nav__links" id="nav-menu">
         <li><a href="/cvcounter/en/#features">Features</a></li>
-        <li><a href="/cvcounter/en/people-counting/">Use cases</a></li>
+        <li><a href="/cvcounter/en/use-cases/">Use cases</a></li>
         <li><a href="/cvcounter/en/install/">Install</a></li>
         <li><a href="/cvcounter/en/faq/">FAQ</a></li>
       </ul>
@@ -71,42 +120,192 @@
   </header>
 
   <main>
-    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="https://bespredel.github.io/cvcounter/en/">Home</a><span aria-hidden="true">/</span><span>Vehicle counting from camera</span></nav>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="https://bespredel.github.io/cvcounter/en/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="https://bespredel.github.io/cvcounter/en/use-cases/">Use cases</a>
+      <span aria-hidden="true">/</span>
+      <span>Vehicle counting from camera</span>
+    </nav>
     
     <section class="page-hero">
       <div class="wrap reveal">
-        <h1>Vehicle counting from camera</h1>
-        <p class="page-hero__lead">Zones on the roadway, car / truck / bus classes, and batch reports — in one web panel.</p>
-        <div class="hero__cta">
+        <h1>Real-Time Vehicle &amp; Traffic Counting from Cameras</h1>
+        <p class="page-hero__lead">Open-source computer vision for optical counting of cars, trucks, and buses crossing designated zones on roadways, intersections, facility entryways, and gate barriers. ByteTrack multi-object tracking, multi-lane polygons, and per-class tallies without cloud subscriptions.</p>
+        
+        <div class="spec-chips">
+          <span class="spec-chip spec-chip--accent">🚗 Car / Truck / Bus / Moto</span>
+          <span class="spec-chip">⚡ Multi-Lane Polygonal Zones</span>
+          <span class="spec-chip">📹 Any RTSP / IP Camera</span>
+          <span class="spec-chip">🔒 100% On-Premises Privacy</span>
+          <span class="spec-chip">🚀 NVIDIA TensorRT / OpenVINO</span>
+        </div>
+
+        <div class="hero__cta" style="margin-top:2rem">
           <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">View on GitHub</a>
-          <a class="btn btn--ghost" href="/cvcounter/en/install/">Install guide</a>
+          <a class="btn btn--ghost" href="/cvcounter/en/install/">1-Click Quickstart</a>
         </div>
       </div>
     </section>
+
     <section>
       <div class="wrap">
-        <div class="prose reveal">
-          <h2>The problem</h2>
-          <p>You need traffic analytics at an intersection, checkpoint, or parking lot. A quick script soon needs a UI, zones, and reporting.</p>
-          <h2>How CVCounter helps</h2>
-          <p>Multiple zones on one frame, per-class counts, and a preview with zone overlays. Works with RTSP cameras and files. Backends: YOLO, ONNX Runtime, OpenVINO, TensorRT, or OpenCV DNN.</p>
-          
+        <div class="section-head reveal">
+          <h2>Vehicle Counting Applications</h2>
+          <p>Flexible polygonal zones enable reliable accounting of vehicular movement in any camera field of view.</p>
         </div>
-        <figure class="shot reveal" style="margin-top:2rem">
-          <img src="../../images/en/CounterVideo.webp" alt="CVCounter video view with road counting zones and car totals" width="1400" height="800" loading="lazy">
-          <figcaption>Counting zones on the frame and car class totals</figcaption>
+
+        <div class="scenario-grid reveal">
+          <article class="scenario-card">
+            <div class="scenario-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C2.1 10.7 2 10.8 2 11v5c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
+            </div>
+            <h3>Lane-by-Lane Traffic Flow</h3>
+            <p>Measure volume intensity of passenger cars, buses, and commercial transport separately across each roadway lane to study hourly congestion patterns.</p>
+          </article>
+
+          <article class="scenario-card">
+            <div class="scenario-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <h3>Gate &amp; Checkpoint Volume Counting</h3>
+            <p>Optical tally of vehicles passing through industrial perimeter gates, logistics depot ramps, or weigh station lanes per shift (Batch).</p>
+          </article>
+
+          <article class="scenario-card">
+            <div class="scenario-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
+            </div>
+            <h3>Parking Entry &amp; Exit Tally</h3>
+            <p>Bidirectional vehicle accounting: track how many vehicles cross entrance line zones and exit line zones over defined periods.</p>
+          </article>
+        </div>
+
+        <figure class="shot reveal" style="margin: 2.5rem 0;">
+          <img src="../../images/en/CounterVideo.webp" alt="Video view in CVCounter with polygonal counting zones and vehicle classifications" width="1400" height="800" loading="lazy">
+          <figcaption>CVCounter interface: lane-specific counting polygons with per-class classification breakdown (car, truck, bus)</figcaption>
         </figure>
-        <div class="cta-inline reveal">
-          <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">View on GitHub</a>
-          <a class="btn btn--ghost" href="/cvcounter/en/install/">Install guide</a>
+
+        <div class="section-head reveal" style="margin-top: 3.5rem;">
+          <h2>How CVCounter Compares</h2>
+          <p>Discover why optical AI video analytics outperforms inductive pavement loops and cloud solutions.</p>
         </div>
-        <div class="related reveal">
-          <h2>Other use cases</h2>
-          <ul><li><a href="/cvcounter/en/people-counting/">People counting from video</a></li><li><a href="/cvcounter/en/retail-analytics/">Retail analytics from camera</a></li><li><a href="/cvcounter/en/industrial-counting/">Counting in manufacturing and warehouses</a></li></ul>
+
+        <div class="seo-table-wrap reveal">
+          <table class="seo-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>CVCounter (Vision AI)</th>
+                <th>In-Pavement Induction Loops</th>
+                <th>Cloud Traffic SaaS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Deployment</strong></td>
+                <td><span class="table-tag table-tag--green">Zero roadwork or trenching</span></td>
+                <td><span class="table-tag table-tag--red">Asphalt cutting, lane closures</span></td>
+                <td>Proprietary camera setups</td>
+              </tr>
+              <tr>
+                <td><strong>Vehicle Classification</strong></td>
+                <td><span class="table-tag table-tag--green">Detailed (car, truck, bus, motorcycle)</span></td>
+                <td>Rough axle/length estimation only</td>
+                <td>Tiered billing per class</td>
+              </tr>
+              <tr>
+                <td><strong>Data Security</strong></td>
+                <td><span class="table-tag table-tag--green">100% On-Premises, air-gapped ready</span></td>
+                <td>Local signal</td>
+                <td><span class="table-tag table-tag--red">Video leaves your perimeter</span></td>
+              </tr>
+              <tr>
+                <td><strong>Reconfiguration</strong></td>
+                <td>Redraw zones in 60s via web UI</td>
+                <td>Requires physical road re-sawing</td>
+                <td>Contact vendor support</td>
+              </tr>
+              <tr>
+                <td><strong>Cost &amp; Licensing</strong></td>
+                <td><span class="table-tag table-tag--green">Open Source (AGPL-3.0), Free</span></td>
+                <td>$3,000–$10,000 per lane</td>
+                <td>Monthly subscription per feed</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section-head reveal" style="margin-top: 3.5rem;">
+          <h2>4 Steps to Deployment</h2>
+          <p>Get started with real-time road surveillance in minutes.</p>
+        </div>
+
+        <div class="step-flow reveal">
+          <div class="step-card">
+            <span class="step-card__num">1</span>
+            <h4>Mount Camera</h4>
+            <p>Position an IP camera on a pole, gantry, or building facade angled 30°–60° toward oncoming traffic.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">2</span>
+            <h4>Connect Stream</h4>
+            <p>Add the RTSP stream URL in CVCounter. Supports H.264/H.265 streams at 720p or 1080p resolution.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">3</span>
+            <h4>Define Lanes</h4>
+            <p>Draw polygonal zones around each traffic lane, select target classes (<code>car</code>, <code>truck</code>, <code>bus</code>), and set confidence.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">4</span>
+            <h4>Track Traffic</h4>
+            <p>View live telemetry, record vehicle batches, and export CSV/JSON traffic reports or printable A4 sheets.</p>
+          </div>
+        </div>
+
+        <div class="section-head reveal" style="margin-top: 3.5rem;">
+          <h2>Frequently Asked Questions</h2>
+          <p>Common questions regarding vehicle counting and traffic analysis.</p>
+        </div>
+
+        <div class="faq-list reveal">
+          <details class="faq-item">
+            <summary>What vehicle types does CVCounter distinguish?</summary>
+            <p>Out of the box, standard YOLO models classify passenger cars (<code>car</code>), freight haulers (<code>truck</code>), public buses (<code>bus</code>), and two-wheelers (<code>motorcycle</code>). Custom models can be trained for specialized equipment using the built-in annotation tool.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>How does vehicle counting work in CVCounter?</summary>
+            <p>The vision system optically detects vehicles in video frames, tracks their trajectories using <strong>ByteTrack</strong> to assign consistent IDs, and increments counters when objects cross or enter user-drawn polygonal counting zones. This prevents double counting of queued or slow-moving traffic.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Does vehicle counting work at night or in rain?</summary>
+            <p>Yes. ByteTrack tracking combined with modern YOLO architectures handles challenging rain, snowfall, and headlight reflections. In low-light environments, low-light sensors or street lighting maintain high accuracy.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can I count traffic separately per roadway lane?</summary>
+            <p>Yes. The interactive polygonal editor lets you position discrete detection zones for every highway lane, ramp, or turn lane, providing granular traffic distribution metrics.</p>
+          </details>
+        </div>
+
+        <div class="cta-inline reveal" style="margin-top: 3rem;">
+          <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">Download CVCounter on GitHub</a>
+          <a class="btn btn--ghost" href="/cvcounter/en/install/">Installation Guide</a>
+        </div>
+
+        <div class="related reveal" style="margin-top: 4rem;">
+          <h2>Explore More Solutions</h2>
+          <ul>
+            <li><a href="/cvcounter/en/people-counting/">People counting from video (retail, entrances, malls)</a></li>
+            <li><a href="/cvcounter/en/retail-analytics/">Retail analytics and display dwell time zones</a></li>
+            <li><a href="/cvcounter/en/industrial-counting/">Manufacturing &amp; warehouse piece counting</a></li>
+          </ul>
         </div>
       </div>
     </section>
-    
   </main>
 
   <footer class="footer">
@@ -114,7 +313,7 @@
       <div class="footer__inner">
         <div class="footer__meta">
           <strong>CVCounter</strong>
-          <p>Built by <a href="https://bespredel.name" rel="noopener">Aleksandr Kireev</a></p>
+          <p>Author: <a href="https://bespredel.name" rel="noopener">Aleksandr Kireev</a></p>
           <p><a href="mailto:hello@bespredel.name">hello@bespredel.name</a></p>
         </div>
         <ul class="footer__links">

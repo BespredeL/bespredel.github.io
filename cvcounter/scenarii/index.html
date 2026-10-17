@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Сценарии применения CVCounter — Компьютерное зрение и подсчёт объектов</title>
+  <meta name="description" content="Каталог отраслевых сценариев применения open-source системы CVCounter: подсчёт людей в ритейле, учёт транспорта по полосам, контроль изделий на конвейере и сменная аналитика. Поддержка YOLO, ONNX, OpenVINO, TensorRT.">
+  <meta name="keywords" content="сценарии видеоаналитики, подсчет объектов видеокамера, учет людей и транспорта, компьютерное зрение сценарии, подсчет на конвейере, open source video analytics">
+  <meta name="theme-color" content="#0c0e12">
+  <link rel="canonical" href="https://bespredel.github.io/cvcounter/scenarii/">
+  <link rel="alternate" hreflang="ru" href="https://bespredel.github.io/cvcounter/scenarii/">
+  <link rel="alternate" hreflang="en" href="https://bespredel.github.io/cvcounter/en/use-cases/">
+  <link rel="alternate" hreflang="x-default" href="https://bespredel.github.io/cvcounter/scenarii/">
+  <link rel="icon" href="../icons/favicon.ico" sizes="any">
+  <link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CVCounter">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Сценарии применения CVCounter — Видеоаналитика и подсчёт объектов">
+  <meta property="og:description" content="Каталог готовых сценариев компьютерного зрения: подсчёт людей, автотранспорта, продукции на конвейере и учёт покупательского трафика.">
+  <meta property="og:url" content="https://bespredel.github.io/cvcounter/scenarii/">
+  <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Сценарии применения CVCounter — Видеоаналитика и подсчёт объектов">
+  <meta name="twitter:description" content="Каталог готовых сценариев компьютерного зрения: подсчёт людей, автотранспорта, продукции на конвейере и учёт покупательского трафика.">
+  <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
+  <link rel="stylesheet" href="../css/styles.css">
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://bespredel.github.io/cvcounter/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Сценарии",
+        "item": "https://bespredel.github.io/cvcounter/scenarii/"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Можно ли совмещать разные сценарии на одном сервере CVCounter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да. CVCounter позволяет подключать несколько различных камер и видеопотоков одновременно. Для каждой камеры задаются собственные зоны детекции, нужные классы объектов (например, для первой камеры — car/truck на въезде, для второй — person у входа) и независимые счётчики."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Как CVCounter обеспечивает точность при пересечении зон?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Система использует трекер ByteTrack, который присваивает объекту постоянный ID и отслеживает его траекторию между кадрами. Счётчик срабатывает только при пересечении заданной зоны, исключая повторный подсчёт стоящих или перемещающихся внутри зоны объектов."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Требуется ли доступ в интернет для работы сценариев?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Нет. Все сценарии CVCounter работают полностью локально (On-Premise / Air-Gapped) на вашем сервере или компьютере. Видеопоток не отправляется во внешние облачные сервисы."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Можно ли обучить систему под свои уникальные объекты?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да. В веб-интерфейс CVCounter встроен полноценный модуль датасетов: захват кадров с видеопотока, разметка боксов в браузере, обучение моделей YOLO в один клик и экспорт в ONNX или TensorRT."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="/cvcounter/">
+        <img src="../icons/favicon.svg" width="32" height="32" alt="">
+        CVCounter
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" data-nav-toggle aria-label="Меню">☰</button>
+      <ul class="nav__links" id="nav-menu">
+        <li><a href="/cvcounter/#features">Возможности</a></li>
+        <li><a href="/cvcounter/scenarii/" class="is-active">Сценарии</a></li>
+        <li><a href="/cvcounter/ustanovka/">Установка</a></li>
+        <li><a href="/cvcounter/faq/">FAQ</a></li>
+      </ul>
+      <div class="nav__actions">
+        <div class="lang" role="group" aria-label="Language">
+          <a href="/cvcounter/scenarii/" class="lang__link is-active" hreflang="ru">RU</a>
+          <a href="/cvcounter/en/use-cases/" class="lang__link" hreflang="en">EN</a>
+        </div>
+        <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="https://bespredel.github.io/cvcounter/">Главная</a>
+      <span aria-hidden="true">/</span>
+      <span>Сценарии применения</span>
+    </nav>
+    
+    <section class="page-hero">
+      <div class="wrap reveal">
+        <h1>Сценарии применения CVCounter</h1>
+        <p class="page-hero__lead">Каталог отраслевых решений оптического подсчёта объектов с видеокамер и RTSP-потоков. Готовые конфигурации для розничных сетей, дорожной инфраструктуры, логистических центров и производственных линий.</p>
+        
+        <div class="spec-chips">
+          <span class="spec-chip spec-chip--accent">👥 Подсчёт людей</span>
+          <span class="spec-chip">🚗 Транспорт и дороги</span>
+          <span class="spec-chip">🛍️ Ритейл-аналитика</span>
+          <span class="spec-chip">🏭 Производство и склад</span>
+          <span class="spec-chip">🔒 100% On-Premise</span>
+        </div>
+
+        <div class="hero__cta" style="margin-top:2rem">
+          <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">Открыть на GitHub</a>
+          <a class="btn btn--ghost" href="/cvcounter/ustanovka/">Быстрый старт (1 клик)</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>Выберите отраслевой сценарий</h2>
+          <p>Подробное описание задач, архитектуры развёртывания, сравнительных таблиц и пошаговой настройки для каждого сценария.</p>
+        </div>
+
+        <div class="scenario-grid reveal" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+          <article class="scenario-card glow-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <span class="audience-card__badge">Ритейл &amp; ТЦ</span>
+              <h3 style="font-size:1.4rem; margin: 0.5rem 0 0.75rem;">
+                <a href="/cvcounter/podschet-lyudey/" style="color:inherit; text-decoration:none;">Подсчёт людей и посетителей</a>
+              </h3>
+              <p style="margin-bottom:1rem; color:var(--ink-muted); line-height:1.6;">
+                Оптический учёт входящих и выходящих посетителей магазинов, торговых комплексов, холлов и коридоров через независимые полигональные зоны.
+              </p>
+              <ul class="audience-card__list" style="margin-bottom:1.5rem;">
+                <li>Двунаправленный учёт (отдельные зоны для входа и выхода)</li>
+                <li>Трекинг ByteTrack исключает дублирование при перекрытиях</li>
+                <li>Работает на 100% локально на вашем ПК (152-ФЗ / GDPR)</li>
+                <li>Вывод цифр на ТВ-мониторы в полноэкранном киоск-режиме</li>
+              </ul>
+            </div>
+            <div>
+              <a class="btn btn--primary" href="/cvcounter/podschet-lyudey/" style="width:100%; justify-content:center;">Смотреть сценарий «Подсчёт людей» →</a>
+            </div>
+          </article>
+
+          <article class="scenario-card glow-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <span class="audience-card__badge">Транспорт &amp; Дороги</span>
+              <h3 style="font-size:1.4rem; margin: 0.5rem 0 0.75rem;">
+                <a href="/cvcounter/podschet-transporta/" style="color:inherit; text-decoration:none;">Подсчёт транспорта с камеры</a>
+              </h3>
+              <p style="margin-bottom:1rem; color:var(--ink-muted); line-height:1.6;">
+                Учёт интенсивности движения автотранспорта по полосам шоссе, проезда через въезды/выезды КПП предприятий и въездные группы парковок.
+              </p>
+              <ul class="audience-card__list" style="margin-bottom:1.5rem;">
+                <li>Классификация по типам: car, truck, bus, motorcycle</li>
+                <li>Независимые полигоны детекции по полосам движения</li>
+                <li>Фиксация проезда через створ въезда/выезда за смену</li>
+                <li>Устойчивость к ночному освещению, осадкам и фарам</li>
+              </ul>
+            </div>
+            <div>
+              <a class="btn btn--primary" href="/cvcounter/podschet-transporta/" style="width:100%; justify-content:center;">Смотреть сценарий «Подсчёт транспорта» →</a>
+            </div>
+          </article>
+
+          <article class="scenario-card glow-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <span class="audience-card__badge">Торговля &amp; Магазины</span>
+              <h3 style="font-size:1.4rem; margin: 0.5rem 0 0.75rem;">
+                <a href="/cvcounter/ritail-analitika/" style="color:inherit; text-decoration:none;">Ритейл-аналитика с камеры</a>
+              </h3>
+              <p style="margin-bottom:1rem; color:var(--ink-muted); line-height:1.6;">
+                Оценка пропускной способности витрин и залов: подсчёт прохожих мимо витрины и вошедших покупателей, сопоставление трафика с кассовыми чеками.
+              </p>
+              <ul class="audience-card__list" style="margin-bottom:1.5rem;">
+                <li>Две зоны: проходящий внешний трафик и вошедшие покупатели</li>
+                <li>Сменные партии (Batches) для сопоставления с числом чеков</li>
+                <li>Печать актов A4 и автоматический экспорт в CSV / JSON</li>
+                <li>Полная анонимность без распознавания лиц и биометрии</li>
+              </ul>
+            </div>
+            <div>
+              <a class="btn btn--primary" href="/cvcounter/ritail-analitika/" style="width:100%; justify-content:center;">Смотреть сценарий «Ритейл-аналитика» →</a>
+            </div>
+          </article>
+
+          <article class="scenario-card glow-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <span class="audience-card__badge">Заводы &amp; Склады</span>
+              <h3 style="font-size:1.4rem; margin: 0.5rem 0 0.75rem;">
+                <a href="/cvcounter/promyshlennost/" style="color:inherit; text-decoration:none;">Производство и склад</a>
+              </h3>
+              <p style="margin-bottom:1rem; color:var(--ink-muted); line-height:1.6;">
+                Штучный учёт готовой продукции на конвейерной ленте, контроль перемещения коробов, паллет и тары в зоне погрузочной рампы.
+              </p>
+              <ul class="audience-card__list" style="margin-bottom:1.5rem;">
+                <li>Непрерывный оптический счёт изделий на движущейся ленте</li>
+                <li>Учёт погрузки и разгрузки коробок через зону рампы</li>
+                <li>Встроенная разметка датасетов и дообучение моделей под детали</li>
+                <li>Контрастный киоск-режим для монитора оператора у станка</li>
+              </ul>
+            </div>
+            <div>
+              <a class="btn btn--primary" href="/cvcounter/promyshlennost/" style="width:100%; justify-content:center;">Смотреть сценарий «Производство и склад» →</a>
+            </div>
+          </article>
+        </div>
+
+        <figure class="shot reveal" style="margin: 3.5rem 0 2.5rem;">
+          <img src="../images/ru/Index.webp" alt="Главная панель CVCounter с обзором счетчиков и камер" width="1400" height="800" loading="lazy">
+          <figcaption>Единая веб-панель CVCounter: управление несколькими камерами и счётчиками в реальном времени</figcaption>
+        </figure>
+
+        <div class="section-head reveal" style="margin-top: 3.5rem;">
+          <h2>Как настраивается любой сценарий</h2>
+          <p>Универсальный и простой пайплайн работы с любыми источниками видеосигнала.</p>
+        </div>
+
+        <div class="step-flow reveal">
+          <div class="step-card">
+            <span class="step-card__num">1</span>
+            <h4>Подключение видео</h4>
+            <p>Укажите RTSP-ссылку IP-камеры, подключите USB веб-камеру или загрузите тестовый видеофайл.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">2</span>
+            <h4>Выбор модели</h4>
+            <p>Выберите предобученную модель YOLO / ONNX или примените собственные веса, обученные в веб-UI.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">3</span>
+            <h4>Разметка зон</h4>
+            <p>Нарисуйте контрольные полигоны поверх кадра прямо в браузере и выберите целевые классы объектов.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__num">4</span>
+            <h4>Итоги и отчёты</h4>
+            <p>Открывайте партии («New Batch»), выводите киоск на монитор и сохраняйте готовые A4 отчёты.</p>
+          </div>
+        </div>
+
+        <div class="section-head reveal" style="margin-top: 3.5rem;">
+          <h2>Часто задаваемые вопросы</h2>
+          <p>Ответы по интеграции и выбору сценариев.</p>
+        </div>
+
+        <div class="faq-list reveal">
+          <details class="faq-item">
+            <summary>Можно ли совмещать разные сценарии на одном сервере CVCounter?</summary>
+            <p>Да. CVCounter позволяет одновременно подключить несколько видеопотоков. Например, первая камера может считать входящих людей у дверей магазина, а вторая — количество коробов на складе или въезжающие автомобили.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Как CVCounter обеспечивает точность при пересечении зон?</summary>
+            <p>Система использует трекер <strong>ByteTrack</strong>, который присваивает объекту постоянный числовой ID и отслеживает его траекторию между кадрами. Счётчик срабатывает только при пересечении заданной зоны, исключая повторный подсчёт стоящих или перемещающихся внутри зоны объектов.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Требуется ли доступ в интернет для работы сценариев?</summary>
+            <p>Нет. Все сценарии CVCounter работают полностью локально (On-Premise / Air-Gapped) на вашем сервере или компьютере. Видеопоток не отправляется во внешние облачные сервисы, что гарантирует полную конфиденциальность и безопасность данных.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Можно ли обучить систему под свои уникальные объекты?</summary>
+            <p>Да. В веб-интерфейс CVCounter встроен полноценный модуль датасетов: захват кадров с видеопотока, разметка боксов в браузере, обучение моделей YOLO в один клик и экспорт в ONNX или TensorRT.</p>
+          </details>
+        </div>
+
+        <div class="cta-inline reveal" style="margin-top: 3rem;">
+          <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">Скачать CVCounter на GitHub</a>
+          <a class="btn btn--ghost" href="/cvcounter/ustanovka/">Инструкция по установке</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__inner">
+        <div class="footer__meta">
+          <strong>CVCounter</strong>
+          <p>Разработка: <a href="https://bespredel.name" rel="noopener">Aleksandr Kireev</a></p>
+          <p><a href="mailto:hello@bespredel.name">hello@bespredel.name</a></p>
+        </div>
+        <ul class="footer__links">
+          <li><a href="https://github.com/BespredeL/CVCounter" rel="noopener">GitHub</a></li>
+          <li><a href="/cvcounter/ustanovka/">Установка</a></li>
+          <li><a href="/cvcounter/faq/">FAQ</a></li>
+          <li><a href="https://github.com/BespredeL/CVCounter/blob/master/LICENSE" rel="noopener">AGPL-3.0</a></li>
+        </ul>
+      </div>
+      <p class="license">© CVCounter. Распространяется под лицензией AGPL-3.0.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+</body>
+</html>
