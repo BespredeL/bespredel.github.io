@@ -198,12 +198,8 @@ function renderRepositories(repositories) {
 
     repositories.forEach(repo => {
         const card = document.createElement("div");
-        const isCvCounter = repo.name === "CVCounter";
-        const projectUrl = isCvCounter ? "/cvcounter/" : repo.html_url;
-        const linkTarget = isCvCounter ? "" : ' target="_blank" rel="noopener noreferrer"';
-        const openLabel = isCvCounter
-            ? (lang === "ru" ? "Сайт →" : "Site →")
-            : t.open_project;
+        const projectUrl = repo.html_url;
+        const openLabel = t.open_project;
 
         card.className = "repo-card";
         card.innerHTML = `
@@ -219,7 +215,7 @@ function renderRepositories(repositories) {
                 <span class="repo-language">
                     ${repo.language || "-"}
                 </span>
-                <a class="repo-link" href="${projectUrl}"${linkTarget}>
+                <a class="repo-link" href="${projectUrl}" target="_blank" rel="noopener noreferrer">
                     ${openLabel}
                 </a>
             </div>
