@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FAQ — CVCounter: zones, YOLO, ONNX, kiosk</title>
-  <meta name="description" content="CVCounter FAQ: counting zones, YOLO / OpenCV / ONNX backends, kiosk mode, reports, telemetry, and AGPL-3.0 license.">
+  <meta name="description" content="CVCounter FAQ: 1-click install, ByteTrack tracking, ONNX / OpenVINO / TensorRT / YOLO backends, model training, kiosk mode, and AGPL-3.0 license.">
   <meta name="theme-color" content="#0c0e12">
   <link rel="canonical" href="https://bespredel.github.io/cvcounter/en/faq/">
   <link rel="alternate" hreflang="ru" href="https://bespredel.github.io/cvcounter/faq/">
@@ -17,12 +17,12 @@
   <meta property="og:site_name" content="CVCounter">
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="CVCounter FAQ">
-  <meta property="og:description" content="CVCounter FAQ: counting zones, YOLO / OpenCV / ONNX backends, kiosk mode, reports, telemetry, and AGPL-3.0 license.">
+  <meta property="og:description" content="CVCounter FAQ: 1-click install, ByteTrack tracking, ONNX / OpenVINO / TensorRT / YOLO backends, model training, kiosk mode, and AGPL-3.0 license.">
   <meta property="og:url" content="https://bespredel.github.io/cvcounter/en/faq/">
   <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/en/Index.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="CVCounter FAQ">
-  <meta name="twitter:description" content="CVCounter FAQ: counting zones, YOLO / OpenCV / ONNX backends, kiosk mode, reports, telemetry, and AGPL-3.0 license.">
+  <meta name="twitter:description" content="CVCounter FAQ: 1-click install, ByteTrack tracking, ONNX / OpenVINO / TensorRT / YOLO backends, model training, kiosk mode, and AGPL-3.0 license.">
   <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/en/Index.webp">
   <link rel="stylesheet" href="../../css/styles.css">
   <script type="application/ld+json">
@@ -35,7 +35,39 @@
       "name": "What is CVCounter?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "An open-source computer vision system for detecting, tracking, and counting objects in video streams, with a web UI."
+        "text": "An open-source computer vision system for real-time object detection, tracking (ByteTrack), and counting across RTSP, USB webcams, and video files, accessible via a web UI."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does object tracking work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CVCounter uses ByteTrack: an advanced tracker that maintains consistent object IDs across frames even during temporary occlusions, virtually eliminating double counts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which detection backends are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Supported backends include ONNX Runtime (CUDA, DirectML, CPU), Intel OpenVINO (.xml/.bin, .onnx), Ultralytics YOLO (.pt and TensorRT .engine), OpenCV DNN, and an 'auto' mode that selects the best runtime based on the model file format."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is CVCounter installed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the 1-click automatic installer via install.bat (Windows) or ./install.sh (Linux/macOS), which automatically detects your GPU/CPU hardware and prepares the virtual environment. Manual Python and Docker Compose options are also available."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I train custom models in CVCounter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes: a full dataset management module is built into the UI. You can auto-capture frames, upload ZIP archives, label bounding boxes and polygons, train YOLO models, and export weights to ONNX or TensorRT."
       }
     },
     {
@@ -43,15 +75,15 @@
       "name": "How do counting zones work?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You draw polygons on the frame preview. Multiple zones per stream are supported."
+        "text": "In the interactive web editor, draw polygons and rectangles with vertex numbering, pan/zoom, and undo/redo history. Multiple independent counting zones per camera are supported."
       }
     },
     {
       "@type": "Question",
-      "name": "YOLO vs OpenCV DNN vs ONNX?",
+      "name": "Does it support event recording and reports?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Detection backends. Set model_type in config: yolo, opencv / opencv_dnn, or onnx. Model formats include .pt, .onnx, Darknet, and more."
+        "text": "Yes: the system automatically triggers video and photo capture on detection events, logs shift/batch history, and produces printable A4 reports with signature fields."
       }
     },
     {
@@ -59,39 +91,23 @@
       "name": "Can I show numbers without video?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes: text view and multi-text view for several counters — useful for kiosk displays."
+        "text": "Yes: text view and multi-text views display clean metrics and counts without streaming video, ideal for operator kiosk monitors."
       }
     },
     {
       "@type": "Question",
-      "name": "Does the site need internet?",
+      "name": "Does it require an internet connection?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Not for counting if models and streams are local. Internet is only needed to clone/update and for optional telemetry."
+        "text": "No. Once installed, video processing, model inference, and data storage run completely locally. Internet is only required for initial package installation or optional error telemetry."
       }
     },
     {
       "@type": "Question",
-      "name": "Can I use it in manufacturing or a warehouse?",
+      "name": "Which license applies?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes: count items on a conveyor, boxes at dispatch, or zones on the shop floor. On-prem server, batches, reports, and a kiosk by the line — no mandatory cloud."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What about telemetry?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Off by default. When enabled, anonymized error/usage events are sent; frames, camera URLs, and full config are never sent."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Which license?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "AGPL-3.0. Network use must follow AGPL terms (including source availability for derivatives)."
+        "text": "AGPL-3.0. Source code is fully open and hosted on GitHub."
       }
     }
   ]
@@ -148,12 +164,53 @@
     <section class="page-hero">
       <div class="wrap reveal">
         <h1>Frequently asked questions</h1>
-        <p class="page-hero__lead">Short answers on zones, models, install, and licensing.</p>
+        <p class="page-hero__lead">Answers on installation, inference backends, ByteTrack, and model training.</p>
       </div>
     </section>
     <section>
       <div class="wrap">
-        <div class="faq-list reveal"><details class="faq-item"><summary>What is CVCounter?</summary><p>An open-source computer vision system for detecting, tracking, and counting objects in video streams, with a web UI.</p></details><details class="faq-item"><summary>How do counting zones work?</summary><p>You draw polygons on the frame preview. Multiple zones per stream are supported.</p></details><details class="faq-item"><summary>YOLO vs OpenCV DNN vs ONNX?</summary><p>Detection backends. Set model_type in config: yolo, opencv / opencv_dnn, or onnx. Model formats include .pt, .onnx, Darknet, and more.</p></details><details class="faq-item"><summary>Can I show numbers without video?</summary><p>Yes: text view and multi-text view for several counters — useful for kiosk displays.</p></details><details class="faq-item"><summary>Does the site need internet?</summary><p>Not for counting if models and streams are local. Internet is only needed to clone/update and for optional telemetry.</p></details><details class="faq-item"><summary>Can I use it in manufacturing or a warehouse?</summary><p>Yes: count items on a conveyor, boxes at dispatch, or zones on the shop floor. On-prem server, batches, reports, and a kiosk by the line — no mandatory cloud.</p></details><details class="faq-item"><summary>What about telemetry?</summary><p>Off by default. When enabled, anonymized error/usage events are sent; frames, camera URLs, and full config are never sent.</p></details><details class="faq-item"><summary>Which license?</summary><p>AGPL-3.0. Network use must follow AGPL terms (including source availability for derivatives).</p></details></div>
+        <div class="faq-list reveal">
+          <details class="faq-item">
+            <summary>What is CVCounter?</summary>
+            <p>An open-source computer vision system for real-time object detection, tracking (ByteTrack), and counting across RTSP, USB webcams, and video files, accessible via a responsive web UI.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How does object tracking work?</summary>
+            <p>CVCounter utilizes ByteTrack: an advanced multi-object tracker that maintains consistent object IDs across frame boundaries even during temporary occlusions, eliminating duplicate counts.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Which detection backends are supported?</summary>
+            <p>Supported backends include ONNX Runtime (CUDA, DirectML, CPU), Intel OpenVINO (.xml/.bin, .onnx), Ultralytics YOLO (.pt and TensorRT .engine), OpenCV DNN, and an <code>auto</code> mode that chooses the optimal engine based on model format.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I install CVCounter?</summary>
+            <p>Recommended: 1-click automatic install via <code>install.bat</code> (Windows) or <code>./install.sh</code> (Linux/macOS). The installer automatically detects NVIDIA CUDA, AMD DirectML, Intel OpenVINO, or CPU. Manual Python and Docker Compose setups are also available.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I train custom models?</summary>
+            <p>Yes: an integrated dataset management module allows you to auto-collect stream frames, upload ZIP files, annotate boxes and polygons, run YOLO training in the web UI, and export weights to ONNX or TensorRT.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do counting zones work?</summary>
+            <p>Draw polygonal and rectangular zones in the interactive editor with vertex numbering, pan/zoom, and undo/redo history. Multiple independent counting zones can be configured per camera.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Does it support event recording and reports?</summary>
+            <p>Yes: automatically records video clips and snapshots upon detection events, tracks batch and shift history, and produces printable A4 reports with signature blocks.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I display numbers without streaming video?</summary>
+            <p>Yes: dedicated text and multi-text kiosk views show live counters with minimal CPU/GPU overhead, perfect for shop floor monitors and gate kiosks.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Does it require internet access?</summary>
+            <p>No. Video capture, inference, and database operations run 100% locally on premise. Internet is only needed for initial dependency downloads or optional telemetry.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Which license applies?</summary>
+            <p>AGPL-3.0. The full source code is freely available on GitHub.</p>
+          </details>
+        </div>
         <div class="cta-inline reveal">
           <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">View on GitHub</a>
           <a class="btn btn--ghost" href="/cvcounter/en/install/">Install guide</a>

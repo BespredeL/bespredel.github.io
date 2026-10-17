@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Подсчёт объектов с камер в реальном времени — CVCounter</title>
     <meta name="description"
-          content="CVCounter — open-source система компьютерного зрения для детекции, трекинга и подсчёта объектов по RTSP: люди, транспорт, ритейл, производство и склад. YOLO, OpenCV, ONNX. Веб-интерфейс из коробки.">
+          content="CVCounter — open-source система компьютерного зрения для детекции, трекинга (ByteTrack) и подсчёта объектов по RTSP: люди, транспорт, ритейл, производство и склад. YOLO, ONNX Runtime, OpenVINO, TensorRT, OpenCV. Веб-интерфейс из коробки.">
     <meta name="theme-color" content="#0c0e12">
     <link rel="canonical" href="https://bespredel.github.io/cvcounter/">
     <link rel="alternate" hreflang="ru" href="https://bespredel.github.io/cvcounter/">
@@ -19,13 +19,13 @@
     <meta property="og:locale" content="ru_RU">
     <meta property="og:title" content="CVCounter — подсчёт объектов с камер">
     <meta property="og:description"
-          content="CVCounter — open-source система компьютерного зрения для детекции, трекинга и подсчёта объектов по RTSP: люди, транспорт, ритейл, производство и склад. YOLO, OpenCV, ONNX. Веб-интерфейс из коробки.">
+          content="CVCounter — open-source система компьютерного зрения для детекции, трекинга (ByteTrack) и подсчёта объектов по RTSP: люди, транспорт, ритейл, производство и склад. YOLO, ONNX Runtime, OpenVINO, TensorRT, OpenCV. Веб-интерфейс из коробки.">
     <meta property="og:url" content="https://bespredel.github.io/cvcounter/">
     <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="CVCounter — подсчёт объектов с камер">
     <meta name="twitter:description"
-          content="CVCounter — open-source система компьютерного зрения для детекции, трекинга и подсчёта объектов по RTSP: люди, транспорт, ритейл, производство и склад. YOLO, OpenCV, ONNX. Веб-интерфейс из коробки.">
+          content="CVCounter — open-source система компьютерного зрения для детекции, трекинга (ByteTrack) и подсчёта объектов по RTSP: люди, транспорт, ритейл, производство и склад. YOLO, ONNX Runtime, OpenVINO, TensorRT, OpenCV. Веб-интерфейс из коробки.">
     <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
     <link rel="stylesheet" href="./css/styles.css">
     <script type="application/ld+json">
@@ -35,11 +35,11 @@
             "name": "CVCounter",
             "applicationCategory": "MultimediaApplication",
             "operatingSystem": "Windows, Linux, macOS",
-            "softwareVersion": "5.4.1",
+            "softwareVersion": "5.9.0",
             "license": "https://www.gnu.org/licenses/agpl-3.0.html",
             "url": "https://bespredel.github.io/cvcounter/",
             "downloadUrl": "https://github.com/BespredeL/CVCounter",
-            "description": "CVCounter — open-source система компьютерного зрения для детекции, трекинга и подсчёта объектов по RTSP: люди, транспорт, ритейл, производство и склад. YOLO, OpenCV, ONNX. Веб-интерфейс из коробки.",
+            "description": "CVCounter — open-source система компьютерного зрения для детекции, трекинга (ByteTrack) и подсчёта объектов по RTSP: люди, транспорт, ритейл, производство и склад. YOLO, ONNX Runtime, OpenVINO, TensorRT, OpenCV. Веб-интерфейс из коробки.",
             "author": {
                 "@type": "Person",
                 "name": "Aleksandr Kireev",
@@ -87,17 +87,99 @@
             <img src="./images/Hero.webp" alt="" width="1600" height="900" fetchpriority="high">
         </div>
         <div class="wrap">
-            <div class="hero__content hero-enter">
-                <h1 class="hero__title">
-                    <span class="hero__name">CVCounter</span>
-                    <span class="hero__tag">Смотри. Считай. В реальном времени.</span>
-                </h1>
-                <p class="hero__lead">Подсчёт объектов с камер: детекция, трекинг и зоны — на линии, складе или у входа.
-                    Клиентам достаточно браузера.</p>
-                <div class="hero__cta">
-                    <a class="btn btn--primary btn--lg" href="https://github.com/BespredeL/CVCounter"
-                       rel="noopener">Открыть на GitHub</a>
-                    <a class="btn btn--ghost btn--lg" href="/cvcounter/ustanovka/">Установка</a>
+            <div class="hero__grid">
+                <div class="hero__content hero-enter">
+                    <h1 class="hero__title">
+                        <span class="hero__name">CVCounter <span class="version-badge">v<span data-cvcounter-version>5.9.0</span></span></span>
+                        <span class="hero__tag">Смотри. Считай. В реальном времени.</span>
+                    </h1>
+                    <p class="hero__lead">Подсчёт объектов с камер: детекция, трекинг и зоны — на линии, складе или у входа.
+                        Клиентам достаточно браузера.</p>
+                    <div class="hero__cta">
+                        <a class="btn btn--primary btn--lg" href="https://github.com/BespredeL/CVCounter"
+                           rel="noopener">Открыть на GitHub</a>
+                        <a class="btn btn--ghost btn--lg" href="/cvcounter/ustanovka/">Установка</a>
+                    </div>
+                </div>
+
+                <div class="hero__hud-panel hero-enter">
+                    <div class="hero__hud-card glow-card" id="hero-hud" role="region" aria-label="Интерактивная демонстрация компьютерного зрения">
+                        <div class="hud-header">
+                            <div class="hud-header__left">
+                                <span class="hud-status"><span class="hud-status__dot"></span> LIVE</span>
+                                <span class="hud-camera">CAM-01 [RTSP 1080p]</span>
+                            </div>
+                            <div class="hud-header__right">
+                                <span class="hud-badge">ByteTrack</span>
+                                <span class="hud-badge hud-badge--accent">TensorRT</span>
+                                <span class="hud-fps"><span id="hud-fps-val">30.1</span> FPS</span>
+                                <span class="hud-time" id="hud-clock">00:00:00</span>
+                            </div>
+                        </div>
+                        <div class="hud-viewport" id="hud-viewport" title="Кликните в любой точке, чтобы запустить детекцию">
+                            <div class="hud-scanline" aria-hidden="true"></div>
+                            <div class="hud-crosshair hud-crosshair--tl" aria-hidden="true"></div>
+                            <div class="hud-crosshair hud-crosshair--tr" aria-hidden="true"></div>
+                            <div class="hud-crosshair hud-crosshair--bl" aria-hidden="true"></div>
+                            <div class="hud-crosshair hud-crosshair--br" aria-hidden="true"></div>
+                            <div class="hud-center-reticle" aria-hidden="true"></div>
+
+                            <!-- Industrial Conveyor Belt -->
+                            <div class="hud-conveyor" aria-hidden="true">
+                                <div class="hud-conveyor__track"></div>
+                                <div class="hud-conveyor__flow-arrow hud-conveyor__flow-arrow--1">›››</div>
+                                <div class="hud-conveyor__flow-arrow hud-conveyor__flow-arrow--2">›››</div>
+                            </div>
+
+                            <!-- Designated Detection Zone and Sensor Beam -->
+                            <svg class="hud-svg" viewBox="0 0 600 380" preserveAspectRatio="none" aria-hidden="true">
+                                <defs>
+                                    <linearGradient id="zoneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#4dabf7" stop-opacity="0.24" />
+                                        <stop offset="100%" stop-color="#228be6" stop-opacity="0.08" />
+                                    </linearGradient>
+                                </defs>
+                                <polygon class="hud-zone-poly" points="170,80 430,80 450,300 150,300" />
+                                <circle class="hud-vertex" cx="170" cy="80" r="4.5" />
+                                <circle class="hud-vertex" cx="430" cy="80" r="4.5" />
+                                <circle class="hud-vertex" cx="450" cy="300" r="4.5" />
+                                <circle class="hud-vertex" cx="150" cy="300" r="4.5" />
+                                <text x="180" y="75" class="hud-vertex-text">1</text>
+                                <text x="435" y="75" class="hud-vertex-text">2</text>
+                                <text x="455" y="295" class="hud-vertex-text">3</text>
+                                <text x="155" y="295" class="hud-vertex-text">4</text>
+                                <line class="hud-tripwire-line" id="hud-tripwire" x1="300" y1="75" x2="300" y2="305" />
+                            </svg>
+
+                            <div class="hud-zone-tag">ЗОНА 1 [КОНВЕЙЕР]</div>
+                            <div class="hud-tripwire-label">СЕНСОР ПОДСЧЁТА</div>
+
+                            <!-- Dynamic Conveyor Items Track -->
+                            <div class="hud-items-track" id="hud-track" aria-hidden="true"></div>
+
+                            <div class="hud-events-layer" id="hud-events" aria-hidden="true"></div>
+                        </div>
+                        <div class="hud-footer">
+                            <div class="hud-counts">
+                                <div class="hud-counter">
+                                    <span class="hud-counter__label">ПОДСЧЁТ</span>
+                                    <span class="hud-counter__val hud-counter__val--in" id="hud-count-in">164</span>
+                                </div>
+                                <div class="hud-counter">
+                                    <span class="hud-counter__label">В ЗОНЕ</span>
+                                    <span class="hud-counter__val hud-counter__val--cur" id="hud-count-cur">1</span>
+                                </div>
+                                <div class="hud-counter">
+                                    <span class="hud-counter__label">ВЫХОД</span>
+                                    <span class="hud-counter__val hud-counter__val--out" id="hud-count-out">62</span>
+                                </div>
+                            </div>
+                            <button type="button" class="hud-sim-btn" id="hud-sim-btn" title="Кликните, чтобы добавить объект на конвейер">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                                <span>+ Объект</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -110,46 +192,46 @@
                 <p>Подсчёт с камер без тяжёлого клиента — линия, склад, вход, только браузер.</p>
             </div>
             <div class="feature-list reveal">
-                <article class="feature">
+                <article class="feature glow-card">
                     <div class="feature__key">detect</div>
                     <div>
                         <h3>Детекция в реальном времени</h3>
-                        <p>RTSP, веб-камера или файл. Обработка на сервере.</p>
+                        <p>RTSP, веб-камера или файл. Автовыбор движка инференса.</p>
                     </div>
                 </article>
-                <article class="feature">
+                <article class="feature glow-card">
                     <div class="feature__key">track</div>
                     <div>
-                        <h3>Трекинг объектов</h3>
-                        <p>ID между кадрами, меньше повторных срабатываний.</p>
+                        <h3>Трекинг ByteTrack</h3>
+                        <p>Надёжные ID между кадрами, меньше повторных срабатываний.</p>
                     </div>
                 </article>
-                <article class="feature">
+                <article class="feature glow-card">
                     <div class="feature__key">zones</div>
                     <div>
                         <h3>Зоны подсчёта</h3>
-                        <p>Один или несколько полигонов на кадр.</p>
+                        <p>Полигоны и прямоугольники: нумерация вершин, зум и отмена действий.</p>
                     </div>
                 </article>
-                <article class="feature">
-                    <div class="feature__key">classes</div>
+                <article class="feature glow-card">
+                    <div class="feature__key">train</div>
                     <div>
-                        <h3>Разбивка по классам</h3>
-                        <p>Партия и итог отдельно по каждому классу.</p>
+                        <h3>Датасеты и обучение</h3>
+                        <p>Сбор кадров, разметка боксов и полигонов, обучение YOLO из веб-UI.</p>
                     </div>
                 </article>
-                <article class="feature">
-                    <div class="feature__key">views</div>
+                <article class="feature glow-card">
+                    <div class="feature__key">runtimes</div>
                     <div>
-                        <h3>Три режима просмотра</h3>
-                        <p>Видео, текст или несколько счётчиков — для киосков.</p>
+                        <h3>Рантаймы и оптимизация</h3>
+                        <p>CUDA, DirectML, OpenVINO, TensorRT. Экспорт в ONNX и .engine в 1 клик.</p>
                     </div>
                 </article>
-                <article class="feature">
-                    <div class="feature__key">stack</div>
+                <article class="feature glow-card">
+                    <div class="feature__key">reports</div>
                     <div>
-                        <h3>YOLO, OpenCV, ONNX</h3>
-                        <p>Единый реестр детекторов, выбор в конфиге.</p>
+                        <h3>Отчёты, фото и видео</h3>
+                        <p>Запись видео по детекции, печать A4 с подписями, экспорт аналитики.</p>
                     </div>
                 </article>
             </div>
@@ -163,28 +245,48 @@
                 <p>Типовые сценарии — отдельные страницы под поисковые задачи.</p>
             </div>
             <div class="audience-grid reveal">
-                <a class="audience-card" href="/cvcounter/podschet-lyudey/">
-                    <div>
+                <a class="audience-card glow-card" href="/cvcounter/podschet-lyudey/">
+                    <div class="audience-card__body">
                         <h3>Подсчёт людей</h3>
                         <p>Магазины, ТЦ, проходные</p>
                     </div>
+                    <div class="audience-card__footer">
+                        <span class="audience-card__arrow" aria-hidden="true">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </span>
+                    </div>
                 </a>
-                <a class="audience-card" href="/cvcounter/podschet-transporta/">
-                    <div>
+                <a class="audience-card glow-card" href="/cvcounter/podschet-transporta/">
+                    <div class="audience-card__body">
                         <h3>Подсчёт транспорта</h3>
                         <p>Дороги, КПП, парковки</p>
                     </div>
+                    <div class="audience-card__footer">
+                        <span class="audience-card__arrow" aria-hidden="true">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </span>
+                    </div>
                 </a>
-                <a class="audience-card" href="/cvcounter/ritail-analitika/">
-                    <div>
+                <a class="audience-card glow-card" href="/cvcounter/ritail-analitika/">
+                    <div class="audience-card__body">
                         <h3>Ритейл-аналитика</h3>
                         <p>Поток и зоны интереса</p>
                     </div>
+                    <div class="audience-card__footer">
+                        <span class="audience-card__arrow" aria-hidden="true">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </span>
+                    </div>
                 </a>
-                <a class="audience-card" href="/cvcounter/promyshlennost/">
-                    <div>
+                <a class="audience-card glow-card" href="/cvcounter/promyshlennost/">
+                    <div class="audience-card__body">
                         <h3>Производство и склад</h3>
                         <p>Конвейер, отгрузка, цех</p>
+                    </div>
+                    <div class="audience-card__footer">
+                        <span class="audience-card__arrow" aria-hidden="true">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </span>
                     </div>
                 </a>
             </div>
@@ -200,31 +302,31 @@
                 <div class="step">
                     <div>
                         <h3>Видеопоток</h3>
-                        <p>Захват с камеры, RTSP или файла.</p>
+                        <p>RTSP-камера, USB/веб-камера или видеофайл.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div>
                         <h3>Детекция</h3>
-                        <p>Модель находит объекты и классы.</p>
+                        <p>YOLO, ONNX, OpenVINO, TensorRT или OpenCV.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div>
-                        <h3>Трекинг</h3>
-                        <p>Устойчивый ID между кадрами.</p>
+                        <h3>ByteTrack</h3>
+                        <p>Устойчивое присвоение ID объектам между кадрами.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div>
-                        <h3>Подсчёт</h3>
-                        <p>Вход в зону увеличивает счётчики.</p>
+                        <h3>Контроль зон</h3>
+                        <p>Вход в зоны подсчёта с фильтрацией по классам.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div>
-                        <h3>Отчёты</h3>
-                        <p>Сохранение и просмотр в веб-UI.</p>
+                        <h3>Аналитика и медиа</h3>
+                        <p>Партии, журнал, запись видео и отчёты A4.</p>
                     </div>
                 </div>
             </div>
@@ -235,7 +337,7 @@
         <div class="wrap">
             <div class="section-head reveal">
                 <h2>Свой скрипт или CVCounter</h2>
-                <p>Что уже есть в продукте, а не только в ноутбуке с моделью.</p>
+                <p>Что уже есть в готовом продукте, а не только в ноутбуке с моделью.</p>
             </div>
             <div class="table-wrap reveal">
                 <table class="compare">
@@ -248,29 +350,44 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <th scope='row'>Веб-UI и киоск</th>
-                        <td>Нужно писать</td>
-                        <td>Есть</td>
+                        <th scope='row'>Веб-интерфейс и киоск</th>
+                        <td>Нужно писать с нуля</td>
+                        <td>Есть из коробки</td>
                     </tr>
                     <tr>
                         <th scope='row'>Зоны подсчёта (полигоны)</th>
-                        <td>Вручную</td>
-                        <td>Редактор в UI</td>
+                        <td>Вручную координатами</td>
+                        <td>Интерактивный редактор в UI</td>
+                    </tr>
+                    <tr>
+                        <th scope='row'>Трекинг объектов</th>
+                        <td>Базовый или отсутствует</td>
+                        <td>ByteTrack</td>
+                    </tr>
+                    <tr>
+                        <th scope='row'>Разметка и обучение моделей</th>
+                        <td>Сторонние сервисы</td>
+                        <td>Встроенный модуль в UI</td>
                     </tr>
                     <tr>
                         <th scope='row'>Несколько счётчиков</th>
-                        <td>С нуля</td>
-                        <td>Мульти-вид</td>
+                        <td>Писать логику с нуля</td>
+                        <td>Мульти-вид и сетка камер</td>
                     </tr>
                     <tr>
-                        <th scope='row'>Отчёты и партии</th>
-                        <td>С нуля</td>
-                        <td>Встроены</td>
+                        <th scope='row'>Отчёты, фото и видео</th>
+                        <td>Файлы на диске</td>
+                        <td>Встроенная база + печать A4</td>
                     </tr>
                     <tr>
-                        <th scope='row'>YOLO / OpenCV / ONNX</th>
-                        <td>Один стек</td>
-                        <td>Реестр бэкендов</td>
+                        <th scope='row'>Бэкенды и аппаратное ускорение</th>
+                        <td>Один фреймворк</td>
+                        <td>ONNX, OpenVINO, TensorRT, YOLO</td>
+                    </tr>
+                    <tr>
+                        <th scope='row'>Автоустановка с детекцией GPU</th>
+                        <td>Ручная настройка venv/CUDA</td>
+                        <td>1 клик (install.bat / install.sh)</td>
                     </tr>
                     </tbody>
                 </table>
@@ -346,7 +463,7 @@
                 </details>
                 <details class="faq-item">
                     <summary>Нужен GPU?</summary>
-                    <p>Желателен для real-time; CPU тоже работает, зависит от модели и разрешения.</p>
+                    <p>Желателен для высоких FPS (NVIDIA CUDA, AMD DirectML, Intel Arc / OpenVINO). CPU также поддерживается. Установщик сам определит оборудование.</p>
                 </details>
                 <details class="faq-item">
                     <summary>Это open source?</summary>
@@ -360,7 +477,7 @@
     <div class="cta-band">
         <div class="wrap reveal">
             <h2>Запустите CVCounter</h2>
-            <p>Версия 5.4.1. Исходники и Docker — на GitHub.</p>
+            <p>Версия <span data-cvcounter-version>5.9.0</span>. Исходники, скрипты автоустановки и Docker — на GitHub.</p>
             <div class="cta-band__actions">
                 <a class="btn btn--primary btn--lg" href="https://github.com/BespredeL/CVCounter"
                    rel="noopener">Открыть на GitHub</a>

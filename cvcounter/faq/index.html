@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FAQ — CVCounter: зоны, YOLO, ONNX, киоск</title>
-  <meta name="description" content="Частые вопросы о CVCounter: зоны подсчёта, бэкенды YOLO / OpenCV / ONNX, киоск-режим, отчёты, телеметрия и лицензия AGPL-3.0.">
+  <meta name="description" content="Частые вопросы о CVCounter: 1-клик установка, ByteTrack, бэкенды ONNX / OpenVINO / TensorRT / YOLO, обучение моделей, киоск-режим и лицензия AGPL-3.0.">
   <meta name="theme-color" content="#0c0e12">
   <link rel="canonical" href="https://bespredel.github.io/cvcounter/faq/">
   <link rel="alternate" hreflang="ru" href="https://bespredel.github.io/cvcounter/faq/">
@@ -17,12 +17,12 @@
   <meta property="og:site_name" content="CVCounter">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:title" content="FAQ CVCounter">
-  <meta property="og:description" content="Частые вопросы о CVCounter: зоны подсчёта, бэкенды YOLO / OpenCV / ONNX, киоск-режим, отчёты, телеметрия и лицензия AGPL-3.0.">
+  <meta property="og:description" content="Частые вопросы о CVCounter: 1-клик установка, ByteTrack, бэкенды ONNX / OpenVINO / TensorRT / YOLO, обучение моделей, киоск-режим и лицензия AGPL-3.0.">
   <meta property="og:url" content="https://bespredel.github.io/cvcounter/faq/">
   <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="FAQ CVCounter">
-  <meta name="twitter:description" content="Частые вопросы о CVCounter: зоны подсчёта, бэкенды YOLO / OpenCV / ONNX, киоск-режим, отчёты, телеметрия и лицензия AGPL-3.0.">
+  <meta name="twitter:description" content="Частые вопросы о CVCounter: 1-клик установка, ByteTrack, бэкенды ONNX / OpenVINO / TensorRT / YOLO, обучение моделей, киоск-режим и лицензия AGPL-3.0.">
   <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
   <link rel="stylesheet" href="../css/styles.css">
   <script type="application/ld+json">
@@ -35,7 +35,39 @@
       "name": "Что такое CVCounter?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Open-source система компьютерного зрения для детекции, трекинга и подсчёта объектов по видеопотоку с веб-интерфейсом."
+        "text": "Open-source веб-система компьютерного зрения для детекции, трекинга (ByteTrack) и подсчёта объектов в реальном времени с поддержкой камер RTSP, USB и видеофайлов."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Как работает трекинг объектов?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Используется ByteTrack: алгоритм сохраняет уникальный ID объекта между кадрами даже при частичном перекрытии, что сводит к минимуму повторный подсчёт."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Какие бэкенды инференса поддерживаются?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Поддерживаются ONNX Runtime (CUDA, DirectML, CPU), Intel OpenVINO (.xml/.bin, .onnx), Ultralytics YOLO (.pt и TensorRT .engine), OpenCV DNN, а также режим 'auto' для автоматического выбора движка по расширению файла."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Как выполняется установка?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Доступна автоматическая установка в 1 клик через install.bat (Windows) или ./install.sh (Linux/macOS), которая автоматически определяет GPU (CUDA, DirectML, OpenVINO) и настраивает venv. Также поддерживаются ручная установка Python и запуск в Docker."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Можно ли обучать собственные модели?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Да: встроен модуль датасетов — сбор кадров из потока, загрузка ZIP, разметка боксов и полигонов на интерактивном холсте, запуск обучения YOLO прямо из веб-интерфейса и экспорт весов."
       }
     },
     {
@@ -43,15 +75,15 @@
       "name": "Как задаются зоны подсчёта?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "В редакторе на превью кадра рисуются полигоны. Можно несколько зон на один поток."
+        "text": "В визуальном веб-редакторе рисуются полигоны и прямоугольники с нумерацией вершин, перемещением, зумом и историей действий undo/redo. Поддерживается несколько зон на одну камеру."
       }
     },
     {
       "@type": "Question",
-      "name": "Чем отличаются YOLO, OpenCV DNN и ONNX?",
+      "name": "Есть ли запись видео и отчёты?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Это бэкенды детекции. В конфиге выбирается model_type: yolo, opencv / opencv_dnn или onnx. Форматы моделей — .pt, .onnx, Darknet и др."
+        "text": "Да: система автоматически записывает видео и фото по событиям детекции, ведёт журнал партий и формирует отчёты с поддержкой печати в формате A4."
       }
     },
     {
@@ -59,7 +91,7 @@
       "name": "Можно ли показывать только цифры без видео?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Да: текстовый вид и мульти-текстовый вид для нескольких счётчиков — удобно для киоска."
+        "text": "Да: доступны текстовый вид и мульти-текстовый вид для нескольких счётчиков — идеально для информационных киосков на производстве или у входа."
       }
     },
     {
@@ -67,23 +99,7 @@
       "name": "Нужен ли интернет на объекте?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Для работы счётчика — нет, если модели и поток локальные. Интернет нужен только для клонирования/обновления и опциональной телеметрии."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Можно ли использовать на производстве и складе?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Да: подсчёт изделий на конвейере, коробов на отгрузке, зон в цехе. Локальный сервер, партии, отчёты и киоск у линии — без обязательного облака."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Что с телеметрией?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "По умолчанию выключена. При включении уходят обезличенные события ошибок/использования; кадры, URL камер и полный config не отправляются."
+        "text": "Для работы счётчика интернет не требуется — видеопотоки, инференс и база данных полностью локальны. Интернет нужен только для первичной установки или опциональной телеметрии."
       }
     },
     {
@@ -91,7 +107,7 @@
       "name": "Какая лицензия?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "AGPL-3.0. При сетевом использовании нужно соблюдать условия AGPL (в т.ч. доступ к исходному коду производных)."
+        "text": "AGPL-3.0. Исходный код открыт на GitHub."
       }
     }
   ]
@@ -148,12 +164,53 @@
     <section class="page-hero">
       <div class="wrap reveal">
         <h1>Частые вопросы</h1>
-        <p class="page-hero__lead">Короткие ответы по зонам, моделям, установке и лицензии.</p>
+        <p class="page-hero__lead">Ответы по установке, движкам инференса, трекингу и обучению моделей.</p>
       </div>
     </section>
     <section>
       <div class="wrap">
-        <div class="faq-list reveal"><details class="faq-item"><summary>Что такое CVCounter?</summary><p>Open-source система компьютерного зрения для детекции, трекинга и подсчёта объектов по видеопотоку с веб-интерфейсом.</p></details><details class="faq-item"><summary>Как задаются зоны подсчёта?</summary><p>В редакторе на превью кадра рисуются полигоны. Можно несколько зон на один поток.</p></details><details class="faq-item"><summary>Чем отличаются YOLO, OpenCV DNN и ONNX?</summary><p>Это бэкенды детекции. В конфиге выбирается model_type: yolo, opencv / opencv_dnn или onnx. Форматы моделей — .pt, .onnx, Darknet и др.</p></details><details class="faq-item"><summary>Можно ли показывать только цифры без видео?</summary><p>Да: текстовый вид и мульти-текстовый вид для нескольких счётчиков — удобно для киоска.</p></details><details class="faq-item"><summary>Нужен ли интернет на объекте?</summary><p>Для работы счётчика — нет, если модели и поток локальные. Интернет нужен только для клонирования/обновления и опциональной телеметрии.</p></details><details class="faq-item"><summary>Можно ли использовать на производстве и складе?</summary><p>Да: подсчёт изделий на конвейере, коробов на отгрузке, зон в цехе. Локальный сервер, партии, отчёты и киоск у линии — без обязательного облака.</p></details><details class="faq-item"><summary>Что с телеметрией?</summary><p>По умолчанию выключена. При включении уходят обезличенные события ошибок/использования; кадры, URL камер и полный config не отправляются.</p></details><details class="faq-item"><summary>Какая лицензия?</summary><p>AGPL-3.0. При сетевом использовании нужно соблюдать условия AGPL (в т.ч. доступ к исходному коду производных).</p></details></div>
+        <div class="faq-list reveal">
+          <details class="faq-item">
+            <summary>Что такое CVCounter?</summary>
+            <p>Open-source веб-система компьютерного зрения для детекции, трекинга (ByteTrack) и подсчёта объектов в реальном времени с поддержкой камер RTSP, USB и видеофайлов.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Как работает трекинг объектов?</summary>
+            <p>Используется ByteTrack: алгоритм сохраняет стабильный ID объекта между кадрами даже при кратковременном перекрытии, что исключает повторный подсчёт одного и того же объекта.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Какие бэкенды инференса поддерживаются?</summary>
+            <p>Поддерживаются ONNX Runtime (CUDA, DirectML, CPU), Intel OpenVINO (.xml/.bin, .onnx), Ultralytics YOLO (.pt и TensorRT .engine), OpenCV DNN, а также режим <code>model_type: "auto"</code> для автоподбора бэкенда по формату файла.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Как выполняется установка?</summary>
+            <p>Рекомендуется автоустановка в 1 клик через <code>install.bat</code> (Windows) или <code>./install.sh</code> (Linux/macOS): скрипт сам определяет видеокарту (CUDA, DirectML, OpenVINO) и настраивает venv. Также поддерживаются ручная установка через Python и запуск в Docker.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Можно ли обучать собственные модели?</summary>
+            <p>Да: встроен полноценный модуль датасетов — сбор кадров из видеопотока, загрузка архивов ZIP, разметка боксов и полигонов на интерактивном холсте, запуск обучения YOLO прямо из веб-UI и экспорт весов в ONNX или TensorRT.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Как задаются зоны подсчёта?</summary>
+            <p>В интерактивном редакторе рисуются полигоны и прямоугольники с нумерацией вершин, масштабированием и историей действий (undo/redo). На один видеопоток можно настроить несколько независимых зон.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Есть ли запись видео и отчёты?</summary>
+            <p>Да: система автоматически начинает запись видео и сохраняет кадры по событиям детекции, ведёт журнал партий и формирует готовые отчёты с поддержкой печати в формате A4.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Можно ли показывать только цифры без видео?</summary>
+            <p>Да: доступны текстовый вид и мульти-текстовый вид для нескольких счётчиков — удобно для информационных экранов и киосков оператора.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Нужен ли интернет на объекте?</summary>
+            <p>Для работы счётчика интернет не требуется — видеопотоки, инференс и база данных полностью локальны. Интернет нужен только для первичной загрузки зависимостей или опциональной телеметрии.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Какая лицензия?</summary>
+            <p>AGPL-3.0. Исходный код полностью открыт на GitHub.</p>
+          </details>
+        </div>
         <div class="cta-inline reveal">
           <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">Открыть на GitHub</a>
           <a class="btn btn--ghost" href="/cvcounter/ustanovka/">Установка</a>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>People counting from video and RTSP — CVCounter</title>
-  <meta name="description" content="Count people in shops, malls, or entrances from a camera or RTSP stream. Counting zones, tracking to reduce double counts, browser kiosk mode. Open source with YOLO / OpenCV / ONNX.">
+  <meta name="description" content="Count people in shops, malls, or entrances from a camera or RTSP stream. Counting zones, ByteTrack tracking, browser kiosk mode. Open source with YOLO, ONNX, OpenVINO, TensorRT.">
   <meta name="theme-color" content="#0c0e12">
   <link rel="canonical" href="https://bespredel.github.io/cvcounter/en/people-counting/">
   <link rel="alternate" hreflang="ru" href="https://bespredel.github.io/cvcounter/podschet-lyudey/">
@@ -17,12 +17,12 @@
   <meta property="og:site_name" content="CVCounter">
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="People counting from video — CVCounter">
-  <meta property="og:description" content="Count people in shops, malls, or entrances from a camera or RTSP stream. Counting zones, tracking to reduce double counts, browser kiosk mode. Open source with YOLO / OpenCV / ONNX.">
+  <meta property="og:description" content="Count people in shops, malls, or entrances from a camera or RTSP stream. Counting zones, ByteTrack tracking, browser kiosk mode. Open source with YOLO, ONNX, OpenVINO, TensorRT.">
   <meta property="og:url" content="https://bespredel.github.io/cvcounter/en/people-counting/">
   <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/en/Index.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="People counting from video — CVCounter">
-  <meta name="twitter:description" content="Count people in shops, malls, or entrances from a camera or RTSP stream. Counting zones, tracking to reduce double counts, browser kiosk mode. Open source with YOLO / OpenCV / ONNX.">
+  <meta name="twitter:description" content="Count people in shops, malls, or entrances from a camera or RTSP stream. Counting zones, ByteTrack tracking, browser kiosk mode. Open source with YOLO, ONNX, OpenVINO, TensorRT.">
   <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/en/Index.webp">
   <link rel="stylesheet" href="../../css/styles.css">
   <script type="application/ld+json">
@@ -89,7 +89,7 @@
           <h2>The problem</h2>
           <p>You need to know how many people crossed an entrance, corridor, or area of interest. Manual counting does not scale; closed cloud products are often expensive.</p>
           <h2>How CVCounter helps</h2>
-          <p>Connect a camera or RTSP feed, draw polygonal zones, filter the person class (or your own). Tracking keeps IDs across frames to reduce double counting. Results show in the browser and can be saved to reports.</p>
+          <p>Connect a camera or RTSP feed, draw polygonal zones, and filter the person class (or your own). ByteTrack tracking keeps persistent IDs across frames to prevent double counting. Results show in the browser and can be saved to reports.</p>
           
         </div>
         <figure class="shot reveal" style="margin-top:2rem">

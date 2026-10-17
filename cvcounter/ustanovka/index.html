@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Установка CVCounter — Python и Docker</title>
     <meta name="description"
-          content="Как установить CVCounter: git clone, venv, config.json или docker-compose. Быстрый старт системы подсчёта объектов на YOLO / OpenCV / ONNX.">
+          content="Как установить CVCounter: 1-клик скрипты install.bat/sh с автодетекцией GPU, Python venv или Docker. Быстрый старт с YOLO, ONNX, OpenVINO, TensorRT.">
     <meta name="theme-color" content="#0c0e12">
     <link rel="canonical" href="https://bespredel.github.io/cvcounter/ustanovka/">
     <link rel="alternate" hreflang="ru" href="https://bespredel.github.io/cvcounter/ustanovka/">
@@ -19,13 +19,13 @@
     <meta property="og:locale" content="ru_RU">
     <meta property="og:title" content="Установка CVCounter">
     <meta property="og:description"
-          content="Как установить CVCounter: git clone, venv, config.json или docker-compose. Быстрый старт системы подсчёта объектов на YOLO / OpenCV / ONNX.">
+          content="Как установить CVCounter: 1-клик скрипты install.bat/sh с автодетекцией GPU, Python venv или Docker. Быстрый старт с YOLO, ONNX, OpenVINO, TensorRT.">
     <meta property="og:url" content="https://bespredel.github.io/cvcounter/ustanovka/">
     <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Установка CVCounter">
     <meta name="twitter:description"
-          content="Как установить CVCounter: git clone, venv, config.json или docker-compose. Быстрый старт системы подсчёта объектов на YOLO / OpenCV / ONNX.">
+          content="Как установить CVCounter: 1-клик скрипты install.bat/sh с автодетекцией GPU, Python venv или Docker. Быстрый старт с YOLO, ONNX, OpenVINO, TensorRT.">
     <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
     <link rel="stylesheet" href="../css/styles.css">
     <script type="application/ld+json">
@@ -33,31 +33,25 @@
             "@context": "https://schema.org",
             "@type": "HowTo",
             "name": "Установка CVCounter",
-            "description": "Как установить CVCounter: git clone, venv, config.json или docker-compose. Быстрый старт системы подсчёта объектов на YOLO / OpenCV / ONNX.",
+            "description": "Как установить CVCounter: 1-клик скрипты install.bat/sh, ручная установка Python или docker-compose. Быстрый старт системы подсчёта объектов на YOLO, ONNX, OpenVINO, TensorRT.",
             "step": [
                 {
                     "@type": "HowToStep",
                     "position": 1,
-                    "name": "Clone",
-                    "text": "git clone https://github.com/BespredeL/CVCounter.git"
+                    "name": "Клонирование",
+                    "text": "git clone https://github.com/BespredeL/CVCounter.git ; cd CVCounter"
                 },
                 {
                     "@type": "HowToStep",
                     "position": 2,
-                    "name": "Install dependencies",
-                    "text": "python3 -m venv venv && pip install -r requirements.txt"
+                    "name": "Автоустановка",
+                    "text": "Запустите install.bat (Windows) или ./install.sh (Linux/macOS) для автоматической настройки GPU/CPU и venv"
                 },
                 {
                     "@type": "HowToStep",
                     "position": 3,
-                    "name": "Configure",
-                    "text": "Copy config.example.json to config.json and set video source and model_type"
-                },
-                {
-                    "@type": "HowToStep",
-                    "position": 4,
-                    "name": "Run",
-                    "text": "python app.py or docker-compose up --build"
+                    "name": "Запуск",
+                    "text": "Запустите start.bat или ./start.sh и откройте веб-интерфейс http://localhost:8080"
                 }
             ]
         }
@@ -118,7 +112,7 @@
     <section class="page-hero">
         <div class="wrap reveal">
             <h1>Установка CVCounter</h1>
-            <p class="page-hero__lead">Два пути: локально через Python или одной командой в Docker.</p>
+            <p class="page-hero__lead">Автоматическая установка в 1 клик с автодетекцией GPU, ручная настройка Python или Docker.</p>
             <div class="hero__cta">
                 <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">Открыть на
                     GitHub</a>
@@ -127,48 +121,74 @@
     </section>
     <section>
         <div class="wrap">
-            <h2 class="reveal">Python</h2>
+            <h2 class="reveal">Автоматическая установка в 1 клик (Рекомендуется)</h2>
+            <p class="reveal" style="color:var(--ink-muted); margin-bottom: 1rem;">Скрипт автоматически определит аппаратное обеспечение (NVIDIA CUDA, AMD DirectML, Intel Arc / OpenVINO или CPU), создаст виртуальное окружение и установит подходящие библиотеки:</p>
             <div class="install reveal">
-                <pre>
-                    <code>
-git clone https://github.com/BespredeL/CVCounter.git
+                <p style="margin: 0 0 0.5rem; font-weight: 600; color: var(--accent);">Windows:</p>
+                <pre><code># Запустите установщик:
+install.bat
+
+# Запуск приложения:
+start.bat</code></pre>
+                <p style="margin: 1.25rem 0 0.5rem; font-weight: 600; color: var(--accent);">Linux / macOS:</p>
+                <pre><code>chmod +x install.sh start.sh
+./install.sh
+./start.sh</code></pre>
+                <p class="install__note">Опции <code>install.py</code>: <code>--profile [nvidia_cuda|amd_directml|intel_openvino|cpu]</code> для явного профиля, <code>--reinstall</code> для переустановки.</p>
+            </div>
+
+            <h2 class="reveal" style="margin-top:2.5rem">Ручная установка (Python)</h2>
+            <div class="install reveal">
+                <pre><code>git clone https://github.com/BespredeL/CVCounter.git
 cd CVCounter
 python3 -m venv venv
-source venv/bin/activate   # Windows: .\\venv\\Scripts\\activate
+source venv/bin/activate   # Windows: .\venv\Scripts\activate
 pip install -r requirements.txt
+
+# Опционально: для весов .pt и обучения YOLO
+pip install -r requirements-ultralytics.txt
+
+# Опционально: для аппаратного ускорения Intel OpenVINO
+pip install -r requirements-openvino.txt
+
 cp config/config.example.json config/config.json
-python app.py
-                    </code>
-                </pre>
+python app.py</code></pre>
             </div>
-            <h2 class="reveal" style="margin-top:2rem">Docker</h2>
+
+            <h2 class="reveal" style="margin-top:2.5rem">Docker</h2>
             <div class="install reveal">
-                <pre>
-                    <code>
-git clone https://github.com/BespredeL/CVCounter.git
+                <pre><code>git clone https://github.com/BespredeL/CVCounter.git
 cd CVCounter
-docker-compose up --build
-                    </code>
-                </pre>
-                <p class="install__note">После запуска откройте веб-интерфейс на порту из config (по умолчанию 8080).
-                    Скопируйте config.example.json → config.json и укажите источник видео и model_type.</p>
+docker-compose up --build</code></pre>
+                <p class="install__note">После запуска откройте веб-интерфейс в браузере: <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a> (порт из <code>config.json</code>). При первом запуске конфигурация создаётся автоматически.</p>
             </div>
-            <h2 class="reveal" style="margin-top:2.5rem">Бэкенды детекции</h2>
+
+            <h2 class="reveal" style="margin-top:2.5rem">Поддерживаемые бэкенды детекции</h2>
             <div class="backends reveal">
                 <div class="backend">
-                    <h3>Ultralytics YOLO</h3>
-                    <p><code>model_type: &quot;yolo&quot;</code></p>
-                    <p>.pt · CUDA / CPU</p>
-                </div>
-                <div class="backend">
-                    <h3>OpenCV DNN</h3>
-                    <p><code>model_type: &quot;opencv&quot;</code></p>
-                    <p>ONNX, Darknet, protobuf</p>
+                    <h3>Auto (Автовыбор)</h3>
+                    <p><code>model_type: &quot;auto&quot;</code></p>
+                    <p>Рекомендуется: автоподбор движка по расширению файла модели</p>
                 </div>
                 <div class="backend">
                     <h3>ONNX Runtime</h3>
                     <p><code>model_type: &quot;onnx&quot;</code></p>
-                    <p>YOLO export → ONNX</p>
+                    <p>.onnx · CUDA, DirectML, CPU</p>
+                </div>
+                <div class="backend">
+                    <h3>Intel OpenVINO</h3>
+                    <p><code>model_type: &quot;openvino&quot;</code></p>
+                    <p>.xml/.bin, .onnx · Intel CPU, Arc, NPU</p>
+                </div>
+                <div class="backend">
+                    <h3>Ultralytics &amp; TensorRT</h3>
+                    <p><code>model_type: &quot;yolo&quot;</code></p>
+                    <p>.pt, .engine, .trt · CUDA / TensorRT</p>
+                </div>
+                <div class="backend">
+                    <h3>OpenCV DNN</h3>
+                    <p><code>model_type: &quot;opencv&quot;</code></p>
+                    <p>.onnx, Darknet · Без тяжёлых зависимостей</p>
                 </div>
             </div>
             <div class="cta-inline reveal">

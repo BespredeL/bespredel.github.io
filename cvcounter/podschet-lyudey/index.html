@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Подсчёт людей по видео и RTSP — CVCounter</title>
-  <meta name="description" content="Подсчёт людей в магазине, ТЦ или на проходной с камеры или RTSP. Зоны подсчёта, трекинг без двойного счёта, веб-киоск. Open source на YOLO / OpenCV / ONNX.">
+  <meta name="description" content="Подсчёт людей в магазине, ТЦ или на проходной с камеры или RTSP. Зоны подсчёта, трекинг ByteTrack, веб-киоск. Open source: YOLO, ONNX, OpenVINO, TensorRT.">
   <meta name="theme-color" content="#0c0e12">
   <link rel="canonical" href="https://bespredel.github.io/cvcounter/podschet-lyudey/">
   <link rel="alternate" hreflang="ru" href="https://bespredel.github.io/cvcounter/podschet-lyudey/">
@@ -17,12 +17,12 @@
   <meta property="og:site_name" content="CVCounter">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:title" content="Подсчёт людей по видео — CVCounter">
-  <meta property="og:description" content="Подсчёт людей в магазине, ТЦ или на проходной с камеры или RTSP. Зоны подсчёта, трекинг без двойного счёта, веб-киоск. Open source на YOLO / OpenCV / ONNX.">
+  <meta property="og:description" content="Подсчёт людей в магазине, ТЦ или на проходной с камеры или RTSP. Зоны подсчёта, трекинг ByteTrack, веб-киоск. Open source: YOLO, ONNX, OpenVINO, TensorRT.">
   <meta property="og:url" content="https://bespredel.github.io/cvcounter/podschet-lyudey/">
   <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Подсчёт людей по видео — CVCounter">
-  <meta name="twitter:description" content="Подсчёт людей в магазине, ТЦ или на проходной с камеры или RTSP. Зоны подсчёта, трекинг без двойного счёта, веб-киоск. Open source на YOLO / OpenCV / ONNX.">
+  <meta name="twitter:description" content="Подсчёт людей в магазине, ТЦ или на проходной с камеры или RTSP. Зоны подсчёта, трекинг ByteTrack, веб-киоск. Open source: YOLO, ONNX, OpenVINO, TensorRT.">
   <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/ru/Index.webp">
   <link rel="stylesheet" href="../css/styles.css">
   <script type="application/ld+json">
@@ -89,7 +89,7 @@
           <h2>Задача</h2>
           <p>Нужно знать, сколько людей прошло через вход, коридор или зону интереса. Ручной подсчёт не масштабируется, а готовые облачные сервисы часто дороги и закрыты.</p>
           <h2>Как решает CVCounter</h2>
-          <p>Подключаете камеру или RTSP, задаёте полигональные зоны, выбираете класс person (или свой). Трекер держит ID между кадрами — повторный счёт одного человека снижается. Результаты видны в браузере и сохраняются в отчёты.</p>
+          <p>Подключаете камеру или RTSP, задаёте полигональные зоны, выбираете класс person (или свой). Трекер ByteTrack держит ID между кадрами — повторный счёт исключается. Результаты видны в браузере и сохраняются в отчёты.</p>
           
         </div>
         <figure class="shot reveal" style="margin-top:2rem">

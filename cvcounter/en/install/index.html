@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Install CVCounter — Python and Docker</title>
-  <meta name="description" content="How to install CVCounter: git clone, venv, config.json, or docker-compose. Quick start for YOLO / OpenCV / ONNX object counting.">
+  <meta name="description" content="How to install CVCounter: 1-click install.bat/sh scripts with GPU auto-detection, Python venv, or docker-compose. Quick start for YOLO, ONNX, OpenVINO, TensorRT.">
   <meta name="theme-color" content="#0c0e12">
   <link rel="canonical" href="https://bespredel.github.io/cvcounter/en/install/">
   <link rel="alternate" hreflang="ru" href="https://bespredel.github.io/cvcounter/ustanovka/">
@@ -17,12 +17,12 @@
   <meta property="og:site_name" content="CVCounter">
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Install CVCounter">
-  <meta property="og:description" content="How to install CVCounter: git clone, venv, config.json, or docker-compose. Quick start for YOLO / OpenCV / ONNX object counting.">
+  <meta property="og:description" content="How to install CVCounter: 1-click install.bat/sh scripts with GPU auto-detection, Python venv, or docker-compose. Quick start for YOLO, ONNX, OpenVINO, TensorRT.">
   <meta property="og:url" content="https://bespredel.github.io/cvcounter/en/install/">
   <meta property="og:image" content="https://bespredel.github.io/cvcounter/images/en/Index.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Install CVCounter">
-  <meta name="twitter:description" content="How to install CVCounter: git clone, venv, config.json, or docker-compose. Quick start for YOLO / OpenCV / ONNX object counting.">
+  <meta name="twitter:description" content="How to install CVCounter: 1-click install.bat/sh scripts with GPU auto-detection, Python venv, or docker-compose. Quick start for YOLO, ONNX, OpenVINO, TensorRT.">
   <meta name="twitter:image" content="https://bespredel.github.io/cvcounter/images/en/Index.webp">
   <link rel="stylesheet" href="../../css/styles.css">
   <script type="application/ld+json">
@@ -30,31 +30,25 @@
   "@context": "https://schema.org",
   "@type": "HowTo",
   "name": "Install CVCounter",
-  "description": "How to install CVCounter: git clone, venv, config.json, or docker-compose. Quick start for YOLO / OpenCV / ONNX object counting.",
+  "description": "How to install CVCounter: 1-click scripts install.bat/sh with GPU detection, manual Python setup, or docker-compose. Fast start with YOLO, ONNX, OpenVINO, TensorRT.",
   "step": [
     {
       "@type": "HowToStep",
       "position": 1,
       "name": "Clone",
-      "text": "git clone https://github.com/BespredeL/CVCounter.git"
+      "text": "git clone https://github.com/BespredeL/CVCounter.git ; cd CVCounter"
     },
     {
       "@type": "HowToStep",
       "position": 2,
-      "name": "Install dependencies",
-      "text": "python3 -m venv venv && pip install -r requirements.txt"
+      "name": "Auto-Install",
+      "text": "Run install.bat (Windows) or ./install.sh (Linux/macOS) to automatically detect GPU/CPU and set up venv"
     },
     {
       "@type": "HowToStep",
       "position": 3,
-      "name": "Configure",
-      "text": "Copy config.example.json to config.json and set video source and model_type"
-    },
-    {
-      "@type": "HowToStep",
-      "position": 4,
       "name": "Run",
-      "text": "python app.py or docker-compose up --build"
+      "text": "Launch start.bat or ./start.sh and open the web UI at http://localhost:8080"
     }
   ]
 }
@@ -110,7 +104,7 @@
     <section class="page-hero">
       <div class="wrap reveal">
         <h1>Install CVCounter</h1>
-        <p class="page-hero__lead">Two paths: local Python setup or a single Docker Compose command.</p>
+        <p class="page-hero__lead">1-click automatic install with GPU detection, manual Python setup, or Docker Compose.</p>
         <div class="hero__cta">
           <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">View on GitHub</a>
         </div>
@@ -118,22 +112,73 @@
     </section>
     <section>
       <div class="wrap">
-        <h2 class="reveal">Python</h2>
+        <h2 class="reveal">1-Click Automatic Installation (Recommended)</h2>
+        <p class="reveal" style="color:var(--ink-muted); margin-bottom: 1rem;">The installer automatically detects your hardware (NVIDIA CUDA, AMD DirectML, Intel Arc / OpenVINO, or CPU), configures a virtual environment, and installs dependencies:</p>
+        <div class="install reveal">
+          <p style="margin: 0 0 0.5rem; font-weight: 600; color: var(--accent);">Windows:</p>
+          <pre><code># Run 1-click installer:
+install.bat
+
+# Start the application:
+start.bat</code></pre>
+          <p style="margin: 1.25rem 0 0.5rem; font-weight: 600; color: var(--accent);">Linux / macOS:</p>
+          <pre><code>chmod +x install.sh start.sh
+./install.sh
+./start.sh</code></pre>
+          <p class="install__note">Installer flags (<code>install.py</code>): <code>--profile [nvidia_cuda|amd_directml|intel_openvino|cpu]</code> to override hardware profile, <code>--reinstall</code> to force dependency reinstallation.</p>
+        </div>
+
+        <h2 class="reveal" style="margin-top:2.5rem">Manual Python Installation</h2>
         <div class="install reveal"><pre><code>git clone https://github.com/BespredeL/CVCounter.git
 cd CVCounter
 python3 -m venv venv
-source venv/bin/activate   # Windows: .\\venv\\Scripts\\activate
+source venv/bin/activate   # Windows: .\venv\Scripts\activate
 pip install -r requirements.txt
+
+# Optional: for Ultralytics YOLO &amp; .pt weights
+pip install -r requirements-ultralytics.txt
+
+# Optional: for Intel OpenVINO acceleration
+pip install -r requirements-openvino.txt
+
 cp config/config.example.json config/config.json
 python app.py</code></pre></div>
-        <h2 class="reveal" style="margin-top:2rem">Docker</h2>
+
+        <h2 class="reveal" style="margin-top:2.5rem">Docker</h2>
         <div class="install reveal"><pre><code>git clone https://github.com/BespredeL/CVCounter.git
 cd CVCounter
 docker-compose up --build</code></pre>
-          <p class="install__note">After start, open the web UI on the port from config (8080 by default). Copy config.example.json → config.json and set the video source and model_type.</p>
+          <p class="install__note">After launch, navigate to <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a> (configured in <code>config.json</code>). Initial config is created automatically on first run.</p>
         </div>
-        <h2 class="reveal" style="margin-top:2.5rem">Detection backends</h2>
-        <div class="backends reveal"><div class="backend"><h3>Ultralytics YOLO</h3><p><code>model_type: &quot;yolo&quot;</code></p><p>.pt · CUDA / CPU</p></div><div class="backend"><h3>OpenCV DNN</h3><p><code>model_type: &quot;opencv&quot;</code></p><p>ONNX, Darknet, protobuf</p></div><div class="backend"><h3>ONNX Runtime</h3><p><code>model_type: &quot;onnx&quot;</code></p><p>YOLO export → ONNX</p></div></div>
+
+        <h2 class="reveal" style="margin-top:2.5rem">Supported Detection Backends</h2>
+        <div class="backends reveal">
+          <div class="backend">
+            <h3>Auto</h3>
+            <p><code>model_type: &quot;auto&quot;</code></p>
+            <p>Recommended: selects backend by model file extension</p>
+          </div>
+          <div class="backend">
+            <h3>ONNX Runtime</h3>
+            <p><code>model_type: &quot;onnx&quot;</code></p>
+            <p>.onnx · CUDA, DirectML, CPU</p>
+          </div>
+          <div class="backend">
+            <h3>Intel OpenVINO</h3>
+            <p><code>model_type: &quot;openvino&quot;</code></p>
+            <p>.xml/.bin, .onnx · Intel CPU, Arc, NPU</p>
+          </div>
+          <div class="backend">
+            <h3>Ultralytics &amp; TensorRT</h3>
+            <p><code>model_type: &quot;yolo&quot;</code></p>
+            <p>.pt, .engine, .trt · CUDA / TensorRT</p>
+          </div>
+          <div class="backend">
+            <h3>OpenCV DNN</h3>
+            <p><code>model_type: &quot;opencv&quot;</code></p>
+            <p>.onnx, Darknet · Zero heavy dependencies</p>
+          </div>
+        </div>
         <div class="cta-inline reveal">
           <a class="btn btn--primary" href="https://github.com/BespredeL/CVCounter" rel="noopener">View on GitHub</a>
           <a class="btn btn--ghost" href="/cvcounter/en/faq/">FAQ</a>
